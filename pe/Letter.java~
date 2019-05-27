@@ -1,0 +1,136 @@
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.Component;
+import java.awt.Color;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.image.*;
+import java.util.Scanner;
+/*
+ * The Letter class. Creates a letter using JFrame to easily create sentences.
+ * @authors Ansh Sharma, Braulio Carrion
+ * @date 2019.05.22
+ */
+public class Letter extends Component implements ActionListener{
+  /*
+   * The colour of the letter.
+   */
+  Color letter_colour;
+  /*
+   * The size of the letter.
+   */
+  int letter_sizeX;
+  int letter_sizeY;
+  /*
+   * Whether or not the letter will animate when on screen.
+   */
+  boolean idleAnimation;
+  /*
+   * Whether or not the letter will animate into the scene.
+   */
+  boolean animateIn;
+  /*
+   * Whether or not the letter will animate out of the scene.
+   */
+  boolean animateOut;
+  /*
+   * The horizontal position of the bottom-leftmost part of the letter on the screen, in pixels.
+   */
+  int posX;
+  /*
+   * The vertical position of the bottom-leftmost part of the letter on the screen, in pixels.
+   */
+  int posY;
+  /*
+   * The String value of the letter to represent.
+   */
+  String letter;
+  
+  int velX = 2;
+  int velY = 2;
+  int conX,conY;
+  Timer tm = new Timer(5, this);
+  Scanner myObj = new Scanner(System.in);
+  
+  /*
+   * The class constructor. Creates a Letter object with all variables set.
+   * @param colour The letter's colour.
+   * @param size The letter's size.
+   * @param idleAnim Whether or not the letter animates on screen.
+   * @param inAnim Whether or not the letter animates into the screen.
+   * @param outAnim Whether or not the letter animates out of the screen.
+   * @param x The horizontal position of the letter.
+   * @param y The vertical position of the letter.
+   * @param let The letter to represent.
+   */
+  public Letter (Color colour, int sizeX, int sizeY, boolean idleAnim, boolean inAnim, boolean outAnim, int x, int y, String let) {
+    letter_colour = colour;
+    letter_sizeX = sizeX;
+    letter_sizeY = sizeY;
+    idleAnimation = idleAnim;
+    animateIn = inAnim;
+    animateOut = outAnim;
+    posX = x;
+    posY = y;
+    conX = x;
+    conY = y;
+    letter = let;
+    this.setSize(letter_sizeX, letter_sizeY);
+    this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
+    tm.start();
+  }
+  /*
+   * Draws the letter with respective colour and size. Will animate while drawing if animateIn is on. Also calls animateIdle() if animateIdle is on.
+   * @param g The graphics to draw onto.
+   */
+  public void paint (Graphics g) {
+    System.out.print("drawing: ");
+    super.paint(g);
+    String letCheck = myObj.nextLine();
+    if (letCheck.equals(letter))
+      idleAnimation = false;
+    try{
+      File imageFile = new File(letter + ".png");
+      BufferedImage image = ImageIO.read(imageFile);
+      g.drawImage(image, 0, 0,letter_sizeX,letter_sizeY,letter_colour,null);
+      System.out.println("Drawn" + letter);
+    }
+    catch (Exception e){
+      System.out.println(e.getMessage());
+    }  
+  }
+  
+  public void actionPerformed(ActionEvent e){
+    if (idleAnimation){
+      if(posX < conX || posX > letter_sizeX)
+        velX = -velX;
+      
+      if(posY < conY || posY > letter_sizeY)
+        velY = -velY;
+      
+      posY = posY + velY;
+      posX = posX + velX;
+      this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
+      repaint();}
+    else{
+      tm.stop();
+    }
+  }
+  
+  /* 
+   * Erases the letter. Will animate out if animateOut is on.
+   */
+  public void erase() {
+    //to be implemented
+  }
+  /*
+   * Returns the size of the letter, for use in the Text class.
+   */
+  public int getWidth() {
+    return letter_sizeX;
+  }
+}
