@@ -68,7 +68,6 @@ public class Letter extends Component implements ActionListener{
    * @param let The letter to represent.
    */
   public Letter (Color colour, int sizeX, int sizeY, boolean idleAnim, boolean inAnim, boolean outAnim, int x, int y, String let) {
-    letter_colour = colour;
     letter_sizeX = sizeX;
     letter_sizeY = sizeY;
     idleAnimation = idleAnim;
@@ -122,17 +121,14 @@ public class Letter extends Component implements ActionListener{
    * Erases the letter. Will animate out if animateOut is on.
    */
   public void erase() {
-    /*
-    if (animateIn) {
-      for (int i = 0; i < 10; i++) {
+    if (animateOut) {
         try {
-          Thread.sleep(200);
-          
+          Thread.sleep(150);
+          this.setBounds(0,0,0,0);
         } catch (Exception e) {
-          
+          System.out.println(e);
         }
-      }
-    } else */
+    } else
     this.setBounds(0,0,0,0);
   }
   /*

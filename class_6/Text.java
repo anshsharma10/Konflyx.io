@@ -79,7 +79,6 @@ public class Text{
     for (int i = 0; i < contents.length(); i++) {
       textList.add(new Letter(text_colour, text_sizeX, text_sizeY, idleAnimation, animateIn, animateOut, posX + i*text_sizeX, posY, Character.toString(contents.charAt(i))));
     }
-    System.out.println(textList.size());
   }
   /*
    * Draws the text with respective colour and size by calling draw() on each letter within the letters ArrayList.
@@ -96,8 +95,8 @@ public class Text{
    * Will animate out if animateOut is on.
    */
   public JPanel erase() {
-    for (Letter lett: textList){
-      panel.remove(lett);
+    for (int i = 0; i < textList.size(); i++){
+      textList.get(i).erase();
     }
     panel.repaint();
     return panel;

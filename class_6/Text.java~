@@ -95,8 +95,12 @@ public class Text{
    * Erases the text by calling erase() on each letter within the letters ArrayList.
    * Will animate out if animateOut is on.
    */
-  public void erase() {
-    //to be implemented
+  public JPanel erase() {
+    for (Letter lett: textList){
+      panel.remove(lett);
+    }
+    panel.repaint();
+    return panel;
   }
 }
 
