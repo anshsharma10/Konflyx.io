@@ -95,8 +95,8 @@ public class Text{
    * Will animate out if animateOut is on.
    */
   public JPanel erase() {
-    for (int i = 0; i < textList.size(); i++){
-      textList.get(i).erase();
+    for (Letter lett: textList){
+      lett.erase();
     }
     panel.repaint();
     return panel;
