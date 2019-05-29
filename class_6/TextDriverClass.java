@@ -28,9 +28,9 @@ public class TextDriverClass extends JFrame {
    */
   public TextDriverClass () {
     
-    setSize(400,400);
+    setSize(1080,720);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setPreferredSize(new Dimension(400,400));
+    setPreferredSize(new Dimension(1080,720));
     
     JPanel panel = new JPanel();
     panel.setLayout(null);
