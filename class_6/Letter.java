@@ -9,13 +9,12 @@ import java.awt.event.*;
 import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.image.*;
-import java.util.Scanner;
 /*
  * The Letter class. Creates a letter using JFrame to easily create sentences.
  * @authors Ansh Sharma, Braulio Carrion
  * @date 2019.05.22
  */
-public class Letter extends Component implements ActionListener{
+public class Letter extends Component implements ActionListener,KeyListener{
   /*
    * The colour of the letter.
    */
@@ -50,11 +49,11 @@ public class Letter extends Component implements ActionListener{
    */
   String letter;
   
-  int velX = 2;
-  int velY = 2;
+  int valX = 2;
+  int valY = 2;
+  int keyValue;
   int conX,conY;
   Timer tm = new Timer(100, this);
-  Scanner myObj = new Scanner(System.in);
   
   /*
    * The class constructor. Creates a Letter object with all variables set.
@@ -70,6 +69,7 @@ public class Letter extends Component implements ActionListener{
   public Letter (Color colour, int sizeX, int sizeY, boolean idleAnim, boolean inAnim, boolean outAnim, int x, int y, String let) {
     letter_sizeX = sizeX;
     letter_sizeY = sizeY;
+    letter_colour = colour;
     idleAnimation = idleAnim;
     animateIn = inAnim;
     animateOut = outAnim;
@@ -80,6 +80,8 @@ public class Letter extends Component implements ActionListener{
     letter = let;
     this.setSize(letter_sizeX, letter_sizeY);
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
+    this.addKeyListener(this);
+    this.setFocusable(true);
     tm.start();
   }
   /*
@@ -88,9 +90,6 @@ public class Letter extends Component implements ActionListener{
    */
   public void paint (Graphics g) {
     super.paint(g);
-    /*String letCheck = myObj.nextLine();
-    if (letCheck.equals(letter))
-      idleAnimation = false;*/
     try{
       File imageFile = new File(letter + ".png");
       BufferedImage image = ImageIO.read(imageFile);
@@ -103,13 +102,13 @@ public class Letter extends Component implements ActionListener{
   public void actionPerformed(ActionEvent e){
     if (idleAnimation){
       if(posX < conX || posX > letter_sizeX)
-        velX = -velX;
+        valX = -valX;
       
       if(posY < conY || posY > letter_sizeY)
-        velY = -velY;
+        valY = -valY;
       
-      posY = posY + velY;
-      posX = posX + velX;
+      posY = posY + valY;
+      posX = posX + valX;
       this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
       repaint();}
     else{
@@ -122,19 +121,29 @@ public class Letter extends Component implements ActionListener{
    */
   public void erase() {
     if (animateOut) {
-        try {
-          Thread.sleep(150);
-          this.setBounds(0,0,0,0);
-        } catch (Exception e) {
-          System.out.println(e);
-        }
+      try {
+        Thread.sleep(100);
+        this.setBounds(0,0,0,0);
+      } catch (Exception e) {
+        System.out.println(e);
+      }
     } else
-    this.setBounds(0,0,0,0);
+      this.setBounds(0,0,0,0);
   }
   /*
    * Returns the size of the letter, for use in the Text class.
    */
   public int getWidth() {
     return letter_sizeX;
+  }
+  
+  public void keyPressed(KeyEvent e) {  
+    keyValue = e.getKeyCode();  
+    if (keyValue)
+  }
+  
+  public void keyReleased(KeyEvent e) {    
+  }  
+  public void keyTyped(KeyEvent e) {  
   }
 }
