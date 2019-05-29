@@ -49,12 +49,16 @@ public class Letter extends Component implements ActionListener{
    * The String value of the letter to represent.
    */
   String letter;
+  /*
+   * The index of this letter within the Text.
+   */
+  int index;
   
   int velX = 2;
   int velY = 2;
   int conX,conY;
-  Timer tm = new Timer(100, this);
-  Scanner myObj = new Scanner(System.in);
+  Timer idleTimer = new Timer(100, this);
+  Timer introTimer = new Timer(150, this);
   
   /*
    * The class constructor. Creates a Letter object with all variables set.
@@ -66,8 +70,9 @@ public class Letter extends Component implements ActionListener{
    * @param x The horizontal position of the letter.
    * @param y The vertical position of the letter.
    * @param let The letter to represent.
+   * @param num The index this letter is within the Text class.
    */
-  public Letter (Color colour, int sizeX, int sizeY, boolean idleAnim, boolean inAnim, boolean outAnim, int x, int y, String let) {
+  public Letter (Color colour, int sizeX, int sizeY, boolean idleAnim, boolean inAnim, boolean outAnim, int x, int y, String let, int num) {
     letter_sizeX = sizeX;
     letter_sizeY = sizeY;
     idleAnimation = idleAnim;
@@ -78,9 +83,16 @@ public class Letter extends Component implements ActionListener{
     conX = x;
     conY = y;
     letter = let;
+    index = num;
     this.setSize(letter_sizeX, letter_sizeY);
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
-    tm.start();
+    if (animateIn == false && idleAnimation)
+      idleTimer.start();
+    if (animateIn == true) {
+      this.setVisible(false);
+      introTimer.setInitialDelay(150*(index + 1));
+      introTimer.start();
+    }
   }
   /*
    * Draws the letter with respective colour and size. Will animate while drawing if animateIn is on. Also calls animateIdle() if animateIdle is on.
@@ -88,9 +100,6 @@ public class Letter extends Component implements ActionListener{
    */
   public void paint (Graphics g) {
     super.paint(g);
-    /*String letCheck = myObj.nextLine();
-    if (letCheck.equals(letter))
-      idleAnimation = false;*/
     try{
       File imageFile = new File(letter + ".png");
       BufferedImage image = ImageIO.read(imageFile);
@@ -101,7 +110,12 @@ public class Letter extends Component implements ActionListener{
   }
   
   public void actionPerformed(ActionEvent e){
-    if (idleAnimation){
+    if (animateIn && introTimer.isRunning()){
+      this.setVisible(true);
+      idleTimer.start();
+      introTimer.stop();
+    }
+    else if (idleAnimation && idleTimer.isRunning()){
       if(posX < conX || posX > letter_sizeX)
         velX = -velX;
       
@@ -112,24 +126,20 @@ public class Letter extends Component implements ActionListener{
       posX = posX + velX;
       this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
       repaint();}
-    else{
-      tm.stop();
-    }
   }
-  
   /* 
    * Erases the letter. Will animate out if animateOut is on.
    */
   public void erase() {
     if (animateOut) {
-        try {
-          Thread.sleep(150);
-          this.setBounds(0,0,0,0);
-        } catch (Exception e) {
-          System.out.println(e);
-        }
+      try {
+        Thread.sleep(150);
+        this.setBounds(0,0,0,0);
+      } catch (Exception e) {
+        System.out.println(e);
+      }
     } else
-    this.setBounds(0,0,0,0);
+      this.setVisible(false);
   }
   /*
    * Returns the size of the letter, for use in the Text class.
