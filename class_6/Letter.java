@@ -127,6 +127,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
       } catch (Exception e) {
         System.out.println(e);
       }
+      tm.stop();
     } else
       this.setBounds(0,0,0,0);
   }
@@ -137,9 +138,13 @@ public class Letter extends Component implements ActionListener,KeyListener{
     return letter_sizeX;
   }
   
-  public void keyPressed(KeyEvent e) {  
-    keyValue = e.getKeyCode();  
-    if (keyValue)
+  public void keyPressed(KeyEvent e) {
+    keyValue = e.getKeyCode();
+    if (idleAnimation && keyValue == (int) letter.charAt(0)){
+      letter_colour = null;
+      idleAnimation = false;
+    }
+    System.out.print(letter + idleAnimation + keyValue);
   }
   
   public void keyReleased(KeyEvent e) {    

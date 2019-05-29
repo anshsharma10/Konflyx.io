@@ -101,6 +101,7 @@ public class Text{
     panel.repaint();
     return panel;
   }
+ 
 }
 
 
