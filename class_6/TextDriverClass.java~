@@ -36,8 +36,8 @@ public class TextDriverClass extends JFrame {
     panel.setLayout(null);
     add(panel);  
     
-    Text t = new Text (new Color (25,25,25,0),  40,40,  false,  true,  true,  50,  20, "NO", panel);  
-    Text t2 = new Text (new Color (25,25,25,0),  40,80,  true,  true,  true,  20,  100, "KEVIN", panel);  
+    Text t = new Text (new Color (25,25,25,0),  40,40,  false,  true,  true,  50,  20, "TEST", panel);  
+    Text t2 = new Text (new Color (25,25,25,0),  40,80,  true,  true,  true,  20,  100, "TESTTWO", panel);  
     
     panel = t.draw();     
     panel = t2.draw();

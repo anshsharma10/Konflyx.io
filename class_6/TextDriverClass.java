@@ -42,6 +42,7 @@ public class TextDriverClass extends JFrame {
     panel = t.draw();     
     panel = t2.draw();
     
+    panel = 
     setVisible(true);
     this.pack();
     
