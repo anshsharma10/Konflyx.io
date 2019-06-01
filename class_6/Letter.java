@@ -80,8 +80,13 @@ public class Letter extends Component implements ActionListener,KeyListener{
     letter = let;
     this.setSize(letter_sizeX, letter_sizeY);
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
-    this.addKeyListener(this);
-    this.setFocusable(true);
+    
+    if (letter.equals(" ")  || letter.equals("/")){
+    }
+    else{
+      this.addKeyListener(this);
+      this.setFocusable(true);
+    }
     tm.start();
   }
   /*
@@ -143,7 +148,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   public void keyPressed(KeyEvent e) {
     if (idleAnimation){
       keyValue = e.getKeyCode();
-      if (keyValue == ((int) letter.charAt(0)) || letter.equals(" ")){
+      if (keyValue == ((int) letter.charAt(0))){
         letter_colour = new Color (255,56,125);
         idleAnimation = false;
         this.setFocusable(false);
