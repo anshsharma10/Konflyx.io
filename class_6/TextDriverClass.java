@@ -37,10 +37,10 @@ public class TextDriverClass extends JFrame {
     add(panel);  
     
     Text t = new Text (new Color (25,25,25),  40,40,  false,  false,  true,  50,  20, "TEST", panel);  
-    Text t2 = new Text (new Color (25,25,25),  40,80,  true,  false,  false,  20,  100, " PEEPEE", panel);  
+    Text t2 = new Text (new Color (25,25,25),  40,80,  true,  false,  false,  20,  100, " TESTWO", panel);  
     
-    panel = t.draw();     
-    panel = t2.draw();
+    panel = t2.draw();     
+    panel = t.draw();
     
     setVisible(true);
     this.pack();

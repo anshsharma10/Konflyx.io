@@ -47,7 +47,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   /*
    * The String value of the letter to represent.
    */
-  String letter;
+  public String letter;
   
   int valX = 2;
   int valY = 2;
@@ -112,6 +112,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
       this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
       repaint();}
     else{
+      this.setBounds(conX,conY,letter_sizeX,letter_sizeY);
       tm.stop();
     }
   }
@@ -128,6 +129,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
         System.out.println(e);
       }
       tm.stop();
+      this.setFocusable(false);
     } else
       this.setBounds(0,0,0,0);
   }
@@ -139,10 +141,14 @@ public class Letter extends Component implements ActionListener,KeyListener{
   }
   
   public void keyPressed(KeyEvent e) {
-    keyValue = e.getKeyCode();
-    if (idleAnimation && keyValue == (int) letter.charAt(0)){
-      letter_colour = null;
-      idleAnimation = false;
+    if (idleAnimation){
+      keyValue = e.getKeyCode();
+      if (keyValue == ((int) letter.charAt(0)) || letter.equals(" ")){
+        letter_colour = new Color (255,56,125);
+        idleAnimation = false;
+        this.setFocusable(false);
+        repaint();
+      }
     }
     System.out.print(letter + idleAnimation + keyValue);
   }

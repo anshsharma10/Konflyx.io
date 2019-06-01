@@ -77,7 +77,7 @@ public class Text{
     this.panel = panel;
     
     for (int i = 0; i < contents.length(); i++) {
-      textList.add(new Letter(text_colour, text_sizeX, text_sizeY, idleAnimation, animateIn, animateOut, posX + i*text_sizeX, posY, Character.toString(contents.charAt(i))));
+      textList.add(new Letter(text_colour, text_sizeX, text_sizeY, idleAnimation, animateIn, animateOut, posX + (i)*text_sizeX, posY, Character.toString(contents.charAt(i))));
     }
   }
   /*
