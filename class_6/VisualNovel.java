@@ -27,4 +27,11 @@ public class VisualNovel {
     this.panel = panel;
     panel.add(new TextBox());
   }
+  /*
+   * Returns the current JPanel.
+   * @return the JPanel.
+   */
+  public JPanel getPanel() {
+    return panel;
+  }
 }
