@@ -121,6 +121,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
    */
   public void erase() {
     if (animateOut) {
+<<<<<<< HEAD
       try {
         Thread.sleep(100);
         this.setBounds(0,0,0,0);
@@ -130,6 +131,16 @@ public class Letter extends Component implements ActionListener,KeyListener{
       tm.stop();
     } else
       this.setBounds(0,0,0,0);
+=======
+        try {
+          Thread.sleep(150);
+          this.setBounds(0,0,0,0);
+        } catch (Exception e) {
+          System.out.println(e);
+        }
+    } else
+    this.setBounds(0,0,0,0);
+>>>>>>> Ansh
   }
   /*
    * Returns the size of the letter, for use in the Text class.
