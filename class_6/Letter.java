@@ -48,12 +48,17 @@ public class Letter extends Component implements ActionListener,KeyListener{
    * The String value of the letter to represent.
    */
   public String letter;
+  /*
+   * The index of this letter within the Text.
+   */
+  int index;
   
   int valX = 2;
   int valY = 2;
   int keyValue;
   int conX,conY;
-  Timer tm = new Timer(100, this);
+  Timer idleTimer = new Timer(100, this);
+  Timer introTimer = new Timer(150, this);
   
   /*
    * The class constructor. Creates a Letter object with all variables set.
@@ -65,8 +70,9 @@ public class Letter extends Component implements ActionListener,KeyListener{
    * @param x The horizontal position of the letter.
    * @param y The vertical position of the letter.
    * @param let The letter to represent.
+   * @param num The index this letter is within the Text class.
    */
-  public Letter (Color colour, int sizeX, int sizeY, boolean idleAnim, boolean inAnim, boolean outAnim, int x, int y, String let) {
+  public Letter (Color colour, int sizeX, int sizeY, boolean idleAnim, boolean inAnim, boolean outAnim, int x, int y, String let, int num) {
     letter_sizeX = sizeX;
     letter_sizeY = sizeY;
     letter_colour = colour;
@@ -78,16 +84,21 @@ public class Letter extends Component implements ActionListener,KeyListener{
     conX = x;
     conY = y;
     letter = let;
+    index = num;
     this.setSize(letter_sizeX, letter_sizeY);
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
     
-    if (letter.equals(" ")  || letter.equals("/")){
-    }
-    else{
+    if (animateIn == false && idleAnimation && !(letter.equals("/")) ) {
       this.addKeyListener(this);
       this.setFocusable(true);
+      idleTimer.start();
     }
-    tm.start();
+    if (animateIn == true) {
+      this.setVisible(false);
+      introTimer.setInitialDelay(150*(index + 1));
+      introTimer.start();
+    }
+    
   }
   /*
    * Draws the letter with respective colour and size. Will animate while drawing if animateIn is on. Also calls animateIdle() if animateIdle is on.
@@ -105,7 +116,12 @@ public class Letter extends Component implements ActionListener,KeyListener{
   }
   
   public void actionPerformed(ActionEvent e){
-    if (idleAnimation){
+    if (animateIn && introTimer.isRunning()){
+      this.setVisible(true);
+      idleTimer.start();
+      introTimer.stop();
+    }
+    else if (idleAnimation && idleTimer.isRunning()){
       if(posX < conX || posX > letter_sizeX)
         valX = -valX;
       
@@ -118,22 +134,21 @@ public class Letter extends Component implements ActionListener,KeyListener{
       repaint();}
     else{
       this.setBounds(conX,conY,letter_sizeX,letter_sizeY);
-      tm.stop();
+      idleTimer.stop();
     }
   }
-  
   /* 
    * Erases the letter. Will animate out if animateOut is on.
    */
   public void erase() {
     if (animateOut) {
       try {
-        Thread.sleep(100);
+        Thread.sleep(150);
         this.setBounds(0,0,0,0);
       } catch (Exception e) {
         System.out.println(e);
       }
-      tm.stop();
+      idleTimer.stop();
       this.setFocusable(false);
     } else
       this.setBounds(0,0,0,0);
