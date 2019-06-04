@@ -47,26 +47,18 @@ public class Letter extends Component implements ActionListener,KeyListener{
   /*
    * The String value of the letter to represent.
    */
-<<<<<<< HEAD
   public String letter;
-=======
-  String letter;
   /*
    * The index of this letter within the Text.
    */
   int index;
->>>>>>> Ansh
   
   int valX = 2;
   int valY = 2;
   int keyValue;
   int conX,conY;
-<<<<<<< HEAD
-  Timer tm = new Timer(100, this);
-=======
   Timer idleTimer = new Timer(100, this);
   Timer introTimer = new Timer(150, this);
->>>>>>> Ansh
   
   /*
    * The class constructor. Creates a Letter object with all variables set.
@@ -95,24 +87,18 @@ public class Letter extends Component implements ActionListener,KeyListener{
     index = num;
     this.setSize(letter_sizeX, letter_sizeY);
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
-<<<<<<< HEAD
     
-    if (letter.equals(" ")  || letter.equals("/")){
-    }
-    else{
+    if (animateIn == false && idleAnimation && !(letter.equals(" ")) && !(letter.equals("/")) ) {
       this.addKeyListener(this);
       this.setFocusable(true);
-    }
-    tm.start();
-=======
-    if (animateIn == false && idleAnimation)
       idleTimer.start();
+    }
     if (animateIn == true) {
       this.setVisible(false);
       introTimer.setInitialDelay(150*(index + 1));
       introTimer.start();
     }
->>>>>>> Ansh
+    
   }
   /*
    * Draws the letter with respective colour and size. Will animate while drawing if animateIn is on. Also calls animateIdle() if animateIdle is on.
@@ -146,13 +132,10 @@ public class Letter extends Component implements ActionListener,KeyListener{
       posX = posX + valX;
       this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
       repaint();}
-<<<<<<< HEAD
     else{
       this.setBounds(conX,conY,letter_sizeX,letter_sizeY);
-      tm.stop();
+      idleTimer.stop();
     }
-=======
->>>>>>> Ansh
   }
   /* 
    * Erases the letter. Will animate out if animateOut is on.
@@ -160,24 +143,15 @@ public class Letter extends Component implements ActionListener,KeyListener{
   public void erase() {
     if (animateOut) {
       try {
-<<<<<<< HEAD
-        Thread.sleep(100);
-=======
         Thread.sleep(150);
->>>>>>> Ansh
         this.setBounds(0,0,0,0);
       } catch (Exception e) {
         System.out.println(e);
       }
-<<<<<<< HEAD
-      tm.stop();
+      idleTimer.stop();
       this.setFocusable(false);
     } else
       this.setBounds(0,0,0,0);
-=======
-    } else
-      this.setVisible(false);
->>>>>>> Ansh
   }
   /*
    * Returns the size of the letter, for use in the Text class.
