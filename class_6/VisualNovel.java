@@ -20,18 +20,21 @@ public class VisualNovel {
    * The JPanel to work with.
    */
   JPanel panel;
+  TextBox textbox;
   /*
    * The class constructor. Creates a BufferedImage of the text box and places it at the bottom of the screen.
    */
   public VisualNovel(JPanel panel) {
     this.panel = panel;
-    panel.add(new TextBox());
+    textbox = new TextBox();
+    panel.add(textbox);
   }
   /*
    * Returns the current JPanel.
    * @return the JPanel.
    */
   public JPanel getPanel() {
+    panel.setComponentZOrder(textbox,panel.getComponents().length - 1);
     return panel;
   }
 }
