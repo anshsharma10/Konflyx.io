@@ -30,6 +30,12 @@ public class VisualNovel {
     panel.add(textbox);
   }
   /*
+   * Adds text to the screen using the Text and Letter classes, with a character and their respective emotion displayed.
+   */
+  public addText () {) {
+    
+  }
+  /*
    * Returns the current JPanel.
    * @return the JPanel.
    */
