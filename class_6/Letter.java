@@ -88,7 +88,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
     this.setSize(letter_sizeX, letter_sizeY);
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
     
-    if (animateIn == false && idleAnimation && !(letter.equals(" ")) && !(letter.equals("/")) ) {
+    if (animateIn == false && idleAnimation && !(letter.equals("/")) ) {
       this.addKeyListener(this);
       this.setFocusable(true);
       idleTimer.start();

@@ -20,18 +20,27 @@ public class VisualNovel {
    * The JPanel to work with.
    */
   JPanel panel;
+  TextBox textbox;
   /*
    * The class constructor. Creates a BufferedImage of the text box and places it at the bottom of the screen.
    */
   public VisualNovel(JPanel panel) {
     this.panel = panel;
-    panel.add(new TextBox());
+    textbox = new TextBox();
+    panel.add(textbox);
+  }
+  /*
+   * Adds text to the screen using the Text and Letter classes, with a character and their respective emotion displayed.
+   */
+  public void addText ()  {
+    
   }
   /*
    * Returns the current JPanel.
    * @return the JPanel.
    */
   public JPanel getPanel() {
+    panel.setComponentZOrder(textbox,panel.getComponents().length - 1);
     return panel;
   }
 }

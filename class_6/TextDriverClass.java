@@ -37,7 +37,7 @@ public class TextDriverClass extends JFrame {
     add(panel);  
     
     Text t = new Text (new Color (25,25,25),  40,40,  false,  false,  true,  50,  20, "TEST", panel);  
-    Text t2 = new Text (new Color (25,25,25),  20,40,  true,  false,  false,  20,  540, " TEST ONE/TEST TWO", panel);  
+    Text t2 = new Text (null,  20,40,  true,  false,  false,  20,  540, "/TEST ONE/TEST TWO", panel);  
     VisualNovel vn = new VisualNovel(panel);
     
     panel = t2.draw();     
