@@ -24,8 +24,8 @@ public class Character extends Component {
    * @param getFile The file to retrieve the character image from.
    */
   public void TextBox(String getFile) {
-    File imageFile = new File(getFile + ".png");
-    BufferedImage image = ImageIO.read(imageFile);
+   // File imageFile = new File(getFile + ".png");
+    //BufferedImage image = ImageIO.read(imageFile);
     //g.drawImage(image, 0, 0,letter_sizeX,letter_sizeY,letter_colour,null);
     
     this.setSize(1080, 200);

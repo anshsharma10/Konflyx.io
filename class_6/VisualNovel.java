@@ -32,7 +32,7 @@ public class VisualNovel {
   /*
    * Adds text to the screen using the Text and Letter classes, with a character and their respective emotion displayed.
    */
-  public addText () {) {
+  public void addText ()  {
     
   }
   /*

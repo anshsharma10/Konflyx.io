@@ -23,10 +23,10 @@ public class Character extends Component {
    * The class constructor. This class's primary purpose is to draw a character onto the screen.
    * @param getFile The file to retrieve the character image from.
    */
-  public TextBox(String getFile) {
+  public void TextBox(String getFile) {
     File imageFile = new File(getFile + ".png");
     BufferedImage image = ImageIO.read(imageFile);
-    g.drawImage(image, 0, 0,letter_sizeX,letter_sizeY,letter_colour,null);
+    //g.drawImage(image, 0, 0,letter_sizeX,letter_sizeY,letter_colour,null);
     
     this.setSize(1080, 200);
     this.setBounds(0,520,1080,200);
