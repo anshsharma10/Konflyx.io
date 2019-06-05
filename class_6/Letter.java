@@ -107,7 +107,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   public void paint (Graphics g) {
     super.paint(g);
     try{
-      File imageFile = new File(letter + ".png");
+      File imageFile = new File("textFiles/" +letter + ".png");
       BufferedImage image = ImageIO.read(imageFile);
       g.drawImage(image, 0, 0,letter_sizeX,letter_sizeY,letter_colour,null);
     }

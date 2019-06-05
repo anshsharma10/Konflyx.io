@@ -28,11 +28,15 @@ public class VisualNovel {
     this.panel = panel;
     textbox = new TextBox();
     panel.add(textbox);
+    
+    Person p1 = new Person(2,"angry");
+    panel.add(p1);
   }
   /*
    * Adds text to the screen using the Text and Letter classes, with a character and their respective emotion displayed.
+   * @return The JPanel after text is added.
    */
-  public void addText ()  {
+  public void addText () {
     
   }
   /*
