@@ -14,21 +14,35 @@ import java.util.*;
  * @author Ansh Sharma, Braulio Carrion
  * @date 2019.06.04
  */
-public class Character extends Component {
+public class Person extends Component {
   /*
    * The character image.
    */
   BufferedImage image;
   /*
+   * The path to the image file.
+   */
+  String filePath;
+  /*
    * The class constructor. This class's primary purpose is to draw a character onto the screen.
    * @param getFile The file to retrieve the character image from.
    */
-  public Character(String getFile) {
-    File imageFile = new File(getFile + ".png");
-    BufferedImage image = ImageIO.read(imageFile);
-    g.drawImage(image, 0, 0,letter_sizeX,letter_sizeY,letter_colour,null);
-    
-    this.setSize(1080, 200);
-    this.setBounds(0,520,1080,200);
+  public Person(int enemy, String emotion) {
+    try {
+      File imageFile = new File("enemy" + enemy + "files" + "/" + emotion + ".png");
+      image = ImageIO.read(imageFile);
+      this.setSize(image.getWidth(), image.getHeight());
+      this.setBounds(540 - image.getWidth()/2,-20,image.getWidth(),image.getHeight());
+      
+    }
+    catch (Exception e) {
+    }
+  }
+  
+  /*
+   * The main graphics method to draw the person onto the screen.
+   */
+  public void paint (Graphics g) {
+    g.drawImage(image, 0, 0,image.getWidth(),image.getHeight(),null,null);
   }
 }
