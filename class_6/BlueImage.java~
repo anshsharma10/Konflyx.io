@@ -13,7 +13,7 @@ public class BlueImage
         //read image 
         try
         { 
-            f = new File("A.jpg"); 
+            f = new File("A.png"); 
             img = ImageIO.read(f); 
         } 
         catch(IOException e) 
@@ -47,8 +47,8 @@ public class BlueImage
         // write image 
         try
         { 
-            f = new File("G:\\Out.jpg"); 
-            ImageIO.write(img, "jpg", f); 
+            f = new File("A.png"); 
+            ImageIO.write(img, "png", f); 
         } 
         catch(IOException e) 
         { 
