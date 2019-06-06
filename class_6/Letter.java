@@ -59,6 +59,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   int conX,conY;
   Timer idleTimer = new Timer(100, this);
   Timer introTimer = new Timer(150, this);
+  String colorOfLetter = "";
   
   /*
    * The class constructor. Creates a Letter object with all variables set.
@@ -107,7 +108,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   public void paint (Graphics g) {
     super.paint(g);
     try{
-      File imageFile = new File("textFiles/" +letter + ".png");
+      File imageFile = new File("textfiles\\"+letter + colorOfLetter+ ".png");
       BufferedImage image = ImageIO.read(imageFile);
       g.drawImage(image, 0, 0,letter_sizeX,letter_sizeY,letter_colour,null);
     }
@@ -164,14 +165,64 @@ public class Letter extends Component implements ActionListener,KeyListener{
     if (idleAnimation){
       keyValue = e.getKeyCode();
       if (keyValue == ((int) letter.charAt(0))){
-        letter_colour = new Color (255,56,125);
+        colorOfLetter = "G";
+        //letter_colour = new Color (255,56,125);
         idleAnimation = false;
         this.setFocusable(false);
+        repaint();
+      }
+      else{
+        colorOfLetter = "R";
         repaint();
       }
     }
     System.out.print(letter + idleAnimation + keyValue);
   }
+  
+  
+  /*
+   public void changeColour(Color clr){
+   
+   BufferedImage img = null; 
+   File file = null; 
+   
+   //read image 
+   try
+   { 
+   file = new File("textfiles\\"+letter+".png"); 
+   img = ImageIO.read(file); 
+   } 
+   catch(IOException e) 
+   { 
+   System.out.println(e); 
+   } 
+   
+   int width = img.getWidth(); 
+   int height = img.getHeight(); 
+   
+   for (int y = 0; y < height; y++) 
+   { 
+   for (int x = 0; x < width; x++) 
+   { 
+   int p = img.getRGB(x,y); 
+   if (p < 0)
+   img.setRGB(x, y, clr.getRGB()); 
+   } 
+   } 
+   
+   try
+   { 
+   file = new File("textfiles\\"+letter + "R.png"); 
+   ImageIO.write(img, "png", file); 
+   } 
+   catch(IOException e) 
+   { 
+   System.out.println(e); 
+   } 
+   repaint();
+   }
+   */
+  
   
   public void keyReleased(KeyEvent e) {    
   }  
