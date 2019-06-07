@@ -105,7 +105,15 @@ public class Text{
     panel.repaint();
     return panel;
   }
-  
+  /*
+   * Returns the required x position of a given text length to center the text.
+   * @param size The horizontal size of each text's letter.
+   * @param length The length of the text, in characters.
+   * @return The required x position to center the text.
+   */
+  public static int centerTextXPosition (int size, int length) {
+    return (1080 - size*length)/2;
+  }
 }
 
 

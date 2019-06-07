@@ -20,9 +20,21 @@ public class TextDriverClass extends JFrame implements KeyListener{
    */
   JPanel panel;
   /*
+   * The current game mode. 0 is visual novel, 1 is text selection, and 2 is gameplay. For use in keylistening.
+   */
+  int gameMode = 1;
+  /*
    * The visual novel to work with.
    */
   VisualNovel vn;
+  /*
+   * The TextSelector to work with.
+   */
+  TextSelector ts;
+  /*
+   * Selected Text to type.
+   */
+  String toBeTyped;
   /*
    * Class constructor
    */
@@ -35,23 +47,38 @@ public class TextDriverClass extends JFrame implements KeyListener{
     panel = new JPanel();
     panel.setLayout(null);
     add(panel);  
-    vn = new VisualNovel(panel, "testScript");
-    panel = vn.addText();
+    
+    ts = new TextSelector (panel, new String[]{"Pigeon", "Statue", "suck my ass"},"Sometimes you're the...");
     setVisible(true);
     this.pack();
     this.addKeyListener(this);
   }
   /*
-   * Method that runs if a key is pressed.
+   * Method that runs if a key is pressed. Advances text in the visual novel if mode is 0, and moves the selector in TextSelection if mode is 1.
    */
   public void keyPressed(KeyEvent e) {
-    if (vn.getIndex() == vn.getLines())
-      this.removeKeyListener(this);
-    else {
-      System.out.println("press");
+    if (gameMode == 0) {
+      if (vn.getIndex() == vn.getLines())
+        this.removeKeyListener(this);
+      else {
+        int keyValue = e.getKeyCode();
+        if (keyValue == 10 || keyValue == 32)
+          panel = vn.addText();
+      }
+    } else if (gameMode == 1) {
       int keyValue = e.getKeyCode();
-      if (keyValue == 10 || keyValue == 32)
-        panel = vn.addText();
+      if (keyValue == 87 || keyValue == 38) {
+        ts.moveUp();
+      }
+      else if (keyValue == 83 || keyValue == 40) {
+        ts.moveDown();
+      }
+      else if (keyValue == 10 || keyValue == 32) {
+        toBeTyped = ts.getSelection();
+        System.out.println(toBeTyped);
+        panel = ts.cleanUp();
+        this.removeKeyListener(this);
+      }
     }
   }
   /*

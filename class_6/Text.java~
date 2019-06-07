@@ -79,7 +79,7 @@ public class Text{
     for (int i = 0; i < contents.length(); i++) {
       if (i > 0 && (contents.substring(i,i+1)).equals("/")){
         posY+=text_sizeY;
-        posX-=(i)*text_sizeX;
+        posX-=(i-1)*text_sizeX;
       }
       textList.add(new Letter(text_colour, text_sizeX, text_sizeY, idleAnimation, animateIn, animateOut, posX + (i-1)*text_sizeX, posY, contents.substring(i,i+1), i));
     }

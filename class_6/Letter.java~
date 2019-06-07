@@ -58,7 +58,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   int keyValue;
   int conX,conY;
   Timer idleTimer = new Timer(100, this);
-  Timer introTimer = new Timer(150, this);
+  Timer introTimer = new Timer(30, this);
   
   /*
    * The class constructor. Creates a Letter object with all variables set.

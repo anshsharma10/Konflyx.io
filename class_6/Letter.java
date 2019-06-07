@@ -83,7 +83,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
     posY = y;
     conX = x;
     conY = y;
-    letter = let;
+    letter = let.toUpperCase();
     index = num;
     this.setSize(letter_sizeX, letter_sizeY);
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
