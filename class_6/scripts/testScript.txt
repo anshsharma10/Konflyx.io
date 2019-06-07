@@ -1,0 +1,6 @@
+Background:2
+##################################################################################
+FORMAT: Person Emotion Name%Text
+##################################################################################
+3 1 Dude%/SOMETIMES YOURE THE PIGEON SOMETIMES YOURE THE STATUE/TODAY IM THE PIGEON AND YOURE THE STATUE
+3 3 Dude%/EVERYBODY GET UP

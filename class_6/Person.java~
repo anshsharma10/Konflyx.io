@@ -25,19 +25,9 @@ public class Person extends Component {
   String filePath;
   /*
    * The class constructor. This class's primary purpose is to draw a character onto the screen.
-   * @param enemy The enemy to retrieve the emotion from.
-   * @param emotion The particular emotion. 1 is happy, 2 is sad, 3 is angry, and 4 is sweaty.
+   * @param getFile The file to retrieve the character image from.
    */
-  public Person(int enemy, int emote) {
-    String emotion = "";
-    if (emote == 1)
-      emotion = "happy";
-    else if (emote == 2)
-      emotion = "sad";
-    else if (emote == 3)
-      emotion = "angry";
-    else if (emote == 4)
-      emotion = "sweat";
+  public Person(int enemy, String emotion) {
     try {
       File imageFile = new File("enemy" + enemy + "files" + "/" + emotion + ".png");
       image = ImageIO.read(imageFile);
@@ -46,7 +36,6 @@ public class Person extends Component {
       
     }
     catch (Exception e) {
-      System.out.println(e);
     }
   }
   

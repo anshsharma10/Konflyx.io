@@ -14,15 +14,15 @@ import java.util.*;
  * @author Ansh Sharma, Braulio Carrion
  * @date 2019.05.22
  */
-public class TextDriverClass extends JFrame {
+public class TextDriverClass extends JFrame implements KeyListener{
   /*
-   * The frame to contain all GUI.
+   * The panel to work with.
    */
-  //public JFrame frame;
+  JPanel panel;
   /*
-   * The Panel to contain all GUI.
+   * The visual novel to work with.
    */
-  //public JPanel panel;
+  VisualNovel vn;
   /*
    * Class constructor
    */
@@ -32,17 +32,37 @@ public class TextDriverClass extends JFrame {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     setPreferredSize(new Dimension(1080,720));
     
-    JPanel panel = new JPanel();
+    panel = new JPanel();
     panel.setLayout(null);
     add(panel);  
-    VisualNovel vn = new VisualNovel(panel);
-    
-
-    
-    panel = vn.getPanel();
+    vn = new VisualNovel(panel, "testScript");
+    panel = vn.addText();
     setVisible(true);
     this.pack();
-    
+    this.addKeyListener(this);
+  }
+  /*
+   * Method that runs if a key is pressed.
+   */
+  public void keyPressed(KeyEvent e) {
+    if (vn.getIndex() == vn.getLines())
+      this.removeKeyListener(this);
+    else {
+      System.out.println("press");
+      int keyValue = e.getKeyCode();
+      if (keyValue == 10 || keyValue == 32)
+        panel = vn.addText();
+    }
+  }
+  /*
+   * Method that runs if a key is released.
+   */
+  public void keyReleased(KeyEvent e) {    
+  }  
+  /*
+   * Method that runs if a key is typed.
+   */
+  public void keyTyped(KeyEvent e) {  
   }
   /*
    * The main method that runs the Text and Letter classes.
