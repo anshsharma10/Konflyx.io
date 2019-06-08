@@ -10,12 +10,12 @@ import javax.swing.*;
 import java.awt.image.*;
 import java.util.*;
 /*
- * The VisualNovel class. Creates a simple visual novel system for the driver and level classes to use. Contains methods
+ * The Gameplay class. Manages the game, switching between typing, display of text to type, and letting the user choose what they want to type.
  * used for the visual novel.
  * @authors Ansh Sharma, Braulio Carrion
- * @date 2019.05.30
+ * @date 2019.06.10
  */
-public class VisualNovel {
+public class Gameplay {
   /*
    * The JPanel to work with.
    */
@@ -23,27 +23,19 @@ public class VisualNovel {
   /*
    * The TextBox to work with.
    */
-  TextBox textbox = new TextBox();;
+  TextBox textbox = new TextBox();
   /*
    * The background to work with.
    */
-  Background background = new Background(1);;
+  Background background = new Background(1);
   /*
-   * The ArrayList of Text objects. Each object will be shown once in the process of the visual novel screen.
+   * The person to work with.
    */
-  ArrayList <ArrayList <Text>> textList;
+  Person person = new Person(1,1);
   /*
-   * The ArrayList of Person objects. Each object is shown along with its associated textList object.
+   * The ArrayList of instructions to be carried out by the Gameplay class.
    */
-  ArrayList <Person> personList;
-  /*
-   * The text currently shown on the screen.
-   */
-  Text currentText;
-  /*
-   * The person currently shown on the screen.
-   */
-  Person currentPerson;
+  ArrayList <String> instructions = new ArrayList<String>();;
   /*
    * The current index in the visual novel. Each line has its own index to manage storytelling.
    */
@@ -53,18 +45,20 @@ public class VisualNovel {
    */
   int lines = 0;
   /*
+   * What the Gameplay class is currently handling. 0 is visualnovel-style text which the user advances through,
+   * 1 is prompting the user to select text, and 2 is prompting the user to type text.
+   */
+  int mode = 0;
+  /*
    * The class constructor. Creates the visual novel.
    */
-  public VisualNovel(JPanel panel, String script) {
+  public Gameplay(JPanel panel, String script) {
     this.panel = panel;
-    textList = new ArrayList <ArrayList <Text>>();
-    personList = new ArrayList<Person>();
     generateScript(script);
     index = 0;
   }
   /*
-   * Searches through the list of scripts for a script with this particular VisualNovel object's name, then loads
-   * the text from that script into a Text object, placing it in the textList ArrayList.
+   * Searches through the list of scripts for a script with this particular gameplay, then loads each line from this script into the instructions.
    * @param script The particular script to search for.
    */
   public void generateScript (String script) {
@@ -77,14 +71,7 @@ public class VisualNovel {
       scan.nextLine();
       while (scan.hasNextLine()) {
         String line = scan.nextLine(); 
-        if (!(line.substring(0,1).equals(" ") && line.substring(2,3).equals(" ")))
-          personList.add(new Person(Integer.parseInt(line.substring(0,1)),Integer.parseInt(line.substring(2,3))));
-        else
-          personList.add(null);
-        textList.add(new ArrayList<Text>());
-        textList.get(lines).add(new Text (null,  13, 26,  false,  false,  false,  38,  539, line.substring(4,line.indexOf("%")), panel));
-        textList.get(lines).add(new Text (null,  18, 36,  false,  false,  false,  20,  540, line.substring(line.indexOf("%")), panel));
-        lines++;
+        
       }
     }
     catch (Exception e) {
@@ -111,26 +98,6 @@ public class VisualNovel {
    * @return The JPanel after text is added.
    */
   public JPanel addText () {
-    addBg();
-    if (index == 0) {
-      if (personList.get(index) != null)
-        panel.add(personList.get(index));
-      addTextBox();
-      textList.get(index).get(0).draw();
-      textList.get(index).get(1).draw();
-    }
-    else {
-      if (personList.get(index - 1) != null)
-        panel.remove(personList.get(index - 1));
-      if (personList.get(index) != null)
-        panel.add(personList.get(index));
-      addTextBox();
-      textList.get(index - 1).get(0).erase();
-      textList.get(index - 1).get(1).erase();
-      textList.get(index).get(0).draw();
-      textList.get(index).get(1).draw();
-    }
-    index++;
     return getPanel();
   }
   /*

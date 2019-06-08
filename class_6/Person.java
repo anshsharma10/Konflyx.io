@@ -24,6 +24,10 @@ public class Person extends Component {
    */
   String filePath;
   /*
+   * The centered position of the image.
+   */
+  int centPos = 0;
+  /*
    * The class constructor. This class's primary purpose is to draw a character onto the screen.
    * @param enemy The enemy to retrieve the emotion from.
    * @param emotion The particular emotion. 1 is happy, 2 is sad, 3 is angry, and 4 is sweaty.
@@ -42,8 +46,8 @@ public class Person extends Component {
       File imageFile = new File("enemy" + enemy + "files" + "/" + emotion + ".png");
       image = ImageIO.read(imageFile);
       this.setSize(image.getWidth(), image.getHeight());
-      this.setBounds(540 - image.getWidth()/2,-20,image.getWidth(),image.getHeight());
-      
+      this.setBounds(540 - image.getWidth()/2,0,image.getWidth(),image.getHeight());
+      centPos = 540 - image.getWidth()/2;
     }
     catch (Exception e) {
       System.out.println(e);
@@ -51,9 +55,22 @@ public class Person extends Component {
   }
   
   /*
-   * The main graphics method to draw the person onto the screen.
+   * Moves the image to the left, right, or center, depending on input.
+   * @param position Where to move the person.
    */
-  public void paint (Graphics g) {
-    g.drawImage(image, 0, 0,image.getWidth(),image.getHeight(),null,null);
+  public void move (String person) {
+    if (person.equals("left"))
+      setBounds(centPos - 330, getBounds().y, getBounds().width, getBounds().height);
+    else if (person.equals("right"))
+      setBounds(centPos + 200, getBounds().y, getBounds().width, getBounds().height);
+    else if (person.equals("left"))
+      setBounds(centPos, getBounds().y, getBounds().width, getBounds().height);
   }
-}
+    
+    /*
+     * The main graphics method to draw the person onto the screen.
+     */
+    public void paint (Graphics g) {
+      g.drawImage(image, 0, 0,image.getWidth(),image.getHeight(),null,null);
+    }
+  }

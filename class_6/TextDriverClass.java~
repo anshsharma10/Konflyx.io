@@ -39,20 +39,34 @@ public class TextDriverClass extends JFrame implements KeyListener{
    * Class constructor
    */
   public TextDriverClass () {
-    
-    setSize(1080,720);
+
+    getContentPane().setSize(1080,720);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setPreferredSize(new Dimension(1080,720));
-    
+
     panel = new JPanel();
     panel.setLayout(null);
-    add(panel);  
-    
-    ts = new TextSelector (panel, new String[]{"Pigeon", "Statue", "suck my ass"},"Sometimes you're the...");
-    
+    panel.setPreferredSize(new Dimension(1080,720));
+    add(panel);
+
+    //Text t = new Text (new Color (25,25,25),  40,40,  false,  false,  true,  50,  20, "TEST", panel);
+    //Text t2 = new Text (null,  20,40,  true,  false,  false,  20,  540, "/TEST ONE/TEST TWO", panel);
+
+    PracticeRoom pr = new PracticeRoom(panel);
+
+    //panel = t2.draw();
+    //panel = t.draw();
+
+    panel = pr.getPanel();
     setVisible(true);
     this.pack();
-    this.addKeyListener(this);
+
+    /*try {
+      Thread.sleep(3000);
+      panel = t.erase();
+    } catch (Exception e) {
+      System.out.println(e);
+    }*/
+
   }
   /*
    * Method that runs if a key is pressed. Advances text in the visual novel if mode is 0, and moves the selector in TextSelection if mode is 1.
@@ -85,19 +99,19 @@ public class TextDriverClass extends JFrame implements KeyListener{
   /*
    * Method that runs if a key is released.
    */
-  public void keyReleased(KeyEvent e) {    
-  }  
+  public void keyReleased(KeyEvent e) {
+  }
   /*
    * Method that runs if a key is typed.
    */
-  public void keyTyped(KeyEvent e) {  
+  public void keyTyped(KeyEvent e) {
   }
   /*
    * The main method that runs the Text and Letter classes.
    */
   public static void main (String[] args) {
-    
+
     TextDriverClass driver = new TextDriverClass();
-    
+
   }
 }

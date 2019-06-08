@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.awt.image.*;
 import java.util.*;
 /*
- * The VisualNovel class. Creates a simple visual novel system for the driver and level classes to use. Contains methods
+ * The VisualNovel class. Creates a simple visual novel system for the driver and level classes to use.
  * used for the visual novel.
  * @authors Ansh Sharma, Braulio Carrion
  * @date 2019.05.30
@@ -37,14 +37,6 @@ public class VisualNovel {
    */
   ArrayList <Person> personList;
   /*
-   * The text currently shown on the screen.
-   */
-  Text currentText;
-  /*
-   * The person currently shown on the screen.
-   */
-  Person currentPerson;
-  /*
    * The current index in the visual novel. Each line has its own index to manage storytelling.
    */
   int index = 0;
@@ -53,6 +45,10 @@ public class VisualNovel {
    */
   int lines = 0;
   /*
+   * Whether or not this visual novel portion is fully completed.
+   */
+  boolean completed = false;
+  /*
    * The class constructor. Creates the visual novel.
    */
   public VisualNovel(JPanel panel, String script) {
@@ -60,6 +56,7 @@ public class VisualNovel {
     textList = new ArrayList <ArrayList <Text>>();
     personList = new ArrayList<Person>();
     generateScript(script);
+    completed = false;
     index = 0;
   }
   /*
@@ -131,6 +128,8 @@ public class VisualNovel {
       textList.get(index).get(1).draw();
     }
     index++;
+    if (index == lines)
+      completed = true;
     return getPanel();
   }
   /*
@@ -162,5 +161,11 @@ public class VisualNovel {
    */
   public int getLines () {
     return lines;
+  }
+  /*
+   * Returns the completion of the section.
+   */
+  public boolean isComplete() {
+    return completed;
   }
 }

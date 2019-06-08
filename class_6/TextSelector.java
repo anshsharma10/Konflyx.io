@@ -53,7 +53,7 @@ public class TextSelector {
    * @param responses The list of possible responses to choose.
    * @param question The question to ask the user.
    */
-  public TextSelector (JPanel panel, String[] responses, String question) {
+  public TextSelector (JPanel panel, String question, String[] responses) {
     this.panel = panel;
     this.responses = responses;
     maxLocation = responses.length - 1;
