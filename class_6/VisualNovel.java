@@ -77,7 +77,7 @@ public class VisualNovel {
       scan.nextLine();
       while (scan.hasNextLine()) {
         String line = scan.nextLine(); 
-        if (line.substring(0,1).equals(" ") && line.substring(2,3).equals(" "))
+        if (!(line.substring(0,1).equals(" ") && line.substring(2,3).equals(" ")))
           personList.add(new Person(Integer.parseInt(line.substring(0,1)),Integer.parseInt(line.substring(2,3))));
         else
           personList.add(null);
@@ -88,6 +88,7 @@ public class VisualNovel {
       }
     }
     catch (Exception e) {
+      System.out.println(e);
     }
   }
   /*

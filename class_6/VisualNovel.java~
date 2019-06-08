@@ -77,7 +77,10 @@ public class VisualNovel {
       scan.nextLine();
       while (scan.hasNextLine()) {
         String line = scan.nextLine(); 
-        personList.add(new Person(Integer.parseInt(line.substring(0,1)),Integer.parseInt(line.substring(2,3))));
+        if (line.substring(0,1).equals(" ") && line.substring(2,3).equals(" "))
+          personList.add(new Person(Integer.parseInt(line.substring(0,1)),Integer.parseInt(line.substring(2,3))));
+        else
+          personList.add(null);
         textList.add(new ArrayList<Text>());
         textList.get(lines).add(new Text (null,  13, 26,  false,  false,  false,  38,  539, line.substring(4,line.indexOf("%")), panel));
         textList.get(lines).add(new Text (null,  18, 36,  false,  false,  false,  20,  540, line.substring(line.indexOf("%")), panel));
@@ -109,14 +112,17 @@ public class VisualNovel {
   public JPanel addText () {
     addBg();
     if (index == 0) {
-      panel.add(personList.get(index));
+      if (personList.get(index) != null)
+        panel.add(personList.get(index));
       addTextBox();
       textList.get(index).get(0).draw();
       textList.get(index).get(1).draw();
     }
     else {
-      panel.remove(personList.get(index - 1));
-      panel.add(personList.get(index));
+      if (personList.get(index - 1) != null)
+        panel.remove(personList.get(index - 1));
+      if (personList.get(index) != null)
+        panel.add(personList.get(index));
       addTextBox();
       textList.get(index - 1).get(0).erase();
       textList.get(index - 1).get(1).erase();

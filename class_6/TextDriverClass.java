@@ -49,6 +49,7 @@ public class TextDriverClass extends JFrame implements KeyListener{
     add(panel);  
     
     ts = new TextSelector (panel, new String[]{"Pigeon", "Statue", "suck my ass"},"Sometimes you're the...");
+    
     setVisible(true);
     this.pack();
     this.addKeyListener(this);
