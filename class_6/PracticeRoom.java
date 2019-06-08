@@ -48,19 +48,32 @@ public class PracticeRoom {
    * @return The JPanel after text is added.
    */
   public void addText () {
-    long startTime = System.currentTimeMillis();
-    int elapsedTime = 0;
-    int count = 20;
     Text line1;
     Text line2;
-      line1 = new Text (null,  40,40,  true,  false,  false,  50,  20, "/" + (words[(int)(Math.random()*999)]).toUpperCase(), panel);
-      line1.draw();
-      line2 = new Text (null,  40,40,  true,  false,  false,  50,  60, "/" + (words[(int)(Math.random()*999)]).toUpperCase(), panel);
-      line2.draw();
+    long startTime = System.currentTimeMillis();
     
-    while (elapsedTime < 0.05*60*1000) {
-      elapsedTime = (int)((new Date()).getTime() - startTime);
-    }
+    line1 = new Text (null,  30,50,  true,  false,  false,  50,  20, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
+    line2 = new Text (null,  30,50,  true,  false,  false,  50,  100, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
+    
+    TimerTask repeatedTask = new TimerTask() {
+      boolean count = true;
+      public void run() {
+        if (count){
+          line1.draw();
+          line2.draw();
+        }
+        count = false;
+        //System.out.print(line1.finishedLine());
+        if (0.20*60*1000<(System.currentTimeMillis() - startTime)){
+          line1.erase();
+          line2.erase();
+          cancel(); 
+        }
+      }
+    };
+    Timer timer = new Timer("Timer");
+    timer.scheduleAtFixedRate(repeatedTask, 0, 10);
+    
   }
   /*
    * Returns the current JPanel.

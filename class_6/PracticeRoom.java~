@@ -49,20 +49,25 @@ public class PracticeRoom {
    */
   public void addText () {
     long startTime = System.currentTimeMillis();
-    long elapsedTime = 0L;
-    System.out.print(startTime + elapsedTime);
-    while (elapsedTime < 2*60*1000) {
-      Text t2 = new Text (null,  40,40,  true,  false,  false,  50,  20, "/" + (words[(int)(Math.random()*999)]).toUpperCase(), panel);
-      t2.draw();
-      elapsedTime = (new Date()).getTime() - startTime;
-      }
-    }
-    /*
-     * Returns the current JPanel.
-     * @return the JPanel.
-     */
-    public JPanel getPanel() {
-      panel.setComponentZOrder(textbox,panel.getComponents().length - 1);
-      return panel;
+    int elapsedTime = 0;
+    int count = 20;
+    Text line1;
+    Text line2;
+      line1 = new Text (null,  40,40,  true,  false,  false,  50,  20, "/" + (words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      line1.draw();
+      line2 = new Text (null,  40,40,  true,  false,  false,  50,  60, "/" + (words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      line2.draw();
+    
+    while (elapsedTime < 0.05*60*1000) {
+      elapsedTime = (int)((new Date()).getTime() - startTime);
     }
   }
+  /*
+   * Returns the current JPanel.
+   * @return the JPanel.
+   */
+  public JPanel getPanel() {
+    panel.setComponentZOrder(textbox,panel.getComponents().length - 1);
+    return panel;
+  }
+}

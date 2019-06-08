@@ -52,6 +52,7 @@ public class Text{
    * The JPanel to add the text to.  
    */  
   JPanel panel;  
+  int contSize;
   /*
    * The class constructor. Creates a Text object with all variables set. Additionally, creates an ArrayList of Letters, one Letter for each letter in the contents String.
    * @param colour The text's colour.
@@ -73,6 +74,7 @@ public class Text{
     animateOut = outAnim;
     posX = x;
     posY = y;
+    contSize = contents.length();
     textList = new ArrayList <Letter> ();
     this.panel = panel;
     
@@ -81,7 +83,7 @@ public class Text{
         posY+=text_sizeY;
         posX-=(i)*text_sizeX;
       }
-      textList.add(new Letter(text_colour, text_sizeX, text_sizeY, idleAnimation, animateIn, animateOut, posX + (i-1)*text_sizeX, posY, contents.substring(i,i+1), i));
+      textList.add(new Letter(text_colour, text_sizeX, text_sizeY, idleAnimation, animateIn, animateOut, posX + (i-1)*text_sizeX, posY, contents.substring(i,i+1), i, contSize));
     }
   }
   /*
@@ -104,6 +106,10 @@ public class Text{
     }
     panel.repaint();
     return panel;
+  }
+  
+  public boolean finishedLine(){
+    return textList.get(contSize-1).finishedLine();
   }
   
 }
