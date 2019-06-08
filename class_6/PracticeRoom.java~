@@ -1,5 +1,6 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.*; 
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.awt.Component;
@@ -21,10 +22,21 @@ public class PracticeRoom {
    */
   JPanel panel;
   TextBox textbox;
+  String words[] = new String [1000];
   /*
    * The class constructor. Creates a BufferedImage of the text box and places it at the bottom of the screen.
    */
   public PracticeRoom(JPanel panel) {
+  File file = new File("Practice Room Words\\PRWords.txt"); 
+  try{ 
+    BufferedReader bufread = new BufferedReader(new FileReader(file)); 
+    String line;
+    for (int i = 0; i < 1000; i++){
+      words [i] = bufread.readLine();
+    }
+  }   
+  catch (IOException e){ 
+  }
     this.panel = panel;
     textbox = new TextBox();
     panel.add(textbox);
@@ -34,7 +46,8 @@ public class PracticeRoom {
    * @return The JPanel after text is added.
    */
   public void addText () {
-    
+    Text t2 = new Text (new Color (25,25,25),  40,40,  true,  false,  false,  50,  20, words[(int)(Math.random()*999)], panel);
+    panel = t2.draw();
   }
   /*
    * Returns the current JPanel.

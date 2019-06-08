@@ -34,20 +34,20 @@ public class PracticeRoom {
     for (int i = 0; i < 1000; i++){
       words [i] = bufread.readLine();
     }
-  }   
-  catch (IOException e){ 
-  }
     this.panel = panel;
     textbox = new TextBox();
     panel.add(textbox);
+  }   
+  catch (IOException e){ 
+  }
   }
   /*
    * Adds text to the screen using the Text and Letter classes, with a character and their respective emotion displayed.
    * @return The JPanel after text is added.
    */
   public void addText () {
-    Text t2 = new Text (new Color (25,25,25),  40,40,  true,  false,  false,  50,  20, words[(int)(Math.random()*999)], panel);
-    panel = t2.draw();
+    Text t2 = new Text (new Color (25,25,25),  40,40,  true,  false,  false,  50,  20, words[(int)(Math.random()*999)] + "hi", panel);
+    t2.draw();
   }
   /*
    * Returns the current JPanel.
