@@ -36,23 +36,25 @@ public class TextDriverClass extends JFrame {
     panel.setLayout(null);
     add(panel);  
     
-    Text t = new Text (new Color (25,25,25),  40,40,  false,  false,  true,  50,  20, "TEST", panel);  
-    Text t2 = new Text (null,  20,40,  true,  false,  false,  20,  540, "/TEST ONE/TEST TWO", panel);  
-    VisualNovel vn = new VisualNovel(panel);
+    //Text t = new Text (new Color (25,25,25),  40,40,  false,  false,  true,  50,  20, "TEST", panel);  
+    //Text t2 = new Text (null,  20,40,  true,  false,  false,  20,  540, "/TEST ONE/TEST TWO", panel); 
     
-    panel = t2.draw();     
-    panel = t.draw();
+    PracticeRoom pr = new PracticeRoom(panel);
     
-    panel = vn.getPanel();
+    //panel = t2.draw();     
+    //panel = t.draw();
+    
+    panel = pr.getPanel();
     setVisible(true);
     this.pack();
     
-    try {
+    /*try {
       Thread.sleep(3000);
       panel = t.erase();
     } catch (Exception e) {
       System.out.println(e);
-    }
+    }*/
+    
   }
   /*
    * The main method that runs the Text and Letter classes.
