@@ -10,6 +10,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.image.*;
 import java.util.*;
+import java.util.Timer;
 /*
  * The VisualNovel class. Creates a simple visual novel system for the driver and level classes to use. Contains methods
  * used for the visual novel.
@@ -27,27 +28,39 @@ public class PracticeRoom {
    * The class constructor. Creates a BufferedImage of the text box and places it at the bottom of the screen.
    */
   public PracticeRoom(JPanel panel) {
-  File file = new File("Practice Room Words\\PRWords.txt"); 
-  try{ 
-    BufferedReader bufread = new BufferedReader(new FileReader(file)); 
-    String line;
-    for (int i = 0; i < 1000; i++){
-      words [i] = bufread.readLine();
+    File file = new File("Practice Room Words\\PRWords.txt"); 
+    try{ 
+      BufferedReader bufread = new BufferedReader(new FileReader(file)); 
+      String line;
+      for (int i = 0; i < 1000; i++){
+        words [i] = bufread.readLine();
+      }
+      this.panel = panel;
+      textbox = new TextBox();
+      panel.add(textbox);
+      addText();
+    }   
+    catch (IOException e){ 
     }
-    this.panel = panel;
-    textbox = new TextBox();
-    panel.add(textbox);
-  }   
-  catch (IOException e){ 
-  }
   }
   /*
    * Adds text to the screen using the Text and Letter classes, with a character and their respective emotion displayed.
    * @return The JPanel after text is added.
    */
   public void addText () {
-    Text t2 = new Text (new Color (25,25,25),  40,40,  true,  false,  false,  50,  20, words[(int)(Math.random()*999)] + "hi", panel);
-    t2.draw();
+    long startTime = System.currentTimeMillis();
+    int elapsedTime = 0;
+    int count = 20;
+    Text line1;
+    Text line2;
+      line1 = new Text (null,  40,40,  true,  false,  false,  50,  20, "/" + (words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      line1.draw();
+      line2 = new Text (null,  40,40,  true,  false,  false,  50,  60, "/" + (words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      line2.draw();
+    
+    while (elapsedTime < 0.05*60*1000) {
+      elapsedTime = (int)((new Date()).getTime() - startTime);
+    }
   }
   /*
    * Returns the current JPanel.
