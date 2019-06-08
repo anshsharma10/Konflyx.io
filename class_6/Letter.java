@@ -52,7 +52,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
    * The index of this letter within the Text.
    */
   int index;
-  
+
   int valX = 2;
   int valY = 2;
   int keyValue;
@@ -62,7 +62,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   String colorOfLetter = "";
   boolean lastLet = false;
   int stringSize;
-  
+
   /*
    * The class constructor. Creates a Letter object with all variables set.
    * @param colour The letter's colour.
@@ -86,12 +86,12 @@ public class Letter extends Component implements ActionListener,KeyListener{
     posY = y;
     conX = x;
     conY = y;
-    letter = let;
+    letter = let.toUpperCase();
     index = num;
     stringSize = size;
     this.setSize(letter_sizeX, letter_sizeY);
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
-    
+
     if (animateIn == false && idleAnimation && !(letter.equals("/")) ) {
       this.addKeyListener(this);
       this.setFocusable(true);
@@ -101,7 +101,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
       this.setVisible(false);
       introTimer.setInitialDelay(150*(index + 1));
       introTimer.start();
-    }    
+    }
   }
   /*
    * Draws the letter with respective colour and size. Will animate while drawing if animateIn is on. Also calls animateIdle() if animateIdle is on.
@@ -115,9 +115,9 @@ public class Letter extends Component implements ActionListener,KeyListener{
       g.drawImage(image, 0, 0,letter_sizeX,letter_sizeY,letter_colour,null);
     }
     catch (Exception e){
-    }  
+    }
   }
-  
+
   public void actionPerformed(ActionEvent e){
     if (animateIn && introTimer.isRunning()){
       this.setVisible(true);
@@ -127,10 +127,10 @@ public class Letter extends Component implements ActionListener,KeyListener{
     else if (idleAnimation && idleTimer.isRunning()){
       if(posX < conX || posX > letter_sizeX)
         valX = -valX;
-      
+
       if(posY < conY || posY > letter_sizeY)
         valY = -valY;
-      
+
       posY = posY + valY;
       posX = posX + valX;
       this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
@@ -140,7 +140,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
       idleTimer.stop();
     }
   }
-  /* 
+  /*
    * Erases the letter. Will animate out if animateOut is on.
    */
   public void erase() {
@@ -164,11 +164,11 @@ public class Letter extends Component implements ActionListener,KeyListener{
   public int getWidth() {
     return letter_sizeX;
   }
-  
+
   public boolean finishedLine(){
     return lastLet;
   }
-  
+
   public void keyPressed(KeyEvent e) {
     if (idleAnimation){
       keyValue = e.getKeyCode();
@@ -187,54 +187,54 @@ public class Letter extends Component implements ActionListener,KeyListener{
     }
     //System.out.print(letter + idleAnimation + keyValue);
   }
-  
-  
+
+
   /*
    public void changeColour(Color clr){
-   
-   BufferedImage img = null; 
-   File file = null; 
-   
-   //read image 
+
+   BufferedImage img = null;
+   File file = null;
+
+   //read image
    try
-   { 
-   file = new File("textfiles\\"+letter+".png"); 
-   img = ImageIO.read(file); 
-   } 
-   catch(IOException e) 
-   { 
-   System.out.println(e); 
-   } 
-   
-   int width = img.getWidth(); 
-   int height = img.getHeight(); 
-   
-   for (int y = 0; y < height; y++) 
-   { 
-   for (int x = 0; x < width; x++) 
-   { 
-   int p = img.getRGB(x,y); 
+   {
+   file = new File("textfiles\\"+letter+".png");
+   img = ImageIO.read(file);
+   }
+   catch(IOException e)
+   {
+   System.out.println(e);
+   }
+
+   int width = img.getWidth();
+   int height = img.getHeight();
+
+   for (int y = 0; y < height; y++)
+   {
+   for (int x = 0; x < width; x++)
+   {
+   int p = img.getRGB(x,y);
    if (p < 0)
-   img.setRGB(x, y, clr.getRGB()); 
-   } 
-   } 
-   
+   img.setRGB(x, y, clr.getRGB());
+   }
+   }
+
    try
-   { 
-   file = new File("textfiles\\"+letter + "R.png"); 
-   ImageIO.write(img, "png", file); 
-   } 
+   {
+   file = new File("textfiles\\"+letter + "R.png");
+   ImageIO.write(img, "png", file);
+   }
    catch(IOException e) 
-   { 
-   System.out.println(e); 
-   } 
+   {
+   System.out.println(e);
+   }
    repaint();
    }
    */
-  
-  
-  public void keyReleased(KeyEvent e) {    
-  }  
-  public void keyTyped(KeyEvent e) {  
+
+
+  public void keyReleased(KeyEvent e) {
+  }
+  public void keyTyped(KeyEvent e) {
   }
 }

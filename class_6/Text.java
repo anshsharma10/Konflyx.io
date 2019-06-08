@@ -48,10 +48,10 @@ public class Text{
    * An ArrayList containing each letter in the text.
    */
   ArrayList <Letter> textList;
-  /*  
-   * The JPanel to add the text to.  
-   */  
-  JPanel panel;  
+  /*
+   * The JPanel to add the text to.
+   */
+  JPanel panel;
   int contSize;
   /*
    * The class constructor. Creates a Text object with all variables set. Additionally, creates an ArrayList of Letters, one Letter for each letter in the contents String.
@@ -77,11 +77,11 @@ public class Text{
     contSize = contents.length();
     textList = new ArrayList <Letter> ();
     this.panel = panel;
-    
+
     for (int i = 0; i < contents.length(); i++) {
       if (i > 0 && (contents.substring(i,i+1)).equals("/")){
         posY+=text_sizeY;
-        posX-=(i)*text_sizeX;
+        posX-=(i-1)*text_sizeX;
       }
       textList.add(new Letter(text_colour, text_sizeX, text_sizeY, idleAnimation, animateIn, animateOut, posX + (i-1)*text_sizeX, posY, contents.substring(i,i+1), i, contSize));
     }
@@ -96,7 +96,7 @@ public class Text{
     }
     return panel;
   }
-  /* 
+  /*
    * Erases the text by calling erase() on each letter within the letters ArrayList.
    * Will animate out if animateOut is on.
    */
@@ -107,11 +107,18 @@ public class Text{
     panel.repaint();
     return panel;
   }
-  
+
   public boolean finishedLine(){
     return textList.get(contSize-1).finishedLine();
   }
-  
+
+  /*
+   * Returns the required x position of a given text length to center the text.
+   * @param size The horizontal size of each text's letter.
+   * @param length The length of the text, in characters.
+   * @return The required x position to center the text.
+   */
+  public static int centerTextXPosition (int size, int length) {
+    return (1080 - size*length)/2;
+  }
 }
-
-
