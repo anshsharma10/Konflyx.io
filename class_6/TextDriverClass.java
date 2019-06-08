@@ -40,15 +40,16 @@ public class TextDriverClass extends JFrame implements KeyListener{
    */
   public TextDriverClass () {
     
-    setSize(1080,720);
+    getContentPane().setSize(1080,720);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setPreferredSize(new Dimension(1080,720));
     
     panel = new JPanel();
     panel.setLayout(null);
+    panel.setPreferredSize(new Dimension(1080,720));
     add(panel);  
     
-    ts = new TextSelector (panel, new String[]{"Pigeon", "Statue", "suck my ass"},"Sometimes you're the...");
+    HealthBar h = new HealthBar(30);
+    panel.add(h);
     
     setVisible(true);
     this.pack();
