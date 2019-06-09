@@ -179,7 +179,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
         repaint();
       }
     }
-    //System.out.print(letter + idleAnimation + keyValue);
+    System.out.print(letter + idleAnimation + keyValue);
   }
 
 
