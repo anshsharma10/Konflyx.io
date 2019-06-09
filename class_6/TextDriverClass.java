@@ -60,8 +60,25 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
    */
   public TextDriverClass () {
     
+    
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    nextStage();
+    
+    //Run nextStage() for ansh's changes
+    //nextStage();
+    
+    
+    //Do all of this shit for Braulio's changes
+    panel = new JPanel();
+    panel.setLayout(null);
+    panel.setPreferredSize(new Dimension(1080,720));
+    panel.setSize(1080,720);
+    pack();
+    add(panel);
+    PracticeRoom pr = new PracticeRoom(panel); 
+    panel.repaint();
+    this.setVisible(true);
+    this.pack();
+    
   }
   /*
    * Moves on to the next stage of the game.
@@ -109,7 +126,9 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
     this.pack();
     System.out.println(stage);
   }
-  
+  /*
+   * Runs when the timer is activated. Checks if the visual novel or game is completed, then advances a stage.
+   */
   public void actionPerformed(ActionEvent e) {
     if (vn != null && vn.isComplete() == true) {
       remove(vn);
