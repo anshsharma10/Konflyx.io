@@ -224,6 +224,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       nextStage();
     } else if (pr != null && pr.isComplete() == true) {
       System.out.println("Driver - practice is complete");
+      remove(panel);
       pr.cleanUp();
       timer.stop();
       this.removeKeyListener(this);
