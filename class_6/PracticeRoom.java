@@ -69,8 +69,8 @@ public class PracticeRoom implements KeyListener{
     long startTime = System.currentTimeMillis();
     
     TimerTask repeatedTask = new TimerTask() {      
-      int firstY = 565;
-      int secondY = 625;
+      int firstY = 580;
+      int secondY = 640;
       int charPress;
       
       boolean drawLine = true;
@@ -85,7 +85,6 @@ public class PracticeRoom implements KeyListener{
       Text line8 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
       
       public void run() {
-        //panel.add(tb);
         panel = getPanel();
         if (drawLine){
           line1.draw();
@@ -183,7 +182,7 @@ public class PracticeRoom implements KeyListener{
   }
   
   public void displayStart(){
-    startLine = new Text (null,  30,80,  false,  false,  false,  290,  470, "/PRESS ENTER TO START", panel);
+    startLine = new Text (null,  30,80,  false,  false,  false,  290,  430, "/PRESS ENTER TO START", panel);
     startLine.draw();
     panel = getPanel();
     panel.addKeyListener(this);
