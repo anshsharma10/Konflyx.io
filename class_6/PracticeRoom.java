@@ -171,6 +171,7 @@ public class PracticeRoom implements KeyListener{
     done = true;
     panel = getPanel();
     panel.setFocusable(true);
+    
     panel.requestFocus();
   }
   /*
@@ -204,6 +205,7 @@ public class PracticeRoom implements KeyListener{
     panel.remove(tb);
     wpm.erase();
     wpmavg.erase();
+    System.out.println("practice - practice is done");
   }
   
   public void keyPressed(KeyEvent e) {
@@ -216,9 +218,9 @@ public class PracticeRoom implements KeyListener{
         completed = true;
         panel.removeKeyListener(this);
       } else {
-      panel.setFocusable(false);
-      startLine.erase();
-      addText();
+        panel.setFocusable(false);
+        startLine.erase();
+        addText();
       }
     }
   }

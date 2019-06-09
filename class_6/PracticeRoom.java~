@@ -24,20 +24,27 @@ public class PracticeRoom implements KeyListener{
    * The JPanel to work with.
    */
   JPanel panel;
+  /*
+   * Whether or not the room is complete.
+   */
+  boolean completed = false;
+  /*
+   * Whether or not the typing section is complete.
+   */
+  boolean done = false;
   Background bg;
   TextBox tb;
   Text startLine;
   Text wpm;
   Text wpmavg;
   String words[] = new String [1000];
-  ArrayList <Integer> lastFive = new ArrayList <Integer>();
-  
   /*
-   * The class constructor. Creates a BufferedImage of the text box and places it at the bottom of the screen.
+   * The class constructor. Creates the practiceroom, adding all relevant images.
    */
   public PracticeRoom(JPanel panel) {
     File file = new File("Practice Room Words\\PRWords.txt");     
-    
+    done = false;
+    completed = false;
     try{ 
       BufferedReader bufread = new BufferedReader(new FileReader(file)); 
       String line;
@@ -51,6 +58,7 @@ public class PracticeRoom implements KeyListener{
     bg = new Background(4);
     panel.add(bg);
     tb = new TextBox();
+    panel.add(tb);
     displayStart();
   }
   /*
@@ -157,21 +165,21 @@ public class PracticeRoom implements KeyListener{
    * @return the JPanel.
    */
   public void WPM(int charPr){
-    int sum = 0;
-    if (lastFive.size() == 5){
-      lastFive.remove(0);
-    }
-    lastFive.add(charPr);
-    for(Integer chr: lastFive){
-      sum += chr;
-    }
-    sum = sum / lastFive.size();
-    wpm = new Text (null,  35,80,  false,  false,  false,  280,  225, "/WPM = " + charPr/5, panel);
+    wpm = new Text (null,  35,80,  false,  false,  false,  280,  225, "/WPM = " + (charPr*2)/5, panel);
     wpm.draw();
-    wpmavg = new Text (null,  35,80,  false,  false,  false,  280,  350, "/WPM AVG = " + sum/5, panel);
+    wpmavg = new Text (null,  35,80,  false,  false,  false,  280,  350, "/AVG WPM = 40", panel);
     wpmavg.draw();
+    done = true;
     panel = getPanel();
-    displayStart();
+    panel.setFocusable(true);
+    panel.requestFocus();
+  }
+  /*
+   * Returns whether or not the practice room has been completed.
+   * @return The completion.
+   */
+  public boolean isComplete() {
+    return completed;
   }
   
   public void displayStart(){
@@ -184,18 +192,35 @@ public class PracticeRoom implements KeyListener{
   
   public JPanel getPanel() {
     panel.setComponentZOrder(bg,panel.getComponents().length - 1);
+    panel.setComponentZOrder(tb,panel.getComponents().length - 2);
     return panel;
   }
+  
+  /*
+   * Removes all relevant images from the panel.
+   */
+  public void cleanUp() {
+    System.out.println("complete: " + completed);
+    panel.remove(bg);
+    panel.remove(tb);
+    wpm.erase();
+    wpmavg.erase();
+  }
+  
   public void keyPressed(KeyEvent e) {
     int keyValue = e.getKeyCode();
     if (keyValue == 10){
-      panel.setFocusable(false);
-      startLine.erase();
-      if(!lastFive.isEmpty()){
+      if(done == true){
+        System.out.println("done");
         wpm.erase();
         wpmavg.erase();
-      }
+        completed = true;
+        panel.removeKeyListener(this);
+      } else {
+      panel.setFocusable(false);
+      startLine.erase();
       addText();
+      }
     }
   }
   public void keyReleased(KeyEvent e) {    
