@@ -52,7 +52,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
    * The index of this letter within the Text.
    */
   int index;
-
+  
   int valX = 2;
   int valY = 2;
   int keyValue;
@@ -62,7 +62,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   String colorOfLetter = "";
   boolean lastLet = false;
   int stringSize;
-
+  
   /*
    * The class constructor. Creates a Letter object with all variables set.
    * @param colour The letter's colour.
@@ -91,7 +91,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
     stringSize = size;
     this.setSize(letter_sizeX, letter_sizeY);
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
-
+    
     if (animateIn == false && idleAnimation && !(letter.equals("/")) ) {
       this.addKeyListener(this);
       this.setFocusable(true);
@@ -121,21 +121,24 @@ public class Letter extends Component implements ActionListener,KeyListener{
     catch (Exception e){
     }
   }
-
+  
   public void actionPerformed(ActionEvent e){
     if (animateIn && introTimer.isRunning()){
       this.setVisible(true);
       introTimer.stop();
+      if (index == stringSize-1)
+        lastLet = true;
     }
     else if (idleAnimation && idleTimer.isRunning()){
       if(posX < conX || posX > letter_sizeX)
         valX = -valX;
-
+      
       if(posY < conY || posY > letter_sizeY)
         valY = -valY;
-
+      
       posY = posY + valY;
       posX = posX + valX;
+      
       this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
       repaint();}
     else{
@@ -158,18 +161,18 @@ public class Letter extends Component implements ActionListener,KeyListener{
       this.setFocusable(false);
     } else
       idleTimer.stop();
+    if (this.getKeyListeners().length > 0) {
+      this.removeKeyListener(this);
+    }
     this.setBounds(0,0,0,0);
     this.setFocusable(false);
     lastLet = false;
   }
-  /*
-   * Returns the size of the letter, for use in the Text class.
-   */
-
+  
   public boolean finishedLine(){
     return lastLet;
   }
-
+  
   public void turnOnIdle(){
     idleAnimation = true;
     if (animateIn == false && idleAnimation && !(letter.equals("/")) ) {
@@ -177,7 +180,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
       repaint();
     }
   }
-
+  
   public void updatePos(int x, int y){
     posX = x;
     conX = x;
@@ -186,15 +189,21 @@ public class Letter extends Component implements ActionListener,KeyListener{
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
     repaint();
   }
-
+  
+  public boolean getIdle () {
+    return idleAnimation;
+  }
+  
   public void keyPressed(KeyEvent e) {
     if (idleAnimation){
       keyValue = e.getKeyCode();
       if (keyValue == ((int) letter.charAt(0))){
-        if (index == stringSize-1)
+        if (index == stringSize-1) {
           lastLet = true;
+        }
         colorOfLetter = "G";
         idleAnimation = false;
+        this.removeKeyListener(this);
         this.setFocusable(false);
         repaint();
       }
@@ -203,51 +212,8 @@ public class Letter extends Component implements ActionListener,KeyListener{
         repaint();
       }
     }
-    System.out.print(letter + idleAnimation + keyValue);
+    //System.out.print(letter + idleAnimation + keyValue);
   }
-
-  /*
-   public void changeColour(Color clr){
-
-   BufferedImage img = null;
-   File file = null;
-
-   //read image
-   try
-   {
-   file = new File("textfiles\\"+letter+".png");
-   img = ImageIO.read(file);
-   }
-   catch(IOException e)
-   {
-   System.out.println(e);
-   }
-
-   int width = img.getWidth();
-   int height = img.getHeight();
-
-   for (int y = 0; y < height; y++)
-   {
-   for (int x = 0; x < width; x++)
-   {
-   int p = img.getRGB(x,y);
-   if (p < 0)
-   img.setRGB(x, y, clr.getRGB());
-   }
-   }
-
-   try
-   {
-   file = new File("textfiles\\"+letter + "R.png");
-   ImageIO.write(img, "png", file);
-   }
-   catch(IOException e)
-   {
-   System.out.println(e);
-   }
-   repaint();
-   }
-   */
   
   public void keyReleased(KeyEvent e) {
   }
