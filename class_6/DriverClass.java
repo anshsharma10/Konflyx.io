@@ -78,8 +78,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
     
     setSize(1080,720);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setPreferredSize(new Dimension(1080,720));
-    
+    getContentPane().setPreferredSize(new Dimension(1080,720));
     nextStage();
     
   }
@@ -104,6 +103,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
    */
   public void nextStage() {
     if (stage == 0) {
+      GameTracker.setDifficulty(100);
       mainMenu = new MainMenu();
       add(mainMenu);
       ts = new TextSelector(mainMenu, "", new String[]{"New Game", "Stage select", "Instructions", "High Scores", "Exit"});
@@ -131,7 +131,6 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       this.setFocusable(true);
       this.requestFocus();
     } else if (stage == 3) {
-      System.out.println("high");
       highScores = new HighScores();
       add(highScores);
       highScores.getPanel();
@@ -145,8 +144,10 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.setPreferredSize(new Dimension(1080,720));
       add(vn);
       vn.addText();
+      vn.requestFocus();
       timer.start();
     } else if (stage == 7) {
+      GameTracker.setDifficulty(300);
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));

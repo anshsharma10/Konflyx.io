@@ -112,7 +112,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
    * Draws the letter with respective colour and size. Will animate while drawing if animateIn is on. Also calls animateIdle() if animateIdle is on.
    * @param g The graphics to draw onto.
    */
-  public void paint (Graphics g) {
+  public void paint (Graphics g) {    
     super.paint(g);
     try{
       File imageFile = new File("textfiles\\"+letter + colorOfLetter+ ".png");
@@ -198,7 +198,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   public void keyPressed(KeyEvent e) {
     if (idleAnimation){
       keyValue = e.getKeyCode();
-      if (keyValue == ((int) letter.charAt(0))){
+      if (keyValue == ((int) letter.charAt(0)) || (letter.equals("@") && (keyValue == ((int) "/".charAt(0)))) || (letter.equals("#") && (keyValue == ((int) ".".charAt(0)))) || (letter.equals("!") && (keyValue == ((int) "1".charAt(0))))){
         if (index == stringSize-1) {
           lastLet = true;
         }
@@ -216,6 +216,49 @@ public class Letter extends Component implements ActionListener,KeyListener{
     }
     //System.out.print(letter + idleAnimation + keyValue);
   }
+  
+  
+  /*public void changeColour(Color clr){
+   * 
+   BufferedImage img = null;
+   File file = null;
+   
+   //read image
+   try
+   {
+   file = new File("textfiles\\"+letter+".png");
+   img = ImageIO.read(file);
+   }
+   catch(IOException e)
+   {
+   System.out.println(e);
+   }
+   
+   int width = img.getWidth();
+   int height = img.getHeight();
+   
+   for (int y = 0; y < height; y++)
+   {
+   for (int x = 0; x < width; x++)
+   {
+   int p = img.getRGB(x,y);
+   if (p < 0)
+   img.setRGB(x, y, clr.getRGB());
+   }
+   }
+   
+   try
+   {
+   file = new File("textfiles\\"+letter + "R.png");
+   ImageIO.write(img, "png", file);
+   }
+   catch(IOException e)
+   {
+   System.out.println(e);
+   }
+   repaint();
+   }*/
+  
   
   public int isPressed(){
     return press;
