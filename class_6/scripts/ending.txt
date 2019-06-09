@@ -2,5 +2,4 @@ Background:1
 ##################################################################################
 FORMAT: Person Emotion Name%Text
 ##################################################################################
-    You%/My name is You# I know it's a weird name, but it's the/one I was born with. I'm 10 years old#
-    You%/
+    You%/My name is You. I know it's a weird name, but it's

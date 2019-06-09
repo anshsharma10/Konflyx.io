@@ -152,6 +152,14 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       this.addKeyListener(this);
       this.setFocusable(true);
       this.requestFocus();
+    }  else if (stage == 4) {
+      vn = new VisualNovel("tutorial");
+      vn.setLayout(null);
+      vn.setPreferredSize(new Dimension(1080,720));
+      add(vn);
+      vn.addText();
+      vn.requestFocus();
+      timer.start();
     }else if (stage == 5) {
       panel = new JPanel();
       panel.setLayout(null);
@@ -162,6 +170,14 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       panel = pr.getPanel();
       panel.requestFocus();
       this.addKeyListener(this);
+      timer.start();
+    }  else if (stage == 7) {
+      vn = new VisualNovel("tutorialEnd");
+      vn.setLayout(null);
+      vn.setPreferredSize(new Dimension(1080,720));
+      add(vn);
+      vn.addText();
+      vn.requestFocus();
       timer.start();
     } else if (stage == 7) {
       vn = new VisualNovel("level1");
@@ -203,10 +219,99 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       game.next();
       game.requestFocus();
       timer.start();
+    } else if (stage == 10) {
+      vn = new VisualNovel("level2");
+      vn.setLayout(null);
+      vn.setPreferredSize(new Dimension(1080,720));
+      add(vn);
+      vn.addText();
+      vn.requestFocus();
+      timer.start();
+    } else if (stage == 11) {
+      GameTracker.setDifficulty(250);
+      panel = new JPanel();
+      panel.setLayout(null);
+      panel.setPreferredSize(new Dimension(1080,720));
+      panel.setSize(1080,720);
+      pack();
+      add(panel);
+      background = new Background(1);
+      panel.add(background);
+      ts = new TextSelector(panel, "QUESTION", new String[]{"TREE 1","TREE 2"});
+      gameTree1 = "TREE 1";
+      Component[] components = panel.getComponents();
+      for (int i = 0; i < components.length; i++) {
+        if (components[i] instanceof Letter)
+          panel.setComponentZOrder(components[i],0);
+        else if (components[i] instanceof Border)
+          panel.setComponentZOrder(components[i],1);
+        else if (components[i] instanceof Background)
+          panel.setComponentZOrder(components[i],2);
+      }
+      panel.repaint();
+      this.addKeyListener(this);
+      this.requestFocus();
+    }  else if (stage == 12) {
+      game = new Gameplay(2, gameTree);
+      game.setLayout(null);
+      game.setPreferredSize(new Dimension(1080,720));
+      add(game);
+      game.next();
+      game.requestFocus();
+      timer.start();
+    } else if (stage == 13) {
+      vn = new VisualNovel("level3");
+      vn.setLayout(null);
+      vn.setPreferredSize(new Dimension(1080,720));
+      add(vn);
+      vn.addText();
+      vn.requestFocus();
+      timer.start();
+    } else if (stage == 14) {
+      GameTracker.setDifficulty(250);
+      panel = new JPanel();
+      panel.setLayout(null);
+      panel.setPreferredSize(new Dimension(1080,720));
+      panel.setSize(1080,720);
+      pack();
+      add(panel);
+      background = new Background(1);
+      panel.add(background);
+      ts = new TextSelector(panel, "QUESTION", new String[]{"TREE 1","TREE 2"});
+      gameTree1 = "TREE 1";
+      Component[] components = panel.getComponents();
+      for (int i = 0; i < components.length; i++) {
+        if (components[i] instanceof Letter)
+          panel.setComponentZOrder(components[i],0);
+        else if (components[i] instanceof Border)
+          panel.setComponentZOrder(components[i],1);
+        else if (components[i] instanceof Background)
+          panel.setComponentZOrder(components[i],2);
+      }
+      panel.repaint();
+      this.addKeyListener(this);
+      this.requestFocus();
+    }  else if (stage == 15) {
+      game = new Gameplay(2, gameTree);
+      game.setLayout(null);
+      game.setPreferredSize(new Dimension(1080,720));
+      add(game);
+      game.next();
+      game.requestFocus();
+      timer.start();
+    } else if (stage == 16) {
+      vn = new VisualNovel("ending");
+      vn.setLayout(null);
+      vn.setPreferredSize(new Dimension(1080,720));
+      add(vn);
+      vn.addText();
+      vn.requestFocus();
+      timer.start();
+      
+      setVisible(true);
+      this.pack();
+      System.out.println("Stage is " + stage);
     }
-    setVisible(true);
-    this.pack();
-    System.out.println("Stage is " + stage);
   }
   /*
    * Runs when the timer is activated. Checks if the visual novel or game is completed, then advances a stage.
@@ -224,6 +329,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       nextStage();
     } else if (pr != null && pr.isComplete() == true) {
       System.out.println("Driver - practice is complete");
+      remove(panel);
       pr.cleanUp();
       timer.stop();
       this.removeKeyListener(this);
