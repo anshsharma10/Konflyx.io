@@ -1,6 +1,9 @@
-Background:1
+Background:2
 ##################################################################################
 FORMAT: Person Emotion Name%Text
 ##################################################################################
-    You%/My name is You# I know it's a weird name, but it's the/one I was born with. I'm 10 years old#
-    You%/
+2 3 You%/GASOL, A FIFTEEN YEAR OLD BOY ATTENDS/MAC HIGH AND EVEYONE KNOWS HIM#
+2 1 You%/HE IS CALLED THE STRIKER FOR WHEN HE/GETS A TAD BIT ANGRY# HE USES VIOLENCE TO SHOW IT#
+2 3 You%/HE IS AGRESSIVE AND SHORTTEMPERED# TWO THINGS/YOU ARE NOT# HE IS YOUR OPPOSITE# 
+2 2 You%/YOU DIDN'T QUITE KNOW EACH OTHER UNTIL ONE DAY GASOL/HELD YOU BY THE SHIRT AND STARTED A HEATED ARGUEMENT#
+2 3 You%/THOUGH IN THE END YOU WILL TEACH HIM A LESSON ON/VIOLENCE AND NOT TO RESORT TO IT!
