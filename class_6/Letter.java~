@@ -52,14 +52,17 @@ public class Letter extends Component implements ActionListener,KeyListener{
    * The index of this letter within the Text.
    */
   int index;
-  
+
   int valX = 2;
   int valY = 2;
   int keyValue;
   int conX,conY;
   Timer idleTimer = new Timer(100, this);
-  Timer introTimer = new Timer(30, this);
-  
+  Timer introTimer = new Timer(150, this);
+  String colorOfLetter = "";
+  boolean lastLet = false;
+  int stringSize;
+
   /*
    * The class constructor. Creates a Letter object with all variables set.
    * @param colour The letter's colour.
@@ -72,7 +75,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
    * @param let The letter to represent.
    * @param num The index this letter is within the Text class.
    */
-  public Letter (Color colour, int sizeX, int sizeY, boolean idleAnim, boolean inAnim, boolean outAnim, int x, int y, String let, int num) {
+  public Letter (Color colour, int sizeX, int sizeY, boolean idleAnim, boolean inAnim, boolean outAnim, int x, int y, String let, int num, int size) {
     letter_sizeX = sizeX;
     letter_sizeY = sizeY;
     letter_colour = colour;
@@ -83,11 +86,12 @@ public class Letter extends Component implements ActionListener,KeyListener{
     posY = y;
     conX = x;
     conY = y;
-    letter = let;
+    letter = let.toUpperCase();
     index = num;
+    stringSize = size;
     this.setSize(letter_sizeX, letter_sizeY);
     this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
-    
+
     if (animateIn == false && idleAnimation && !(letter.equals("/")) ) {
       this.addKeyListener(this);
       this.setFocusable(true);
@@ -98,7 +102,6 @@ public class Letter extends Component implements ActionListener,KeyListener{
       introTimer.setInitialDelay(150*(index + 1));
       introTimer.start();
     }
-    
   }
   /*
    * Draws the letter with respective colour and size. Will animate while drawing if animateIn is on. Also calls animateIdle() if animateIdle is on.
@@ -107,14 +110,14 @@ public class Letter extends Component implements ActionListener,KeyListener{
   public void paint (Graphics g) {
     super.paint(g);
     try{
-      File imageFile = new File("textFiles/" +letter + ".png");
+      File imageFile = new File("textfiles\\"+letter + colorOfLetter+ ".png");
       BufferedImage image = ImageIO.read(imageFile);
       g.drawImage(image, 0, 0,letter_sizeX,letter_sizeY,letter_colour,null);
     }
     catch (Exception e){
-    }  
+    }
   }
-  
+
   public void actionPerformed(ActionEvent e){
     if (animateIn && introTimer.isRunning()){
       this.setVisible(true);
@@ -124,10 +127,10 @@ public class Letter extends Component implements ActionListener,KeyListener{
     else if (idleAnimation && idleTimer.isRunning()){
       if(posX < conX || posX > letter_sizeX)
         valX = -valX;
-      
+
       if(posY < conY || posY > letter_sizeY)
         valY = -valY;
-      
+
       posY = posY + valY;
       posX = posX + valX;
       this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
@@ -137,7 +140,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
       idleTimer.stop();
     }
   }
-  /* 
+  /*
    * Erases the letter. Will animate out if animateOut is on.
    */
   public void erase() {
@@ -151,7 +154,9 @@ public class Letter extends Component implements ActionListener,KeyListener{
       idleTimer.stop();
       this.setFocusable(false);
     } else
-      this.setBounds(0,0,0,0);
+      idleTimer.stop();
+    this.setBounds(0,0,0,0);
+    this.setFocusable(false);
   }
   /*
    * Returns the size of the letter, for use in the Text class.
@@ -159,22 +164,77 @@ public class Letter extends Component implements ActionListener,KeyListener{
   public int getWidth() {
     return letter_sizeX;
   }
-  
+
+  public boolean finishedLine(){
+    return lastLet;
+  }
+
   public void keyPressed(KeyEvent e) {
     if (idleAnimation){
       keyValue = e.getKeyCode();
       if (keyValue == ((int) letter.charAt(0))){
-        letter_colour = new Color (255,56,125);
+        if (index == stringSize-1)
+          lastLet = true;
+        colorOfLetter = "G";
         idleAnimation = false;
         this.setFocusable(false);
         repaint();
       }
+      else{
+        colorOfLetter = "R";
+        repaint();
+      }
     }
-    System.out.print(letter + idleAnimation + keyValue);
+    //System.out.print(letter + idleAnimation + keyValue);
   }
-  
-  public void keyReleased(KeyEvent e) {    
-  }  
-  public void keyTyped(KeyEvent e) {  
+
+
+  /*
+   public void changeColour(Color clr){
+
+   BufferedImage img = null;
+   File file = null;
+
+   //read image
+   try
+   {
+   file = new File("textfiles\\"+letter+".png");
+   img = ImageIO.read(file);
+   }
+   catch(IOException e)
+   {
+   System.out.println(e);
+   }
+
+   int width = img.getWidth();
+   int height = img.getHeight();
+
+   for (int y = 0; y < height; y++)
+   {
+   for (int x = 0; x < width; x++)
+   {
+   int p = img.getRGB(x,y);
+   if (p < 0)
+   img.setRGB(x, y, clr.getRGB());
+   }
+   }
+
+   try
+   {
+   file = new File("textfiles\\"+letter + "R.png");
+   ImageIO.write(img, "png", file);
+   }
+   catch(IOException e) 
+   {
+   System.out.println(e);
+   }
+   repaint();
+   }
+   */
+
+
+  public void keyReleased(KeyEvent e) {
+  }
+  public void keyTyped(KeyEvent e) {
   }
 }

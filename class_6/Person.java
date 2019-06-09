@@ -16,6 +16,10 @@ import java.util.*;
  */
 public class Person extends Component {
   /*
+   * The particular character.
+   */
+  int enemy;
+  /*
    * The character image.
    */
   BufferedImage image;
@@ -33,14 +37,15 @@ public class Person extends Component {
    * @param emotion The particular emotion. 1 is happy, 2 is sad, 3 is angry, and 4 is sweaty.
    */
   public Person(int enemy, int emote) {
+    this.enemy = enemy;
     String emotion = "";
-    if (emote == 1)
+    if (emote == 0)
       emotion = "happy";
-    else if (emote == 2)
+    else if (emote == 1)
       emotion = "sad";
-    else if (emote == 3)
+    else if (emote == 2)
       emotion = "angry";
-    else if (emote == 4)
+    else if (emote == 3)
       emotion = "sweat";
     try {
       File imageFile = new File("enemy" + enemy + "files" + "/" + emotion + ".png");
@@ -53,7 +58,30 @@ public class Person extends Component {
       System.out.println(e);
     }
   }
-  
+  /*
+   * Changes the emotion of the person.
+   */
+  public void changeEmote (int emote) {
+    String emotion = "";
+    if (emote == 0)
+      emotion = "happy";
+    else if (emote == 1)
+      emotion = "sad";
+    else if (emote == 2)
+      emotion = "angry";
+    else if (emote == 3)
+      emotion = "sweat";
+    try {
+      File imageFile = new File("enemy" + enemy + "files" + "/" + emotion + ".png");
+      image = ImageIO.read(imageFile);
+      this.setSize(image.getWidth(), image.getHeight());
+      centPos = 540 - image.getWidth()/2;
+    }
+    catch (Exception e) {
+      System.out.println(e);
+    }
+    repaint();
+  }
   /*
    * Moves the image to the left, right, or center, depending on input.
    * @param position Where to move the person.
@@ -62,8 +90,8 @@ public class Person extends Component {
     if (person.equals("left"))
       setBounds(centPos - 330, getBounds().y, getBounds().width, getBounds().height);
     else if (person.equals("right"))
-      setBounds(centPos + 200, getBounds().y, getBounds().width, getBounds().height);
-    else if (person.equals("left"))
+      setBounds(centPos + 240, getBounds().y, getBounds().width, getBounds().height);
+    else if (person.equals("center"))
       setBounds(centPos, getBounds().y, getBounds().width, getBounds().height);
   }
     

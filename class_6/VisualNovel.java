@@ -15,11 +15,7 @@ import java.util.*;
  * @authors Ansh Sharma, Braulio Carrion
  * @date 2019.05.30
  */
-public class VisualNovel {
-  /*
-   * The JPanel to work with.
-   */
-  JPanel panel;
+public class VisualNovel extends JPanel implements KeyListener{
   /*
    * The TextBox to work with.
    */
@@ -51,13 +47,14 @@ public class VisualNovel {
   /*
    * The class constructor. Creates the visual novel.
    */
-  public VisualNovel(JPanel panel, String script) {
-    this.panel = panel;
+  public VisualNovel(String script) {
     textList = new ArrayList <ArrayList <Text>>();
     personList = new ArrayList<Person>();
     generateScript(script);
     completed = false;
     index = 0;
+    this.addKeyListener(this);
+    this.setFocusable(true);
   }
   /*
    * Searches through the list of scripts for a script with this particular VisualNovel object's name, then loads
@@ -79,8 +76,8 @@ public class VisualNovel {
         else
           personList.add(null);
         textList.add(new ArrayList<Text>());
-        textList.get(lines).add(new Text (null,  13, 26,  false,  false,  false,  38,  539, line.substring(4,line.indexOf("%")), panel));
-        textList.get(lines).add(new Text (null,  18, 36,  false,  false,  false,  20,  540, line.substring(line.indexOf("%")), panel));
+        textList.get(lines).add(new Text (null,  13, 26,  false,  false,  false,  38,  539, line.substring(4,line.indexOf("%")), this));
+        textList.get(lines).add(new Text (null,  18, 36,  false,  false,  false,  20,  575, line.substring(line.indexOf("%")), this));
         lines++;
       }
     }
@@ -93,34 +90,34 @@ public class VisualNovel {
    * @param The background int to add.
    */
   public void addBg () {
-    panel.remove(background);
-    panel.add(background);
+    this.remove(background);
+    this.add(background);
   }
   /*
    * Removes the textbox from the JPanel, then adds it again to manage layers.
    */
   public void addTextBox () {
-    panel.remove(textbox);
-    panel.add(textbox);
+    this.remove(textbox);
+    this.add(textbox);
   }
   /*
    * Adds text to the screen using the Text and Letter classes, with a character and their respective emotion displayed.
    * @return The JPanel after text is added.
    */
-  public JPanel addText () {
+  public void addText () {
     addBg();
     if (index == 0) {
       if (personList.get(index) != null)
-        panel.add(personList.get(index));
+        this.add(personList.get(index));
       addTextBox();
       textList.get(index).get(0).draw();
       textList.get(index).get(1).draw();
     }
     else {
       if (personList.get(index - 1) != null)
-        panel.remove(personList.get(index - 1));
+        this.remove(personList.get(index - 1));
       if (personList.get(index) != null)
-        panel.add(personList.get(index));
+        this.add(personList.get(index));
       addTextBox();
       textList.get(index - 1).get(0).erase();
       textList.get(index - 1).get(1).erase();
@@ -130,25 +127,23 @@ public class VisualNovel {
     index++;
     if (index == lines)
       completed = true;
-    return getPanel();
+    getPanel();
   }
   /*
-   * Returns the current JPanel.
-   * @return the JPanel.
+   * Reorders the current JPanel to account for layers.
    */
-  public JPanel getPanel() {
-    Component[] components = panel.getComponents();
+  public void getPanel() {
+    Component[] components = this.getComponents();
     for (int i = 0; i < components.length; i++) {
       if (components[i] instanceof Letter)
-        panel.setComponentZOrder(components[i],0);
+        this.setComponentZOrder(components[i],0);
       else if (components[i] instanceof TextBox)
-        panel.setComponentZOrder(textbox,1);
+        this.setComponentZOrder(textbox,1);
       else if (components[i] instanceof Person)
-        panel.setComponentZOrder(components[i],2);
+        this.setComponentZOrder(components[i],2);
       else if (components[i] instanceof Background)
-        panel.setComponentZOrder(components[i],3);
+        this.setComponentZOrder(components[i],3);
     }
-    return panel;
   }
   /*
    * Returns the current line in the script.
@@ -167,5 +162,30 @@ public class VisualNovel {
    */
   public boolean isComplete() {
     return completed;
+  }
+  /*
+   * Method that runs if a key is pressed. Advances text.
+   */
+  public void keyPressed(KeyEvent e) {
+    System.out.println(completed);
+    if (isComplete() == true)
+      this.removeKeyListener(this);
+    else {
+      int keyValue = e.getKeyCode();
+      System.out.println("press");
+      if (keyValue == 10 || keyValue == 32) {
+        addText();
+      }
+    }
+  }
+  /*
+   * Method that runs if a key is released.
+   */
+  public void keyReleased(KeyEvent e) {
+  }
+  /*
+   * Method that runs if a key is typed.
+   */
+  public void keyTyped(KeyEvent e) {
   }
 }

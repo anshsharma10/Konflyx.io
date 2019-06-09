@@ -99,7 +99,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
     }
     if (animateIn == true) {
       this.setVisible(false);
-      introTimer.setInitialDelay(150*(index + 1));
+      introTimer.setInitialDelay(500*(index + 1));
       introTimer.start();
     }
   }
@@ -157,12 +157,6 @@ public class Letter extends Component implements ActionListener,KeyListener{
       idleTimer.stop();
     this.setBounds(0,0,0,0);
     this.setFocusable(false);
-  }
-  /*
-   * Returns the size of the letter, for use in the Text class.
-   */
-  public int getWidth() {
-    return letter_sizeX;
   }
 
   public boolean finishedLine(){

@@ -38,7 +38,7 @@ public class TextSelector {
   /*
    * The current y position of the border on the screen.
    */
-  int yPos = 150;
+  int yPos = 175;
   /*
    * The border outside the currently selected text.
    */
@@ -62,16 +62,9 @@ public class TextSelector {
     this.question = new Text(null,  40, 80,  false,  false,  false,  Text.centerTextXPosition(40,question.length()),  45, question, panel);
     this.question.draw();
     for (int i = 0; i < responses.length; i++) {
-      TextResponses.add(new Text(null,  33, 66,  false,  false,  false,  Text.centerTextXPosition(33, responses[i].length()),  167 + 120*i, responses[i], panel));
+      TextResponses.add(new Text(null,  33, 66,  false,  false,  false,  Text.centerTextXPosition(33, responses[i].length()),  192 + (480/responses.length)*i, responses[i], panel));
       TextResponses.get(i).draw();
     }
-  }
-  /*
-   * Returns the panel.
-   * @return the panel.
-   */
-  public JPanel getPanel() {
-    return panel;
   }
   /*
    * Moves the border 120px down, to select the next text. This is only done if the location is not already at its maximum.
@@ -79,9 +72,9 @@ public class TextSelector {
    */
   public void moveDown() {
     if (location < maxLocation) {
-      border.setBounds(60,yPos + 120,952,101);;
+      border.setBounds(60,yPos + (480/responses.length),952,101);;
       location++;
-      yPos += 120;
+      yPos += (480/responses.length);
     }
   }
   /*
@@ -90,9 +83,9 @@ public class TextSelector {
    */
   public void moveUp() {
     if (location > 0) {
-      border.setBounds(60,yPos - 120,952,101);
+      border.setBounds(60,yPos - (480/responses.length),952,101);
       location--;
-      yPos -= 120;
+      yPos -= (480/responses.length);
     }
   }
   /*
@@ -104,14 +97,13 @@ public class TextSelector {
   }
   /*
    * Cleans up all text selector files. Used when the driver class is done with the TextSelector class.
-   * @return The working JPanel.
    */
-  public JPanel cleanUp() {
+  public void cleanUp() {
     panel.remove(border);
     question.erase();
     for (Text text : TextResponses) {
       text.erase();
     }
-    return getPanel();
+    panel.repaint();
   }
 }

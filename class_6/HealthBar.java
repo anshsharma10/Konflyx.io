@@ -36,7 +36,7 @@ public class HealthBar extends Component {
     try{
       BufferedImage image = ImageIO.read(new File("HealthBar.png"));
       g.setColor(Color.red);
-      g.fillRect(72,15 + 650-(650/100)*health,20,(650/100)*health);
+      g.fillRect(72,7 + (int)(650-(650.0/100)*health),20,(int)((650.0/100)*health));
       g.drawImage(image, 0,0,97,701,null,null);
     }
     catch (Exception e){
@@ -44,11 +44,11 @@ public class HealthBar extends Component {
     }  
   }
   /*
-   * Changes the health bar.
-   * @param health The value to change to.
+   * Increments the health bar.
+   * @param health The value to increase or decrease by.
    */
-  public void setHealth (int health) {
-    this.health = health;
+  public void incrementHealth (int modifier) {
+    this.health += modifier;
     repaint();
   }
     /*

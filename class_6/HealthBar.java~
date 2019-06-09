@@ -21,10 +21,12 @@ public class HealthBar extends Component {
   int health;
   /*
    * The class constructor. Sets health.
+   * @param health The current health of the user.
    */
   public HealthBar(int health) {
-    this.setSize(153, 720);
-    this.setBounds(925,0,153,720);
+    this.setSize(97, 701);
+    this.setBounds(970,7,97,701);
+    this.health = health;
   }
   /*
    * The main graphics method to draw the health bar onto the screen.
@@ -33,10 +35,27 @@ public class HealthBar extends Component {
     super.paint(g);
     try{
       BufferedImage image = ImageIO.read(new File("HealthBar.png"));
-      g.drawImage(image, 0,0,153,720,null,null);
+      g.setColor(Color.red);
+      g.fillRect(72,15 + 650-(650/100)*health,20,(650/100)*health);
+      g.drawImage(image, 0,0,97,701,null,null);
     }
     catch (Exception e){
       System.out.println(e);
     }  
+  }
+  /*
+   * Changes the health bar.
+   * @param health The value to change to.
+   */
+  public void setHealth (int health) {
+    this.health = health;
+    repaint();
+  }
+    /*
+   * Returns the health.
+   * @return The current health.
+   */
+  public int getHealth () {
+    return health;
   }
 }
