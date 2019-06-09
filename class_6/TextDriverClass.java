@@ -44,6 +44,10 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
    */
   MainMenu mainMenu;
   /*
+   * The stage selection menu to work with.
+   */
+  StageSelect stageSelect;
+  /*
    * The visual novel to work with.
    */
   VisualNovel vn;
@@ -113,6 +117,21 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
     if (stage == 0) {
       mainMenu = new MainMenu();
       add(mainMenu);
+      ts = new TextSelector(mainMenu, "", new String[]{"New Game", "Stage select", "Instructions", "High Scores", "Exit"});
+      mainMenu.getPanel();
+      mainMenu.repaint();
+      this.addKeyListener(this);
+      this.setFocusable(true);
+      this.requestFocus();
+    } else if (stage == 1) {
+      stageSelect = new StageSelect();
+      add(stageSelect);
+      ts = new TextSelector(stageSelect, "", new String[]{"Tutorial", "Level 1", "Level 2", "Level 3"});
+      stageSelect.getPanel();
+      stageSelect.repaint();
+      this.addKeyListener(this);
+      this.setFocusable(true);
+      this.requestFocus();
     } else if (stage == 6) {
       vn = new VisualNovel("level1");
       vn.setLayout(null);
@@ -177,25 +196,56 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
    * Method that runs if a key is pressed. Changes text selector.
    */
   public void keyPressed(KeyEvent e) {
-    if (stage == 7) {
-      int keyValue = e.getKeyCode();
-      if (keyValue == 87 || keyValue == 38) {
-        ts.moveUp();
-      }
-      else if (keyValue == 83 || keyValue == 40) {
-        ts.moveDown();
-      }
-      else if (keyValue == 10 || keyValue == 32) {
-        ts.cleanUp();
-        if (ts.getSelection().equals(gameTree1))
-          gameTree = 1;
-        else
-          gameTree = 2;
-        this.removeKeyListener(this);
-        stage++;
-        nextStage();
-      }
+    int keyValue = e.getKeyCode();
+    if (keyValue == 87 || keyValue == 38 && (stage == 0 || stage == 7)) {
+      ts.moveUp();
     }
+    else if (keyValue == 83 || keyValue == 40 && (stage == 0 || stage == 7)) {
+      ts.moveDown();
+    }
+    else if (keyValue == 10 || keyValue == 32 && stage == 7) {
+      ts.cleanUp();
+      if (ts.getSelection().equals(gameTree1))
+        gameTree = 1;
+      else
+        gameTree = 2;
+      this.removeKeyListener(this);
+      remove(panel);
+      stage++;
+      nextStage();
+    } else if (keyValue == 10 || keyValue == 32 && stage == 0) {
+      ts.cleanUp();
+      if (ts.getSelection().equals("New Game"))
+        stage = 4;
+      else if (ts.getSelection().equals("Stage Select"))
+        stage = 1;
+      else if (ts.getSelection().equals("Instructions"))
+        stage = 2;
+      else if (ts.getSelection().equals("High Scores"))
+        stage = 3;
+      else if (ts.getSelection().equals("Exit"))
+        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+      this.removeKeyListener(this);
+      remove(mainMenu);
+      nextStage();
+    } else if (keyValue == 10 || keyValue == 32 && stage == 1) {
+      ts.cleanUp();
+      if (ts.getSelection().equals("Tutorial")) {
+        stage = 4;
+      }
+      else if (ts.getSelection().equals("Level 1")) {
+        stage = 6;
+      }
+      else if (ts.getSelection().equals("Level 2")) {
+        stage = 9;
+      }
+      else if (ts.getSelection().equals("Level 3")) {
+        stage = 12;
+      }
+      this.removeKeyListener(this);
+      remove(mainMenu);
+      nextStage();
+    } 
   }
   /*
    * Method that runs if a key is released.
