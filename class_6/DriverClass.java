@@ -66,21 +66,26 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
   /*
    * The stage of the game.
    */
-  int stage = 0;
+  int stage = 5;
   /*
    * The timer used for tracking game completion.
    */
   javax.swing.Timer timer = new javax.swing.Timer(150, this);
   /*
+   * The Practice Room to work with.
+   */
+  PracticeRoom pr;
+  
+  
+  /*
    * Class constructor
    */
   public DriverClass () {
-    
     setSize(1080,720);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     getContentPane().setPreferredSize(new Dimension(1080,720));
+    setVisible(true);
     nextStage();
-    
   }
   /*
    * Moves on to the next stage of the game. Each stage and what they do are as follows:
@@ -90,16 +95,17 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
    * 3: The high scores.
    * 4: The tutorial.
    * 5: The practice room.
-   * 6: The visual novel for level 1.
-   * 7: The tree selection for level 1.
-   * 8: The gameplay for level 1.
-   * 9: The visual novel for level 2.
-   * 10: The tree selection for level 2.
-   * 11: The gameplay for level 2.
-   * 12: The visual novel for level 3.
-   * 13: The tree selection for level 3.
-   * 14: The gameplay for level 3.
-   * 15: The visual novel ending.
+   * 6: The end of the tutorial
+   * 7: The visual novel for level 1.
+   * 8: The tree selection for level 1.
+   * 9: The gameplay for level 1.
+   * 10: The visual novel for level 2.
+   * 11: The tree selection for level 2.
+   * 12: The gameplay for level 2.
+   * 13: The visual novel for level 3.
+   * 14: The tree selection for level 3.
+   * 15: The gameplay for level 3.
+   * 16: The visual novel ending.
    */
   public void nextStage() {
     if (stage == 0) {
@@ -138,7 +144,17 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       this.addKeyListener(this);
       this.setFocusable(true);
       this.requestFocus();
-    } else if (stage == 6) {
+    }else if (stage == 5) {
+      panel = new JPanel();
+      panel.setLayout(null);
+      panel.setPreferredSize(new Dimension(1080,720));
+      panel.setSize(1080,720);
+      add(panel);
+      pr = new PracticeRoom(panel);
+      panel = pr.getPanel();
+      panel.requestFocus();
+      this.addKeyListener(this);
+    } else if (stage == 7) {
       vn = new VisualNovel("level1");
       vn.setLayout(null);
       vn.setPreferredSize(new Dimension(1080,720));
@@ -146,7 +162,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.addText();
       vn.requestFocus();
       timer.start();
-    } else if (stage == 7) {
+    } else if (stage == 8) {
       GameTracker.setDifficulty(300);
       panel = new JPanel();
       panel.setLayout(null);
@@ -170,7 +186,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       panel.repaint();
       this.addKeyListener(this);
       this.requestFocus();
-    } else if (stage == 8) {
+    } else if (stage == 9) {
       game = new Gameplay(1, gameTree);
       game.setLayout(null);
       game.setPreferredSize(new Dimension(1080,720));
@@ -217,13 +233,13 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       nextStage();
       this.removeKeyListener(this);
     }
-    else if ((keyValue == 87 || keyValue == 38) && (stage == 0 || stage == 1 || stage == 7)) {
+    else if ((keyValue == 87 || keyValue == 38) && (stage == 0 || stage == 1 || stage == 8)) {
       ts.moveUp();
     }
-    else if ((keyValue == 83 || keyValue == 40) && (stage == 0 ||  stage == 1 || stage == 7)) {
+    else if ((keyValue == 83 || keyValue == 40) && (stage == 0 ||  stage == 1 || stage == 8)) {
       ts.moveDown();
     }
-    else if ((keyValue == 10 || keyValue == 32) && stage == 7) {
+    else if ((keyValue == 10 || keyValue == 32) && stage == 8) {
       ts.cleanUp();
       if (ts.getSelection().equals(gameTree1))
         gameTree = 1;
@@ -267,8 +283,12 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       ts = null;
       remove(stageSelect);
       nextStage();
+    } else if (stage == 5) {
+      panel = pr.getPanel();
+      setVisible(true);
+      this.pack();
     }
-  }
+  } 
   /*
    * Method that runs if a key is released.
    */
@@ -278,11 +298,6 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
    * Method that runs if a key is typed.
    */
   public void keyTyped(KeyEvent e) {
-    /*
-     panel = pr.getPanel();
-     setVisible(true);
-     this.pack();
-     */
   }
   
   public static void main (String[] args) {

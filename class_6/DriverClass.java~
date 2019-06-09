@@ -66,11 +66,15 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
   /*
    * The stage of the game.
    */
-  int stage = 0;
+  int stage = -1;
   /*
    * The timer used for tracking game completion.
    */
   javax.swing.Timer timer = new javax.swing.Timer(150, this);
+  
+  PracticeRoom pr;
+  
+  
   /*
    * Class constructor
    */
@@ -78,10 +82,13 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
     
     setSize(1080,720);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setPreferredSize(new Dimension(1080,720));
-    
-    nextStage();
-    
+    getContentPane().setPreferredSize(new Dimension(1080,720));
+    setVisible(true);
+    //nextStage();
+    panel = new JPanel();
+    add(panel);
+    PracticeRoom pr = new PracticeRoom(panel);
+    this.addKeyListener(this);
   }
   /*
    * Moves on to the next stage of the game. Each stage and what they do are as follows:
@@ -104,6 +111,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
    */
   public void nextStage() {
     if (stage == 0) {
+      GameTracker.setDifficulty(100);
       mainMenu = new MainMenu();
       add(mainMenu);
       ts = new TextSelector(mainMenu, "", new String[]{"New Game", "Stage select", "Instructions", "High Scores", "Exit"});
@@ -131,7 +139,6 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       this.setFocusable(true);
       this.requestFocus();
     } else if (stage == 3) {
-      System.out.println("high");
       highScores = new HighScores();
       add(highScores);
       highScores.getPanel();
@@ -145,8 +152,10 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.setPreferredSize(new Dimension(1080,720));
       add(vn);
       vn.addText();
+      vn.requestFocus();
       timer.start();
     } else if (stage == 7) {
+      GameTracker.setDifficulty(300);
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));
@@ -277,11 +286,11 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
    * Method that runs if a key is typed.
    */
   public void keyTyped(KeyEvent e) {
-    /*
+    
      panel = pr.getPanel();
      setVisible(true);
      this.pack();
-     */
+     
   }
   
   public static void main (String[] args) {
