@@ -14,7 +14,7 @@ import java.util.*;
  * @author Ansh Sharma, Braulio Carrion
  * @date 2019.05.22
  */
-public class DriverClass extends JFrame{
+public class DriverClass extends JFrame implements ActionListener, KeyListener{
   /*
    * The panel to work with.
    */
@@ -23,6 +23,38 @@ public class DriverClass extends JFrame{
    * The current game mode. 0 is visual novel, 1 is text selection, and 2 is gameplay. For use in keylistening.
    */
   int gameMode = 1;
+  /*
+   * The background to work with.
+   */
+  Background background;
+  /*
+   * The gameplay object to work with.
+   */
+  Gameplay game;
+  /*
+   * The tree the gameplay object will use.
+   */
+  int gameTree = 1;
+  /*
+   * The first String option for the game tree.
+   */
+  String gameTree1;
+  /*
+   * The main menu to work with.
+   */
+  MainMenu mainMenu;
+  /*
+   * The stage selection menu to work with.
+   */
+  StageSelect stageSelect;
+  /*
+   * The instructions menu to work with.
+   */
+  Instructions instructions;
+  /*
+   * The high scores menu to work with.
+   */
+  HighScores highScores;
   /*
    * The visual novel to work with.
    */
@@ -43,8 +75,8 @@ public class DriverClass extends JFrame{
    * The Practice Room to work with.
    */
   PracticeRoom pr;
-
-
+  
+  
   /*
    * Class constructor
    */
@@ -183,7 +215,7 @@ public class DriverClass extends JFrame{
       nextStage();
     }
   }
-
+  
   /*
    * Method that runs if a key is pressed. Changes text selector.
    */
@@ -267,10 +299,10 @@ public class DriverClass extends JFrame{
    */
   public void keyTyped(KeyEvent e) {
   }
-
+  
   public static void main (String[] args) {
-
+    
     DriverClass driver = new DriverClass();
-
+    
   }
 }
