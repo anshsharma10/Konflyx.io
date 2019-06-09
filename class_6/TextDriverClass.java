@@ -36,6 +36,18 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
    */
   int gameTree = 1;
   /*
+   * The first String option for the game tree.
+   */
+  String gameTree1;
+  /*
+   * The main menu to work with.
+   */
+  MainMenu mainMenu;
+  /*
+   * The stage selection menu to work with.
+   */
+  StageSelect stageSelect;
+  /*
    * The visual novel to work with.
    */
   VisualNovel vn;
@@ -64,34 +76,70 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     
     //Run nextStage() for ansh's changes
-    //nextStage();
+    nextStage();
     
     
     //Do all of this shit for Braulio's changes
-    panel = new JPanel();
-    panel.setLayout(null);
-    panel.setPreferredSize(new Dimension(1080,720));
-    panel.setSize(1080,720);
-    pack();
-    add(panel);
-    PracticeRoom pr = new PracticeRoom(panel); 
-    panel.repaint();
-    this.setVisible(true);
-    this.pack();
+    /*
+     panel = new JPanel();
+     panel.setLayout(null);
+     panel.setPreferredSize(new Dimension(1080,720));
+     panel.setSize(1080,720);
+     pack();
+     add(panel);
+     PracticeRoom pr = new PracticeRoom(panel); 
+     panel.repaint();
+     this.setVisible(true);
+     this.pack();
+     */
     
   }
   /*
-   * Moves on to the next stage of the game.
+   * Moves on to the next stage of the game. Each stage and what they do are as follows:
+   * 0: The main menu of the game.
+   * 1: The stage selection of the game. Creates a particular stage and maxstage depending on what the user wants.
+   * 2: The instructions.
+   * 3: The high scores.
+   * 4: The tutorial.
+   * 5: The practice room.
+   * 6: The visual novel for level 1.
+   * 7: The tree selection for level 1.
+   * 8: The gameplay for level 1.
+   * 9: The visual novel for level 2.
+   * 10: The tree selection for level 2.
+   * 11: The gameplay for level 2.
+   * 12: The visual novel for level 3.
+   * 13: The tree selection for level 3.
+   * 14: The gameplay for level 3.
+   * 15: The visual novel ending.
    */
   public void nextStage() {
     if (stage == 0) {
+      mainMenu = new MainMenu();
+      add(mainMenu);
+      ts = new TextSelector(mainMenu, "", new String[]{"New Game", "Stage select", "Instructions", "High Scores", "Exit"});
+      mainMenu.getPanel();
+      mainMenu.repaint();
+      this.addKeyListener(this);
+      this.setFocusable(true);
+      this.requestFocus();
+    } else if (stage == 1) {
+      stageSelect = new StageSelect();
+      add(stageSelect);
+      ts = new TextSelector(stageSelect, "", new String[]{"Tutorial", "Level 1", "Level 2", "Level 3"});
+      stageSelect.getPanel();
+      stageSelect.repaint();
+      this.addKeyListener(this);
+      this.setFocusable(true);
+      this.requestFocus();
+    } else if (stage == 6) {
       vn = new VisualNovel("level1");
       vn.setLayout(null);
       vn.setPreferredSize(new Dimension(1080,720));
       add(vn);
       vn.addText();
       timer.start();
-    } else if (stage == 1) {
+    } else if (stage == 7) {
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));
@@ -100,7 +148,8 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
       add(panel);
       background = new Background(1);
       panel.add(background);
-      ts = new TextSelector(panel, "A hot dog is...", new String[]{"A sandwich","Not a sandwich"}); 
+      ts = new TextSelector(panel, "A hot dog is...", new String[]{"A sandwich","Not a sandwich"});
+      gameTree1 = "A sandwich";
       Component[] components = panel.getComponents();
       for (int i = 0; i < components.length; i++) {
         if (components[i] instanceof Letter)
@@ -113,7 +162,7 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
       panel.repaint();
       this.addKeyListener(this);
       this.requestFocus();
-    } else if (stage == 2) {
+    } else if (stage == 8) {
       game = new Gameplay(1, gameTree);
       game.setLayout(null);
       game.setPreferredSize(new Dimension(1080,720));
@@ -147,25 +196,56 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
    * Method that runs if a key is pressed. Changes text selector.
    */
   public void keyPressed(KeyEvent e) {
-    if (stage == 1) {
-      int keyValue = e.getKeyCode();
-      if (keyValue == 87 || keyValue == 38) {
-        ts.moveUp();
-      }
-      else if (keyValue == 83 || keyValue == 40) {
-        ts.moveDown();
-      }
-      else if (keyValue == 10 || keyValue == 32) {
-        ts.cleanUp();
-        if (ts.getSelection().equals("A sandwich"))
-          gameTree = 1;
-        else
-          gameTree = 2;
-        this.removeKeyListener(this);
-        stage++;
-        nextStage();
-      }
+    int keyValue = e.getKeyCode();
+    if (keyValue == 87 || keyValue == 38 && (stage == 0 || stage == 7)) {
+      ts.moveUp();
     }
+    else if (keyValue == 83 || keyValue == 40 && (stage == 0 || stage == 7)) {
+      ts.moveDown();
+    }
+    else if (keyValue == 10 || keyValue == 32 && stage == 7) {
+      ts.cleanUp();
+      if (ts.getSelection().equals(gameTree1))
+        gameTree = 1;
+      else
+        gameTree = 2;
+      this.removeKeyListener(this);
+      remove(panel);
+      stage++;
+      nextStage();
+    } else if (keyValue == 10 || keyValue == 32 && stage == 0) {
+      ts.cleanUp();
+      if (ts.getSelection().equals("New Game"))
+        stage = 4;
+      else if (ts.getSelection().equals("Stage Select"))
+        stage = 1;
+      else if (ts.getSelection().equals("Instructions"))
+        stage = 2;
+      else if (ts.getSelection().equals("High Scores"))
+        stage = 3;
+      else if (ts.getSelection().equals("Exit"))
+        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+      this.removeKeyListener(this);
+      remove(mainMenu);
+      nextStage();
+    } else if (keyValue == 10 || keyValue == 32 && stage == 1) {
+      ts.cleanUp();
+      if (ts.getSelection().equals("Tutorial")) {
+        stage = 4;
+      }
+      else if (ts.getSelection().equals("Level 1")) {
+        stage = 6;
+      }
+      else if (ts.getSelection().equals("Level 2")) {
+        stage = 9;
+      }
+      else if (ts.getSelection().equals("Level 3")) {
+        stage = 12;
+      }
+      this.removeKeyListener(this);
+      remove(mainMenu);
+      nextStage();
+    } 
   }
   /*
    * Method that runs if a key is released.

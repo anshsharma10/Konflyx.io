@@ -10,26 +10,29 @@ import javax.swing.*;
 import java.awt.image.*;
 import java.util.*;
 /*
- * The Border Class. Creates a text border on the screen.
+ * The MenuScreen Class. Creates a menu screen image.
  * @author Ansh Sharma, Braulio Carrion
  * @date 2019.06.10
  */
-public class Border extends Component {
+public class MenuScreen extends Component {
   /*
-   * The class constructor. This class's primary purpose is to draw a text border onto the screen.
+   * The menu to draw.
    */
-  public Border() {
-    this.setSize(1080, 200);
-    this.setBounds(0,520,1080,200);
+  int menu;
+  /*
+   * The class constructor. This class's primary purpose is to create a menu screen image.
+   */
+  public MenuScreen(int menu) {
+    this.menu = menu;
   }
   /*
-   * The main graphics method to draw the box onto the screen.
+   * The main graphics method to draw the border onto the screen.
    */
   public void paint (Graphics g) {
     super.paint(g);
     try{
-      BufferedImage image = ImageIO.read(new File("TextBox.png"));
-      g.drawImage(image, 0,0,1080,200,null,null);
+      BufferedImage image = ImageIO.read(new File("menus/" + menu + ".png"));
+      g.drawImage(image, 0,0,1080,720,null,null);
     }
     catch (Exception e){
       System.out.println(e);
