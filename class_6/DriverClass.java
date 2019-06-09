@@ -66,7 +66,11 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
   /*
    * The stage of the game.
    */
-  int stage = 5;
+  int stage = 0;
+  /*
+   * The highest possible stage - used in stage selection.
+   */
+  int maxStage = 15;
   /*
    * The timer used for tracking game completion.
    */
@@ -95,7 +99,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
    * 3: The high scores.
    * 4: The tutorial.
    * 5: The practice room.
-   * 6: The end of the tutorial
+   * 6: The end of the tutorial.
    * 7: The visual novel for level 1.
    * 8: The tree selection for level 1.
    * 9: The gameplay for level 1.
@@ -108,6 +112,9 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
    * 16: The visual novel ending.
    */
   public void nextStage() {
+    if (stage > maxStage) {
+      stage = 0;
+    }
     if (stage == 0) {
       GameTracker.setDifficulty(100);
       mainMenu = new MainMenu();
@@ -154,6 +161,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       panel = pr.getPanel();
       panel.requestFocus();
       this.addKeyListener(this);
+      timer.start();
     } else if (stage == 7) {
       vn = new VisualNovel("level1");
       vn.setLayout(null);
@@ -213,6 +221,12 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       timer.stop();
       stage++;
       nextStage();
+    } else if (pr != null && pr.isComplete() == true) {
+      pr.cleanUp();
+      timer.stop();
+      this.removeKeyListener(this);
+      stage++;
+      nextStage();
     }
   }
   
@@ -268,16 +282,20 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
     } else if ((keyValue == 10 || keyValue == 32) && stage == 1) {
       ts.cleanUp();
       if (ts.getSelection().equals("Tutorial")) {
-        stage = 4;
+        stage = 5;
+        maxStage = 5;
       }
       else if (ts.getSelection().equals("Level 1")) {
-        stage = 6;
+        stage = 7;
+        maxStage = 10;
       }
       else if (ts.getSelection().equals("Level 2")) {
-        stage = 9;
+        stage = 10;
+        maxStage = 13;
       }
       else if (ts.getSelection().equals("Level 3")) {
-        stage = 12;
+        stage = 13;
+        maxStage = 16;
       }
       this.removeKeyListener(this);
       ts = null;
