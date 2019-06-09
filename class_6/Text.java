@@ -94,6 +94,7 @@ public class Text{
     for (Letter lett: textList){
       panel.add(lett);
     }
+    panel.repaint();
     return panel;
   }
   /*
@@ -121,6 +122,14 @@ public class Text{
     for (Letter lett: textList){
       lett.turnOnIdle();
     }
+  }
+  
+  public int pressCount() {
+    int sum = 0;
+    for (Letter lett: textList){
+      sum+=lett.isPressed();
+    }
+    return sum;
   }
   
   public void updateLetPos(int x, int y) {

@@ -62,6 +62,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   String colorOfLetter = "";
   boolean lastLet = false;
   int stringSize;
+  int press = 0;
   
   /*
    * The class constructor. Creates a Letter object with all variables set.
@@ -203,6 +204,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
         }
         colorOfLetter = "G";
         idleAnimation = false;
+        press = 1;
         this.removeKeyListener(this);
         this.setFocusable(false);
         repaint();
@@ -213,6 +215,10 @@ public class Letter extends Component implements ActionListener,KeyListener{
       }
     }
     //System.out.print(letter + idleAnimation + keyValue);
+  }
+  
+  public int isPressed(){
+    return press;
   }
   
   public void keyReleased(KeyEvent e) {

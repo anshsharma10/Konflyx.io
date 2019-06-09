@@ -14,15 +14,11 @@ import java.util.*;
  * @author Ansh Sharma, Braulio Carrion
  * @date 2019.05.22
  */
-public class TextDriverClass extends JFrame implements ActionListener, KeyListener{
+public class TextDriverClass extends JFrame{
   /*
    * The panel to work with.
    */
   JPanel panel;
-  /*
-   * The background to work with.
-   */
-  Background background;
   /*
    * The current game mode. 0 is visual novel, 1 is text selection, and 2 is gameplay. For use in keylistening.
    */
@@ -56,29 +52,27 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
    */
   TextSelector ts;
   /*
-   * The timer used to manage gameplay.
-   */
-  javax.swing.Timer timer = new javax.swing.Timer(150,this);
-  /*
-   * The stage of the game. Each stage is a different part.
-   */
-  int stage = 0;
-  /*
-   * The maximum stage of the game. For use in stage selection from the main menu.
-   */
-  int maxStage = 0;
-  /*
    * Class constructor
    */
   public TextDriverClass () {
-    
-    
+
+    setSize(1080,720);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    
+    setPreferredSize(new Dimension(1080,720));
+
     //Run nextStage() for ansh's changes
-    nextStage();
-    
-    
+    //nextStage();
+
+    JPanel panel = new JPanel();
+    panel.setLayout(null);
+    add(panel);
+
+    /*
+     Text t = new Text (new Color (25,25,25),  40,40,  false,  false,  true,  50,  20, "TEST", panel);
+     Text t2 = new Text (null,  20,40,  true,  false,  false,  20,  540, "/TEST ONE/TEST TWO", panel);
+     Text t2 = new Text (null,  20,40,  true,  false,  false,  20,  540, "/TEST ONE/TEST TWO", panel); */
+    PracticeRoom pr = new PracticeRoom(panel);
+
     //Do all of this shit for Braulio's changes
     /*
      panel = new JPanel();
@@ -87,12 +81,12 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
      panel.setSize(1080,720);
      pack();
      add(panel);
-     PracticeRoom pr = new PracticeRoom(panel); 
+     PracticeRoom pr = new PracticeRoom(panel);
      panel.repaint();
      this.setVisible(true);
      this.pack();
      */
-    
+
   }
   /*
    * Moves on to the next stage of the game. Each stage and what they do are as follows:
@@ -191,7 +185,7 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
       nextStage();
     }
   }
-  
+
   /*
    * Method that runs if a key is pressed. Changes text selector.
    */
@@ -245,7 +239,7 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
       this.removeKeyListener(this);
       remove(mainMenu);
       nextStage();
-    } 
+    }
   }
   /*
    * Method that runs if a key is released.
@@ -256,12 +250,26 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
    * Method that runs if a key is typed.
    */
   public void keyTyped(KeyEvent e) {
+    //panel = t2.draw();
+    //panel = t.draw();
+
+    panel = pr.getPanel();
+    setVisible(true);
+    this.pack();
+
+    /*try {
+     Thread.sleep(3000);
+     panel = t.erase();
+     } catch (Exception e) {
+     System.out.println(e);
+     }
+     }*/
+
   }
-  
+
   public static void main (String[] args) {
-    
+
     TextDriverClass driver = new TextDriverClass();
-    
+
   }
-  
 }
