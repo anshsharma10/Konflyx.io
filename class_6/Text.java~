@@ -77,7 +77,7 @@ public class Text{
     contSize = contents.length();
     textList = new ArrayList <Letter> ();
     this.panel = panel;
-
+    
     for (int i = 0; i < contents.length(); i++) {
       if (i > 0 && (contents.substring(i,i+1)).equals("/")){
         posY+=text_sizeY;
@@ -107,25 +107,34 @@ public class Text{
     panel.repaint();
     return panel;
   }
-
-   public void turnOnIdleAnim() {
+  
+  public void focusLetter() {
+    for (Letter letter : textList) {
+      if (letter.getIdle()) {
+        letter.requestFocus();
+        break;
+      }
+    }
+  }
+  
+  public void turnOnIdleAnim() {
     for (Letter lett: textList){
       lett.turnOnIdle();
     }
   }
-
-   public void updateLetPos(int x, int y) {
+  
+  public void updateLetPos(int x, int y) {
     int count = -1;
     for (Letter lett: textList){
       lett.updatePos(x + count*text_sizeX ,y);
       count++;
     }
   }
-
+  
   public boolean finishedLine(){
     return textList.get(contSize-1).finishedLine();
   }
-
+  
   /*
    * Returns the required x position of a given text length to center the text.
    * @param size The horizontal size of each text's letter.
