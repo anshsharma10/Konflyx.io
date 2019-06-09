@@ -171,7 +171,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       panel.requestFocus();
       this.addKeyListener(this);
       timer.start();
-    }  else if (stage == 7) {
+    }  else if (stage == 6) {
       vn = new VisualNovel("tutorialEnd");
       vn.setLayout(null);
       vn.setPreferredSize(new Dimension(1080,720));
