@@ -108,6 +108,20 @@ public class Text{
     return panel;
   }
   
+   public void turnOnIdleAnim() {
+    for (Letter lett: textList){
+      lett.turnOnIdle();
+    }
+  }
+   
+   public void updateLetPos(int x, int y) {
+    int count = -1;
+    for (Letter lett: textList){
+      lett.updatePos(x + count*text_sizeX ,y);
+      count++;
+    }
+  }
+  
   public boolean finishedLine(){
     return textList.get(contSize-1).finishedLine();
   }

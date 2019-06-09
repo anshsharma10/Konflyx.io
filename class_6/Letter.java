@@ -102,6 +102,10 @@ public class Letter extends Component implements ActionListener,KeyListener{
       introTimer.setInitialDelay(150*(index + 1));
       introTimer.start();
     }    
+    if (!idleAnimation && !animateIn && !animateOut  && !(letter.equals("/"))){
+      this.addKeyListener(this);
+      this.setFocusable(true);
+    }
   }
   /*
    * Draws the letter with respective colour and size. Will animate while drawing if animateIn is on. Also calls animateIdle() if animateIdle is on.
@@ -121,7 +125,6 @@ public class Letter extends Component implements ActionListener,KeyListener{
   public void actionPerformed(ActionEvent e){
     if (animateIn && introTimer.isRunning()){
       this.setVisible(true);
-      idleTimer.start();
       introTimer.stop();
     }
     else if (idleAnimation && idleTimer.isRunning()){
@@ -157,16 +160,31 @@ public class Letter extends Component implements ActionListener,KeyListener{
       idleTimer.stop();
     this.setBounds(0,0,0,0);
     this.setFocusable(false);
+    lastLet = false;
   }
   /*
    * Returns the size of the letter, for use in the Text class.
    */
-  public int getWidth() {
-    return letter_sizeX;
-  }
   
   public boolean finishedLine(){
     return lastLet;
+  }
+  
+  public void turnOnIdle(){
+    idleAnimation = true;
+    if (animateIn == false && idleAnimation && !(letter.equals("/")) ) {
+      idleTimer.start();
+      repaint();
+    }
+  }
+  
+  public void updatePos(int x, int y){
+    posX = x;
+    conX = x;
+    posY = y;
+    conY = y;
+    this.setBounds(posX,posY,letter_sizeX,letter_sizeY);
+    repaint();
   }
   
   public void keyPressed(KeyEvent e) {
@@ -187,7 +205,6 @@ public class Letter extends Component implements ActionListener,KeyListener{
     }
     //System.out.print(letter + idleAnimation + keyValue);
   }
-  
   
   /*
    public void changeColour(Color clr){
@@ -231,7 +248,6 @@ public class Letter extends Component implements ActionListener,KeyListener{
    repaint();
    }
    */
-  
   
   public void keyReleased(KeyEvent e) {    
   }  
