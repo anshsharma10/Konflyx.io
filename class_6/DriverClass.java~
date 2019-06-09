@@ -203,6 +203,14 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       game.next();
       game.requestFocus();
       timer.start();
+    } else if (stage == 10) {
+      vn = new VisualNovel("level2");
+      vn.setLayout(null);
+      vn.setPreferredSize(new Dimension(1080,720));
+      add(vn);
+      vn.addText();
+      vn.requestFocus();
+      timer.start();
     }
     setVisible(true);
     this.pack();
