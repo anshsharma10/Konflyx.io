@@ -14,7 +14,7 @@ import java.util.*;
  * @author Ansh Sharma, Braulio Carrion
  * @date 2019.05.22
  */
-public class DriverClass extends JFrame{
+public class DriverClass extends JFrame implements ActionListener, KeyListener{
   /*
    * The panel to work with.
    */
@@ -23,6 +23,38 @@ public class DriverClass extends JFrame{
    * The current game mode. 0 is visual novel, 1 is text selection, and 2 is gameplay. For use in keylistening.
    */
   int gameMode = 1;
+  /*
+   * The background to work with.
+   */
+  Background background;
+  /*
+   * The gameplay object to work with.
+   */
+  Gameplay game;
+  /*
+   * The tree the gameplay object will use.
+   */
+  int gameTree = 1;
+  /*
+   * The first String option for the game tree.
+   */
+  String gameTree1;
+  /*
+   * The main menu to work with.
+   */
+  MainMenu mainMenu;
+  /*
+   * The stage selection menu to work with.
+   */
+  StageSelect stageSelect;
+  /*
+   * The instructions menu to work with.
+   */
+  Instructions instructions;
+  /*
+   * The high scores menu to work with.
+   */
+  HighScores highScores;
   /*
    * The visual novel to work with.
    */
@@ -34,7 +66,11 @@ public class DriverClass extends JFrame{
   /*
    * The stage of the game.
    */
-  int stage = 5;
+  int stage = 0;
+  /*
+   * The highest possible stage - used in stage selection.
+   */
+  int maxStage = 15;
   /*
    * The timer used for tracking game completion.
    */
@@ -43,8 +79,8 @@ public class DriverClass extends JFrame{
    * The Practice Room to work with.
    */
   PracticeRoom pr;
-
-
+  
+  
   /*
    * Class constructor
    */
@@ -63,7 +99,7 @@ public class DriverClass extends JFrame{
    * 3: The high scores.
    * 4: The tutorial.
    * 5: The practice room.
-   * 6: The end of the tutorial
+   * 6: The end of the tutorial.
    * 7: The visual novel for level 1.
    * 8: The tree selection for level 1.
    * 9: The gameplay for level 1.
@@ -76,6 +112,9 @@ public class DriverClass extends JFrame{
    * 16: The visual novel ending.
    */
   public void nextStage() {
+    if (stage > maxStage) {
+      stage = 0;
+    }
     if (stage == 0) {
       GameTracker.setDifficulty(100);
       mainMenu = new MainMenu();
@@ -122,6 +161,7 @@ public class DriverClass extends JFrame{
       panel = pr.getPanel();
       panel.requestFocus();
       this.addKeyListener(this);
+      timer.start();
     } else if (stage == 7) {
       vn = new VisualNovel("level1");
       vn.setLayout(null);
@@ -181,9 +221,15 @@ public class DriverClass extends JFrame{
       timer.stop();
       stage++;
       nextStage();
+    } else if (pr != null && pr.isComplete() == true) {
+      pr.cleanUp();
+      timer.stop();
+      this.removeKeyListener(this);
+      stage++;
+      nextStage();
     }
   }
-
+  
   /*
    * Method that runs if a key is pressed. Changes text selector.
    */
@@ -236,16 +282,20 @@ public class DriverClass extends JFrame{
     } else if ((keyValue == 10 || keyValue == 32) && stage == 1) {
       ts.cleanUp();
       if (ts.getSelection().equals("Tutorial")) {
-        stage = 4;
+        stage = 5;
+        maxStage = 5;
       }
       else if (ts.getSelection().equals("Level 1")) {
-        stage = 6;
+        stage = 7;
+        maxStage = 10;
       }
       else if (ts.getSelection().equals("Level 2")) {
-        stage = 9;
+        stage = 10;
+        maxStage = 13;
       }
       else if (ts.getSelection().equals("Level 3")) {
-        stage = 12;
+        stage = 13;
+        maxStage = 16;
       }
       this.removeKeyListener(this);
       ts = null;
@@ -267,10 +317,10 @@ public class DriverClass extends JFrame{
    */
   public void keyTyped(KeyEvent e) {
   }
-
+  
   public static void main (String[] args) {
-
+    
     DriverClass driver = new DriverClass();
-
+    
   }
 }
