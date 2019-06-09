@@ -247,14 +247,6 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
           panel.setComponentZOrder(components[i],1);
         else if (components[i] instanceof Background)
           panel.setComponentZOrder(components[i],2);
-      } else if (stage == 12) {
-        game = new Gameplay(2, gameTree);
-        game.setLayout(null);
-        game.setPreferredSize(new Dimension(1080,720));
-        add(game);
-        game.next();
-        game.requestFocus();
-        timer.start();
       }
       panel.repaint();
       this.addKeyListener(this);
@@ -295,14 +287,6 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
           panel.setComponentZOrder(components[i],1);
         else if (components[i] instanceof Background)
           panel.setComponentZOrder(components[i],2);
-      } else if (stage == 12) {
-        game = new Gameplay(2, gameTree);
-        game.setLayout(null);
-        game.setPreferredSize(new Dimension(1080,720));
-        add(game);
-        game.next();
-        game.requestFocus();
-        timer.start();
       }
       panel.repaint();
       this.addKeyListener(this);
@@ -323,10 +307,11 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.addText();
       vn.requestFocus();
       timer.start();
-    
-    setVisible(true);
-    this.pack();
-    System.out.println("Stage is " + stage);
+      
+      setVisible(true);
+      this.pack();
+      System.out.println("Stage is " + stage);
+    }
   }
   /*
    * Runs when the timer is activated. Checks if the visual novel or game is completed, then advances a stage.

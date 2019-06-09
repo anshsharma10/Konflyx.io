@@ -2,9 +2,5 @@ Background:1
 ##################################################################################
 FORMAT: Person Emotion Name%Text
 ##################################################################################
-3 1 Dude%/SOMETIMES YOURE THE PIGEON SOMETIMES YOURE THE STATUE/TODAY IM THE PIGEON AND YOURE THE STATUE
-3 3 Dude%/EVERYBODY GET UP
-3 2 Dude%/WHAT UP DUDE/WHT UP
-3 2 Dude%/MY NAME VATHULEN RAVEENDERAN/HHEHEHEHEHEHE
-1 2 Dude2%/SOMETIEMS PIGEON SOMETIMES/ STATUE
-1 1 Dude2%/PEPEPEPEPEPE
+    You%/My name is You# I know it's a weird name, but it's the/one I was born with. I'm 10 years old#
+    You%/
