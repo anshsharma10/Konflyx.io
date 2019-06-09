@@ -2,7 +2,7 @@ Background:1
 ##################################################################################
 FORMAT: Person Emotion Name%Text
 ##################################################################################
-    You%/My name is You# I know it's a weird name but it's the/one I was born with# I'm 10 years old#
+    You%/My name is You# I know it's a weird name but it's the/one I was born with# I'm 11 years old#
     You%/Today I start my first day of grade school#/I'm looking forward to making friends#
 1 0 Pepe%/What's up dude@ My name is Pepe# Wanna be friends@
     You%/Wow, that was easy#
