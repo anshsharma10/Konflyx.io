@@ -202,14 +202,14 @@ public class Gameplay extends JPanel implements KeyListener {
     Text enemyTextObj = new Text(null,  35, 70,  false,  true,  false,  55,  15, enemyText, this);
     enemyTextObj.draw();
     int xPos;
-   // if ((int)(Math.random()*2) == 1) {
-   //   person.move("left");
-   //   xPos = 20;
-   // }
-   // else {
+    if ((int)(Math.random()*2) == 1) {
+      person.move("left");
+      xPos = 20;
+    }
+    else {
       person.move("right");
       xPos = 75;
-   // }
+    }
     person.changeEmote((int)(3*Math.random()));
     this.setFocusable(false);
     Text playerTextObj = new Text(null, 35, 70, true, false, false, xPos, 188, playerText, this);

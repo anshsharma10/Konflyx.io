@@ -15,7 +15,7 @@ import java.util.*;
  * @authors Ansh Sharma, Braulio Carrion
  * @date 2019.06.10
  */
-public class Gameplay extends JPanel implements KeyListener {
+public class Gameplay extends JPanel implements ActionListener, KeyListener {
   /*
    * The TextBox to work with.
    */
@@ -86,10 +86,26 @@ public class Gameplay extends JPanel implements KeyListener {
    */
   TextSelector ts;
   /*
+   * The Text objects the enemy and player will type respectively.
+   */
+  Text enemyTextObj, playerTextObj;
+  /*
+   * The timer used to track typing.
+   */
+  javax.swing.Timer typeTimer = new javax.swing.Timer(150, this);
+  /*
+   * Whether the last line is in visual novel or typing mode.
+   */
+  int lastLine;
+  /*
+   * The location of the second argument tree.
+   */
+  int treeLoc = 0;
+  /*
    * The class constructor. Creates the visual novel.
    */
-  public Gameplay(int script) {
-    generateScript(script);
+  public Gameplay(int script, int tree) {
+    generateScript(script, tree);
     index = 0;
     completed = false;
     this.addKeyListener(this);
@@ -98,10 +114,11 @@ public class Gameplay extends JPanel implements KeyListener {
   }
   /*
    * Searches through the list of scripts for a script with this particular gameplay, then loads each line from this script into the instructions.
+   * The formatting for scripts can be found inside any gameplay script file located in /scripts.
    * @param script The particular script to search for.
    */
-  public void generateScript (int script) {
-    File scriptList = new File("scripts/gameplay" + script + ".txt");
+  public void generateScript (int script, int tree) {
+    File scriptList = new File("scripts/gameplay" + script + "tree" + tree + ".txt");
     try {
       Scanner scan = new Scanner(scriptList); 
       background = new Background(Integer.parseInt((scan.nextLine().substring(11))));
@@ -110,13 +127,18 @@ public class Gameplay extends JPanel implements KeyListener {
       {
         scan.nextLine(); 
       }
+      String line = "";
       while (scan.hasNextLine()) {
-        String line = scan.nextLine(); 
+        line = scan.nextLine(); 
         if (line.charAt(1) == '%') {
           instructions.add(line);
           lines++;
         }
       }
+      if (line.substring(0,1) == "0")
+        lastLine = 0;
+      else
+        lastLine = 1;
     }
     catch (Exception e) {
       System.out.println(e);
@@ -153,42 +175,47 @@ public class Gameplay extends JPanel implements KeyListener {
    * @return The JPanel after text is added.
    */
   public void next () {
-    String line = instructions.get(index);
-    if (line.charAt(0) == '0') {
-      mode = 0;
-      if (!(line.substring(2,3).equals(" ") && line.substring(4,5).equals(" ")))
-        person = new Person(Integer.parseInt(line.substring(2,3)),Integer.parseInt(line.substring(4,5)));
-      else
-        person = null;
-      visualNovelSpeaker = new Text (null,  13, 26,  false,  false,  false,  38,  539, line.substring(6,6 + line.substring(6).indexOf("%")), this);
-      visualNovelText = new Text (null,  18, 36,  false,  false,  false,  20,  575, line.substring(6 + line.substring(6).indexOf("%")), this);
-      addBg();
-      if (person != null)
-        this.add(person);
-      addTextBox();
-      addHealthBar();
-      visualNovelSpeaker.draw();
-      visualNovelText.draw();
-      getPanel();
-      index++;
-    }
-    else if (line.charAt(0) == '1') {
-      mode = 1;
-      enemyText = line.substring(2,2 + line.substring(2).indexOf("%"));
-      line = line.substring(2 + line.substring(2).indexOf("%"));
-      correctResponse = Integer.parseInt(line.substring(1,2));
-      line = line.substring(3);
-      question = line.substring(0,line.indexOf("%"));
-      line = line.substring(line.indexOf("%"));
-      while (!(line.substring(1,2).equals("^"))) {
-        responses.add(line.substring(1,1 + line.substring(1).indexOf("%")));
-        line = line.substring(1 + line.substring(1).indexOf("%"));
+    if (completed == false) {
+      String line = instructions.get(index);
+      if (line.charAt(0) == '0') {
+        mode = 0;
+        if (!(line.substring(2,3).equals(" ") && line.substring(4,5).equals(" ")))
+          person = new Person(Integer.parseInt(line.substring(2,3)),Integer.parseInt(line.substring(4,5)));
+        else
+          person = null;
+        visualNovelSpeaker = new Text (null,  13, 26,  false,  false,  false,  38,  539, line.substring(6,6 + line.substring(6).indexOf("%")), this);
+        visualNovelText = new Text (null,  18, 36,  false,  false,  false,  20,  575, line.substring(6 + line.substring(6).indexOf("%")), this);
+        addBg();
+        if (person != null)
+          this.add(person);
+        addTextBox();
+        addHealthBar();
+        visualNovelSpeaker.draw();
+        visualNovelText.draw();
+        getPanel();
+        index++;
       }
-      addBg();
-      addHealthBar();
-      ts = new TextSelector(this, question, responses.toArray(new String[responses.size()]));
-      getPanel();
-      index++;
+      else if (line.charAt(0) == '1') {
+        mode = 1;
+        enemyText = line.substring(2,2 + line.substring(2).indexOf("%"));
+        line = line.substring(2 + line.substring(2).indexOf("%"));
+        correctResponse = Integer.parseInt(line.substring(1,2));
+        line = line.substring(3);
+        question = line.substring(0,line.indexOf("%"));
+        line = line.substring(line.indexOf("%"));
+        while (!(line.substring(1,2).equals("^"))) {
+          responses.add(line.substring(1,1 + line.substring(1).indexOf("%")));
+          line = line.substring(1 + line.substring(1).indexOf("%"));
+        }
+        addBg();
+        addHealthBar();
+        ts = new TextSelector(this, question, responses.toArray(new String[responses.size()]));
+        getPanel();
+        index++;
+      }
+      if (index == lines && lastLine == 0) {
+        completed = true;
+      }
     }
   }
   
@@ -199,7 +226,7 @@ public class Gameplay extends JPanel implements KeyListener {
     addBg();
     this.add(person);
     addHealthBar();
-    Text enemyTextObj = new Text(null,  35, 70,  false,  true,  false,  55,  15, enemyText, this);
+    enemyTextObj = new Text(null,  35, 70,  false,  true,  false,  55,  15, enemyText, this);
     enemyTextObj.draw();
     int xPos;
     if ((int)(Math.random()*2) == 1) {
@@ -211,11 +238,13 @@ public class Gameplay extends JPanel implements KeyListener {
       xPos = 75;
     }
     person.changeEmote((int)(3*Math.random()));
-    this.setFocusable(false);
-    Text playerTextObj = new Text(null, 35, 70, true, false, false, xPos, 188, playerText, this);
+    playerTextObj = new Text(null, 35, 70, true, false, false, xPos, 188, playerText, this);
     playerTextObj.draw();
+    playerTextObj.focusLetter();
     setVisible(true);
     getPanel();
+    typeTimer.start();
+    
   }
   /*
    * Reorders the current JPanel to account for layers.
@@ -256,6 +285,29 @@ public class Gameplay extends JPanel implements KeyListener {
     return completed;
   }
   /*
+   * The method that activates every time the timer creates an ActionEvent.
+   */
+  public void actionPerformed(ActionEvent e) {
+    if (playerTextObj.finishedLine()) {
+      playerTextObj.erase();
+      enemyTextObj.erase();
+      remove(background);
+      remove(person);
+      remove(healthBar);
+      responses = new ArrayList <String>();
+      this.addKeyListener(this);
+      typeTimer.stop();
+      if (index == lines && lastLine == 1) {
+        completed = true;
+      }
+      else {
+        next();
+      }
+    } else if (enemyTextObj.finishedLine()){
+      healthBar.incrementHealth(-1); 
+    }
+  }
+  /*
    * Method that runs if a key is pressed. Advances text.
    */
   public void keyPressed(KeyEvent e) {
@@ -268,6 +320,7 @@ public class Gameplay extends JPanel implements KeyListener {
         remove(textbox);
         if (person != null)
           remove(person);
+        remove(healthBar);
         visualNovelSpeaker.erase();
         visualNovelText.erase();
         next();
@@ -282,6 +335,7 @@ public class Gameplay extends JPanel implements KeyListener {
       }
       else if (keyValue == 10 || keyValue == 32) {
         ts.cleanUp();
+        remove(healthBar);
         playerText = ts.getSelection();
         this.removeKeyListener(this);
         typeText();

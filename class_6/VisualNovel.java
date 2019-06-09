@@ -53,6 +53,8 @@ public class VisualNovel extends JPanel implements KeyListener{
     generateScript(script);
     completed = false;
     index = 0;
+    this.setSize(1080,720);
+    this.setPreferredSize(new Dimension(1080,720));
     this.addKeyListener(this);
     this.setFocusable(true);
   }
@@ -167,12 +169,10 @@ public class VisualNovel extends JPanel implements KeyListener{
    * Method that runs if a key is pressed. Advances text.
    */
   public void keyPressed(KeyEvent e) {
-    System.out.println(completed);
     if (isComplete() == true)
       this.removeKeyListener(this);
     else {
       int keyValue = e.getKeyCode();
-      System.out.println("press");
       if (keyValue == 10 || keyValue == 32) {
         addText();
       }
