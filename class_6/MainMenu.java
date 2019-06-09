@@ -22,6 +22,6 @@ public class MainMenu extends JPanel {
     this.setLayout(null);
     this.setPreferredSize(new Dimension(1080,720));
     this.setSize(1080,720);
-    
+    this.add(new MenuScreen("mainMenu"));
   }
 }

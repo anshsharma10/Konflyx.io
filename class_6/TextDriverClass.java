@@ -68,6 +68,7 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
     
     
     //Do all of this shit for Braulio's changes
+    /*
     panel = new JPanel();
     panel.setLayout(null);
     panel.setPreferredSize(new Dimension(1080,720));
@@ -78,6 +79,7 @@ public class TextDriverClass extends JFrame implements ActionListener, KeyListen
     panel.repaint();
     this.setVisible(true);
     this.pack();
+    */
     
   }
   /*

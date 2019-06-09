@@ -18,8 +18,10 @@ public class MainMenu extends JPanel {
   /*
    * The class constructor. Creates and draws all relevant images.
    */
-  public Border(int ypos) {
-    this.setSize(952, 101);
-    this.setBounds(60,ypos,952,101);
+  public MainMenu() {
+    this.setLayout(null);
+    this.setPreferredSize(new Dimension(1080,720));
+    this.setSize(1080,720);
+    
   }
 }

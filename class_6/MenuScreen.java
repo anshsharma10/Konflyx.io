@@ -18,11 +18,11 @@ public class MenuScreen extends Component {
   /*
    * The menu to draw.
    */
-  int menu;
+  String menu;
   /*
    * The class constructor. This class's primary purpose is to create a menu screen image.
    */
-  public MenuScreen(int menu) {
+  public MenuScreen(String menu) {
     this.menu = menu;
   }
   /*

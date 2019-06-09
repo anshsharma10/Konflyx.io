@@ -32,7 +32,7 @@ public class MenuScreen extends Component {
     super.paint(g);
     try{
       BufferedImage image = ImageIO.read(new File("menus/" + menu + ".png"));
-      g.drawImage(image, 0,0,952,101,null,null);
+      g.drawImage(image, 0,0,1080,720,null,null);
     }
     catch (Exception e){
       System.out.println(e);
