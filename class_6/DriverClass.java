@@ -342,12 +342,12 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
     } else if (game != null && game.isFailed() == true) {
       remove(game);
       game = null;
+      this.setFocusable(false);
       this.removeKeyListener(this);
       gameOver = new GameOver();
       this.add(gameOver);
       gameOver.repaint();
       gameOver.getPanel();
-      setFocusable(false);
     }else if (pr != null && pr.isComplete() == true) {
       System.out.println("Driver - practice is complete");
       remove(panel);

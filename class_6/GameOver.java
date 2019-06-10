@@ -38,8 +38,8 @@ public class GameOver extends JPanel implements ActionListener{
     gameOverText = new Text(null,  90, 180,  true,  false,  false, 120,  200, "/Game over", this);
     Text supText = new Text(null,  30, 60,  false,  false,  false, 45,  400, "/Take a deep breath and try again.", this);
     gameOverText.draw();
-    supText.draw();
     gameOverText.focusLetter();
+    supText.draw();
   }
   /*
    * Checks if the text has been fully typed.
