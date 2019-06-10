@@ -102,12 +102,17 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
    */
   int treeLoc = 0;
   /*
+   * Whether or not the user has failed the level.
+   */
+  boolean failed = false;
+  /*
    * The class constructor. Creates the visual novel.
    */
   public Gameplay(int script, int tree) {
     generateScript(script, tree);
     index = 0;
     completed = false;
+    failed = false;
     this.setLayout(null);
     this.setPreferredSize(new Dimension(1080,720));
     this.setSize(1080,720);
@@ -287,6 +292,12 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
   public boolean isComplete() {
     return completed;
   }
+    /*
+   * Returns the failure of the section.
+   */
+  public boolean isFailed() {
+    return failed;
+  }
   /*
    * The method that activates every time the timer creates an ActionEvent.
    */
@@ -309,7 +320,11 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
         next();
       }
     } else if (enemyTextObj.finishedLine()){
-      healthBar.incrementHealth(-1); 
+      healthBar.incrementHealth(-3);
+      if (healthBar.getHealth() == 0) {
+        failed = true;
+        typeTimer.stop();
+      }
     }
   }
   /*

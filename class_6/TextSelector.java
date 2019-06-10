@@ -62,7 +62,7 @@ public class TextSelector {
     this.question = new Text(null,  40, 80,  false,  false,  false,  Text.centerTextXPosition(40,question.length()),  45, question, panel);
     this.question.draw();
     for (int i = 0; i < responses.length; i++) {
-      TextResponses.add(new Text(null,  33, 66,  false,  false,  false,  Text.centerTextXPosition(33, responses[i].length()),  192 + (480/responses.length)*i, responses[i], panel));
+      TextResponses.add(new Text(null,  18, 36,  false,  false,  false,  Text.centerTextXPosition(18, responses[i].length()),  208 + (480/responses.length)*i, responses[i], panel));
       TextResponses.get(i).draw();
     }
   }

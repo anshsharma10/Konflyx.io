@@ -195,7 +195,6 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.requestFocus();
       timer.start();
     } else if (stage == 8) {
-      GameTracker.setDifficulty(300);
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));
@@ -223,7 +222,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       System.out.println("listener added");
       
     } else if (stage == 9) {
-      game = new Gameplay(1, gameTree);
+      game = new Gameplay(1, gameTree, 300);
       game.setLayout(null);
       game.setPreferredSize(new Dimension(1080,720));
       add(game);
@@ -239,7 +238,6 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.requestFocus();
       timer.start();
     } else if (stage == 11) {
-      GameTracker.setDifficulty(250);
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));
@@ -263,7 +261,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       this.addKeyListener(this);
       this.requestFocus();
     }  else if (stage == 12) {
-      game = new Gameplay(2, gameTree);
+      game = new Gameplay(2, gameTree, 250);
       game.setLayout(null);
       game.setPreferredSize(new Dimension(1080,720));
       add(game);
@@ -279,7 +277,6 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.requestFocus();
       timer.start();
     } else if (stage == 14) {
-      GameTracker.setDifficulty(200);
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));
@@ -303,7 +300,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       this.addKeyListener(this);
       this.requestFocus();
     }  else if (stage == 15) {
-      game = new Gameplay(3, gameTree);
+      game = new Gameplay(3, gameTree, 200);
       game.setLayout(null);
       game.setPreferredSize(new Dimension(1080,720));
       add(game);
@@ -368,7 +365,6 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
     } else if (gameOver != null && gameOver.contGame() == true) {
       remove(gameOver);
       gameOver = null;
-      this.removeKeyListener(this);
       nextStage();
     } else if (uploadScore != null && uploadScore.isDone() == true) {
       remove(uploadScore);

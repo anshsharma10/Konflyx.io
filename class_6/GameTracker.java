@@ -28,6 +28,12 @@ public class GameTracker {
     return difficulty;
   }
   /*
+   * Makes the game harder after getting a wrong answer.
+   */
+  public static void makeHarder() {
+    difficulty-=50;
+  }
+  /*
    * Sets the difficulty, depending on an input option.
    * @param difficulty the difficulty to set.
    */
