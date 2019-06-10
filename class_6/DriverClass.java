@@ -236,7 +236,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.requestFocus();
       timer.start();
     } else if (stage == 11) {
-      GameTracker.setDifficulty(10);
+      GameTracker.setDifficulty(250);
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));
@@ -276,7 +276,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.requestFocus();
       timer.start();
     } else if (stage == 14) {
-      GameTracker.setDifficulty(250);
+      GameTracker.setDifficulty(200);
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));
@@ -348,6 +348,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       gameOver.repaint();
       gameOver.getPanel();
       setFocusable(false);
+      gameOver.requestFocus();
     }else if (pr != null && pr.isComplete() == true) {
       System.out.println("Driver - practice is complete");
       remove(panel);
