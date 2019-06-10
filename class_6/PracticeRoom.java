@@ -157,7 +157,7 @@ public class PracticeRoom implements KeyListener{
       }
     };
     Timer timer = new Timer("Timer");
-    timer.scheduleAtFixedRate(repeatedTask, 0, 10);
+    timer.scheduleAtFixedRate(repeatedTask, 0, 1);
   }
   /*
    * Returns the current JPanel.
