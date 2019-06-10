@@ -22,7 +22,7 @@ For Text Selection: 1%enemytext%correctOption%question%option1%option2%option3%o
 1% If you wouldn’t put another fruit on pizza like strawberries why would you put pineapple#%2%Pineapples belong on pizza because###% If peppers and tomatoes go on pizza than pineapple too% After many years pineapple pizza still exist and are in menus meaning someone must like it% if someone doesn’t like pepperoni it doesn’t mean it doesn’t belong% It has its own name, Hawaiian%^
 0%1%1%PEPE%/ I will restrict you with my knowledge!
 0%1%1%You%/I don’t think you’re using that word right!
-1% Pineapple is cold or room temp. Cold things don’t belong on hot pizzas!3%Pineapples belong on pizza because###% Pineapples and pizza have the same colours% There are worst toppings than pineapple %The contrast between the sweet pineapple and the rest of the pizza enhances the tasting experience% Hawaiian pizza is fun and mysterious%^
+1% Pineapple is cold or room temp. Cold things don’t belong on hot pizzas!%3%Pineapples belong on pizza because###% Pineapples and pizza have the same colours% There are worst toppings than pineapple %The contrast between the sweet pineapple and the rest of the pizza enhances the tasting experience% Hawaiian pizza is fun and mysterious%^
 0%1%1%PEPE%/PFFT! I can’t believe anything I hear, it’s just a whole lot of lies!
 0%1%1%You%/I’m sorry I can’t hear you! It’s too dark in here!
 1% The dictionary states that the added toppings of the pizza are either meat or vegetables, not fruit!%1%Pineapples belong on pizza because###% Pineapples make pizza healthier# Even thinking about it makes you think it’s HEALTHY!% It taste better when it’s cold%________________%______________________%^
