@@ -25,7 +25,7 @@ public class HighScores extends JPanel {
     this.add(new MenuScreen("highScores"));
     String title = "High Scores";
     Text t = new Text(null,  45, 90,  false,  true,  false, Text.centerTextXPosition(45,title.length()),  45, title, this);
-    String highScores = "Enter high scores here";
+    String highScores = "Sometimes you're the pigeon, sometimes you're the statue";
     Text t2 = new Text(null,  20, 40,  false,  false,  false, 50,  170, highScores, this);
     t.draw();
     t2.draw();

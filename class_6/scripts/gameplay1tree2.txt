@@ -1,0 +1,19 @@
+Background:1
+Person:1
+##################################################################################
+How it works: In the game, we must alternate between showing the user text, letting
+them select the text to type, and actually typing the text. The code is automated
+so that we can easily organize what to type, and whatever we enter here will be
+shown in that order in the actual game.
+##################################################################################
+FORMAT:
+For Visual Novel: 0%Person%Emotion%Name%Text
+For Text Selection: 1%enemytext%correctOption%question%option1%option2%option3%option4%^ (^ signifies the end, and you can put 1, 2, 3, or 4 options)
+##################################################################################
+0%2%1%Enemy 2%You're next, MC!
+0%2%1%MC%Am I? Enemy 2!
+0%2%1%Enemy 2%Oh you've come to argue? Instead of running away you're /coming right to me.
+0%2%1%MC%I can't prove you wrong without coming closer to debate you!
+0%2%1%Enemy 2%Oh ho! Then come as close as you like.
+0%2%1%MC%So, you believe a hot dog isn't a sandwich? Well...
+1%Sandwiches can be eaten from any angle, unlike hotdogs.%3%A hot dog is a sandwich because...%The insides both have meat%They both have bread inside%They are both BBQ food%A sandwich is a superclass and a hotdog is a subclass%^

@@ -37,6 +37,10 @@ public class PracticeRoom implements KeyListener{
   Text startLine;
   Text wpm;
   Text wpmavg;
+  /*
+   * The words per minute count.
+   */
+  int wpmScore;
   String words[] = new String [1000];
   /*
    * The class constructor. Creates the practiceroom, adding all relevant images.
@@ -165,6 +169,7 @@ public class PracticeRoom implements KeyListener{
    */
   public void WPM(int charPr){
     wpm = new Text (null,  35,80,  false,  false,  false,  280,  225, "/WPM = " + (charPr*2)/5, panel);
+    wpmScore = (charPr*2)/5;
     wpm.draw();
     wpmavg = new Text (null,  35,80,  false,  false,  false,  280,  350, "/AVG WPM = 40", panel);
     wpmavg.draw();
@@ -227,5 +232,13 @@ public class PracticeRoom implements KeyListener{
   public void keyReleased(KeyEvent e) {    
   }  
   public void keyTyped(KeyEvent e) {  
+  }
+  
+  /*
+   * Returns the WPM score.
+   * @return The WPM score.
+   */
+  public int getWPM() {
+    return wpmScore;
   }
 }

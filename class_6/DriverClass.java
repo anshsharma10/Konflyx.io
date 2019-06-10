@@ -84,7 +84,10 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
    * The Practice Room to work with.
    */
   PracticeRoom pr;
-  
+  /*
+   * The class object used to upload high scores.
+   */
+  UploadScore uploadScore;
   
   /*
    * Class constructor
@@ -352,18 +355,26 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       setFocusable(false);
       gameOver.requestFocus();
     }else if (pr != null && pr.isComplete() == true) {
-      System.out.println("Driver - practice is complete");
       remove(panel);
       pr.cleanUp();
-      pr = null;
-      timer.stop();
       this.removeKeyListener(this);
-      stage++;
-      nextStage();
+      uploadScore = new UploadScore(pr.getWPM());
+      pr = null;
+      this.add(uploadScore);
+      uploadScore.repaint();
+      uploadScore.getPanel();
+      setFocusable(false);
+      uploadScore.requestFocus();
     } else if (gameOver != null && gameOver.contGame() == true) {
       remove(gameOver);
       gameOver = null;
       this.removeKeyListener(this);
+      nextStage();
+    } else if (uploadScore != null && uploadScore.isDone() == true) {
+      remove(uploadScore);
+      uploadScore = null;
+      this.removeKeyListener(this);
+      stage++;
       nextStage();
     }
   }
