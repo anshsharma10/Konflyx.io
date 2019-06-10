@@ -62,7 +62,10 @@ public class TextSelector {
     this.question = new Text(null,  33, 66,  false,  false,  false,  Text.centerTextXPosition(33,question.length()),  40, question, panel);
     this.question.draw();
     for (int i = 0; i < responses.length; i++) {
-      TextResponses.add(new Text(null,  18, 36,  false,  false,  false,  Text.centerTextXPosition(18, responses[i].length()),  208 + (480/responses.length)*i, responses[i], panel));
+      if (responses[i].substring(1).indexOf("/") != -1)
+        TextResponses.add(new Text(null,  18, 36,  false,  false,  false,  Text.centerTextXPosition(18, responses[i].substring(1,responses[i].substring(1).indexOf("/")).length()),  208 + (480/responses.length)*i, responses[i].substring(0,responses[i].substring(1).indexOf("/"))+"###", panel));
+      else
+        TextResponses.add(new Text(null,  18, 36,  false,  false,  false,  Text.centerTextXPosition(18, responses[i].length()),  208 + (480/responses.length)*i, responses[i], panel));
       TextResponses.get(i).draw();
     }
   }
