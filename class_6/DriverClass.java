@@ -236,7 +236,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.requestFocus();
       timer.start();
     } else if (stage == 11) {
-      GameTracker.setDifficulty(10);
+      GameTracker.setDifficulty(250);
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));
@@ -276,7 +276,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.requestFocus();
       timer.start();
     } else if (stage == 14) {
-      GameTracker.setDifficulty(250);
+      GameTracker.setDifficulty(200);
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));
@@ -300,7 +300,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       this.addKeyListener(this);
       this.requestFocus();
     }  else if (stage == 15) {
-      game = new Gameplay(2, gameTree);
+      game = new Gameplay(3, gameTree);
       game.setLayout(null);
       game.setPreferredSize(new Dimension(1080,720));
       add(game);
@@ -330,6 +330,8 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn = null;
       timer.stop();
       stage++;
+      if (stage == 17)
+        stage = 0;
       this.removeKeyListener(this);
       nextStage();
     } else if (game != null && game.isComplete() == true) {
@@ -348,6 +350,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       gameOver.repaint();
       gameOver.getPanel();
       setFocusable(false);
+      gameOver.requestFocus();
     }else if (pr != null && pr.isComplete() == true) {
       System.out.println("Driver - practice is complete");
       remove(panel);
