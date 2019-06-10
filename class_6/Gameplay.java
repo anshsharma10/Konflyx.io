@@ -241,7 +241,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
     addBg();
     this.add(person);
     addHealthBar();
-    enemyTextObj = new Text(null,  35, 70,  false,  true,  false,  55,  15, enemyText, this);
+    enemyTextObj = new Text(null,  25, 50,  false,  true,  false,  55,  15, enemyText, this);
     enemyTextObj.draw();
     int xPos;
     if ((int)(Math.random()*2) == 1) {
@@ -253,7 +253,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
       xPos = 75;
     }
     person.changeEmote((int)(4*Math.random()));
-    playerTextObj = new Text(null, 35, 70, true, false, false, xPos, 188, playerText, this);
+    playerTextObj = new Text(null, 25, 50, true, false, false, xPos, 188, playerText, this);
     playerTextObj.draw();
     playerTextObj.focusLetter();
     setVisible(true);

@@ -106,9 +106,13 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
    */
   boolean failed = false;
   /*
+   * The difficulty of the game.
+   */
+  int difficulty;
+  /*
    * The class constructor. Creates the visual novel.
    */
-  public Gameplay(int script, int tree) {
+  public Gameplay(int script, int tree, int difficulty) {
     generateScript(script, tree);
     index = 0;
     completed = false;
@@ -119,6 +123,8 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
     this.addKeyListener(this);
     this.setFocusable(true);
     this.add(healthBar);
+    this.difficulty = difficulty;
+    GameTracker.setDifficulty(difficulty);
   }
   /*
    * Searches through the list of scripts for a script with this particular gameplay, then loads each line from this script into the instructions.
@@ -143,7 +149,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
           lines++;
         }
       }
-      if (line.substring(0,1) == "0")
+      if (line.substring(0,1).equals("0"))
         lastLine = 0;
       else
         lastLine = 1;
@@ -205,6 +211,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
       }
       else if (line.charAt(0) == '1') {
         mode = 1;
+        GameTracker.setDifficulty(difficulty);
         enemyText = line.substring(2,2 + line.substring(2).indexOf("%"));
         line = line.substring(2 + line.substring(2).indexOf("%"));
         correctResponse = Integer.parseInt(line.substring(1,2));
@@ -245,7 +252,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
       person.move("right");
       xPos = 75;
     }
-    person.changeEmote((int)(3*Math.random()));
+    person.changeEmote((int)(4*Math.random()));
     playerTextObj = new Text(null, 35, 70, true, false, false, xPos, 188, playerText, this);
     playerTextObj.draw();
     playerTextObj.focusLetter();
@@ -331,7 +338,6 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
    * Method that runs if a key is pressed. Advances text.
    */
   public void keyPressed(KeyEvent e) {
-    System.out.println("press");
     if (isComplete() == true)
       this.removeKeyListener(this);
     else if (mode == 0) {
@@ -358,6 +364,8 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
         ts.cleanUp();
         remove(healthBar);
         playerText = ts.getSelection();
+        if (!(playerText.equals(responses.get(correctResponse - 1))))
+              GameTracker.makeHarder();
         this.removeKeyListener(this);
         typeText();
       }
