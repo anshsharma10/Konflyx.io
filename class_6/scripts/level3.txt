@@ -9,7 +9,7 @@ FORMAT: Person Emotion Name%Text
 3 1 You%/Hi, Mr# Dyke# Can you tell me what you think/about my university choices@
 3 0 Mr# Dyke%/Ha! What university choices@ We've already/decided for you!
 3 0 You%/Wait, what@ That's allowed@
-3 0 Mr# Dyke%/Of course, I'm your teacher# I know what's/ best# You're going to catholic school#
+3 0 Mr# Dyke%/Of course, I'm your teacher# I know what's/ best#
     You%/I don't want that! I want to make/my own decisions!
     You%/But I've never stood up to an authority/figure before###
     You%/No, it doesn't matter! My future is/my own! I won't let anyone take it from me!

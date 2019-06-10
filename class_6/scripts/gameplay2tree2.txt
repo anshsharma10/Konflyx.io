@@ -10,26 +10,25 @@ FORMAT:
 For Visual Novel: 0%Person%Emotion%Name%Text
 For Text Selection: 1%enemytext%correctOption%question%option1%option2%option3%option4%^ (^ signifies the end, and you can put 1, 2, 3, or 4 options)
 ##################################################################################
-0%2%1%Gasol%/You're next, You!
+0%2%1%Gasol%/Youre next, You!
 0%2%1%You%/Am I? Gasol!
-0%2%1%Gasol%/Oh you've come to argue? Instead of running away you're/coming right to me#
-0%2%1%You%/I can't prove you wrong without coming closer to debate you!
+0%2%1%Gasol%/Oh youve come to argue? Instead of running away youre/coming right to me#
+0%2%1%You%/I cant prove you wrong without coming closer to debate you!
 0%2%1%Gasol%/Oh ho! Then come as close as you like#
 0%2%1%You%/So, you believe a hot dog is a sandwich? Well###
 1%Sandwiches can be eaten from any angle, unlike hotdogs#%4%A hot dog is not a sandwich because###% a sandwich can have anything inside, while a hot dog is only a sausage% The dimensions are not equivalent% a hot dog is a sandwich is like saying a taco is a hot dog% The ways you eat them are completely different. Sandwiches can be eating from any angle, unlike hotdogs%^
 0%2%1%Gasol%/You foolish man, I will beat you up just for saying something so absurd#
-0%2%1%You%/Don't get so amped up just yet because the fun is just about to start#
-1% Sandwiches aren't seen as garbage American street food unlike hot dogs#%2%A hot dog is not a sandwich because###% Restaurants never put hot dogs under sandwich sections% Sandwiches aren't seen as garbage American street food unlike hot dogs% T A hot dog bun does not qualify as a sandwich bread#% Sandwiches have more of a variety when it comes to condiments%^
+0%2%1%You%/Dont get so amped up just yet because the fun is just about to start#
+1% Sandwiches arent seen as garbage American street food unlike hot dogs#%2%A hot dog is not a sandwich because###% Restaurants never put hot dogs under sandwich sections% Sandwiches arent seen as garbage American street food unlike hot dogs% T A hot dog bun does not qualify as a sandwich bread#% Sandwiches have more of a variety when it comes to condiments%^
 0%2%1%Gasol%/I had enough with this nonsense# Get ready to meet this fist in your face#
-0%2%1%You%/Well hey, we're not cavemen, if we're going to do this it will be as grown-ups#
-1% We tend to find sandwiches on restaurant menus, not hot dogs because they don't have the class sandwiches have#%1%A hot dog is not a sandwich because###% Sandwiches require to halves that are squished together vertically, not horizontally like hot dogs% Hot dogs are their own food type% A hot dog is as much of a sandwich as Australia is a real place% If it is not referred as a sandwich than it isn't one%^
-0%2%1%Gasol%/Screw being like grown-ups, we're doing this like REAL men# Anything before you have your end@
-0%2%1%You%/If by men you mean, drunken idiots than let's go ahead, but I rather beat you with facts and logic like a true genius#
-1% Sandwiches require to halves that are squished together vertically, not horizontally like hot dogs#%3% A hot dog is not a sandwich because###% ________________%________________%We tend to find sandwiches on restaurant menus, not hot dogs because they don't have the class sandwiches have.%______________________%^
-0%2%1%Gasol%/I will snap you like a stick# Before you saying anything else I'll be the one to approach you, and not to with this argument#
-0%2%1%You%/In that case I’ll approach you so you can hear me better! Hot Dogs are not sandwiches! #
-1% Even if the sub sandwich and a hot dog is one slice of bread, the sub has the hinge on its side, NOT AT THE BOTTOM all crooked.#%4%A hot dog is not a sandwich because###% ________________________%____________________________%_________________%  Even if the sub sandwich and a hot dog is one slice of bread, the sub has the hinge on its side, NOT AT THE BOTTOM all crooked.%^
-0%2%1%Gasol%/Watch your back next time you're around my territory@
-0%2%1%You%/Next time, don't try to resort to violence GASOL!
-
-
+0%2%1%You%/Well hey, were not cavemen, if were going to do this it will be as grown-ups#
+1% We tend to find sandwiches on restaurant menus, not hot dogs because they dont have the class sandwiches have#%1%A hot dog is not a sandwich because###% Sandwiches require to halves that are squished together vertically, not horizontally like hot dogs% Hot dogs are their own food type% A hot dog is as much of a sandwich as Australia is a real place% If it is not referred as a sandwich than it isnt one%^
+0%2%1%Gasol%/Screw being like grown-ups, were doing this like REAL men# Anything before you have your end@
+0%2%1%You%/If by men you mean, drunken idiots than lets go ahead, but I rather beat you with facts and logic like a true genius#
+1% Sandwiches require to halves that are squished together vertically, not horizontally like hot dogs#%3% A hot dog is not a sandwich because###%it is cylindrical while sandwiches are rectangular prisms%sandwichs are rectangular prisms while hot dogs are cylindrical%We tend to find sandwiches on restaurant menus, not hot dogs because they dont have the class sandwiches have.%they do not share the same popularity nor style%^
+0%2%1%Gasol%/I will snap you like a stick# Before you saying anything else Ill be the one to approach you, and not to with this argument#
+0%2%1%You%/In that case Ill approach you so you can hear me better! Hot Dogs are not sandwiches! #
+1% Even if the sub sandwich and a hot dog is one slice of bread, the sub has the hinge on its side, NOT AT THE BOTTOM all crooked.#%4%A hot dog is not a sandwich because###%Pigeons eat them while they dont eat sandwiches%Hot dogs were not named after an Earl%Hot dogs do not have as many variants as sandwiches%  Even if the sub sandwich and a hot dog is one slice of bread, the sub has the hinge on its side, NOT AT THE BOTTOM all crooked.%^
+0%2%1%Gasol%/Watch your back next time youre around my territory@
+0%2%1%You%/Next time, dont try to resort to violence GASOL!
+0%2%1%You%/Next time, dont try to resort to violence GASOL!

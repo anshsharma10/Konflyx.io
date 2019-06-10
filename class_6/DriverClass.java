@@ -97,6 +97,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     getContentPane().setPreferredSize(new Dimension(1080,720));
     setVisible(true);
+    setResizable(false);
     nextStage();
   }
   /*
@@ -120,8 +121,9 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
    * 16: The visual novel ending.
    */
   public void nextStage() {
-    if (stage > maxStage) {
+    if (stage == maxStage) {
       stage = 0;
+      maxStage = 17;
     }
     if (stage == 0) {
       GameTracker.setDifficulty(100);
@@ -285,8 +287,8 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       add(panel);
       background = new Background(3);
       panel.add(background);
-      ts = new TextSelector(panel, "QUESTION", new String[]{"TREE 1","TREE 2"});
-      gameTree1 = "TREE 1";
+      ts = new TextSelector(panel, "I want to go to###", new String[]{"public school","catholic school"});
+      gameTree1 = "public school";
       Component[] components = panel.getComponents();
       for (int i = 0; i < components.length; i++) {
         if (components[i] instanceof Letter)
@@ -365,6 +367,8 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
     } else if (gameOver != null && gameOver.contGame() == true) {
       remove(gameOver);
       gameOver = null;
+      this.removeKeyListener(this);
+      stage--;
       nextStage();
     } else if (uploadScore != null && uploadScore.isDone() == true) {
       remove(uploadScore);

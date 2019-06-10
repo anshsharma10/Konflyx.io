@@ -149,7 +149,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
           lines++;
         }
       }
-      if (line.substring(0,1) == "0")
+      if (line.substring(0,1).equals("0"))
         lastLine = 0;
       else
         lastLine = 1;

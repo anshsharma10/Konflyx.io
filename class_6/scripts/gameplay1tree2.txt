@@ -10,24 +10,25 @@ FORMAT:
 For Visual Novel: 0%Person%Emotion%Name%Text
 For Text Selection: 1%enemytext%correctOption%question%option1%option2%option3%option4%^ (^ signifies the end, and you can put 1, 2, 3, or 4 options)
 ##################################################################################
-0%1%1%PEPE%/You're next, You!
+0%1%1%PEPE%/Youre next, You!
 0%1%1%You%/Am I@ PEPE!
-0%1%1%PEPE%/Oh you've come to argue@ Instead of running away you're/coming right to me#
-0%1%1%You%/I can't prove you wrong without coming closer to debate you!
+0%1%1%PEPE%/Oh youve come to argue@ Instead of running away youre/coming right to me#
+0%1%1%You%/I cant prove you wrong without coming closer to debate you!
 0%1%1%PEPE%/Oh ho! Then come as close as you like#
-0%1%1%You%/So, you believe a hot dog isn't a sandwich@ Well###
-1% Everyone should have the right to put whatever they please #%4% Pineapples belong on pizza because###% pineapples are more luxurious than pizza% You can't eat SpongeBob's house% It's is a disgrace to Italian cuisine% Pineapple agriculture is bad for the environment due to its high transportation %^
-0%1%1%PEPE%/That isn't even a valid argument!
-0%1%1%You%/Oh please! I'm sure they're better than yours!
-1% After many years pineapple pizza still exist and are in menus meaning someone must like it%2%Pineapples belong on pizza because###% Pineapple is the worst topping% If you wouldn't put another fruit on pizza like strawberries why would you put pineapple# % Gordon Ramsey doesn't like it% Pineapple is a wet fruit cause a soggy crust%^
-0%1%1%PEPE%/ I will restrict you with my knowledge!
-0%1%1%You%/I don't think you're using that word right!
-1% The contrast between the sweet pineapple and the rest of the pizza enhances the tasting experience!%3%Pineapples belong on pizza because###% Pineapple taste bad on pizza% It was invented by a Canadian! Can you really trust us@% Pineapple is cold or room temp# Cold things don't belong on hot pizzas! % it won't make the pizza any healthier%^
-0%1%1%PEPE%/PFFT! I can't believe anything I hear, it's just a whole lot of lies!
-0%1%1%You%/I'm sorry I can't hear you! It's too dark in here!
-1% ###% Pineapples make pizza healthier# Even thinking about it makes you think it's HEALTHY %1%Pineapples belong on pizza because###% The dictionary states that the added toppings of the pizza are either meat or vegetables, not fruit! % ____________________%________________%______________________%^
+0%1%1%You%/So, you believe a hot dog isnt a sandwich@ Well###
+1% Everyone should have the right to put whatever they please #%4% Pineapples do not belong on pizza because###% pineapples are more luxurious than pizza% You cant eat SpongeBobs house% Its is a disgrace to Italian cuisine% Pineapple agriculture is bad for the environment due to its high transportation %^
+0%1%1%PEPE%/That isnt even a valid argument!
+0%1%1%You%/Oh please! Im sure theyre better than yours!
+1% After many years pineapple pizza still exist and are in menus meaning someone must like it%2%Pineapples do not belong on pizza because###% Pineapple is the worst topping% If you wouldnt put another fruit on pizza like strawberries why would you put pineapple# % Gordon Ramsey doesnt like it% Pineapple is a wet fruit cause a soggy crust%^
+0%1%1%PEPE%/I will restrict you with my knowledge!
+0%1%1%You%/I dont think youre using that word right!
+1% The contrast between the sweet pineapple and the rest of the pizza enhances the tasting experience!%3%Pineapples do not belong on pizza because###% Pineapple taste bad on pizza% It was invented by a Canadian! Can you really trust us@% Pineapple is cold or room temp# Cold things dont belong on hot pizzas! % it wont make the pizza any healthier%^
+0%1%1%PEPE%/PFFT! I cant believe anything I hear, its just a whole lot of lies!
+0%1%1%You%/Im sorry I cant hear you! Its too dark in here!
+1% Pineapples make pizza healthier# Even thinking about it makes you think its HEALTHY %1%Pineapples do not belong on pizza because###% The dictionary states that the added toppings of the pizza are either meat or vegetables, not fruit! %Sweet does not go with savory%Theyre too acidic for our taste buds!%Theyre too thorny for human hands to handle%^
 0%1%1%PEPE%/my gold fish is smarter than you!
 0%1%1%You%/What a way to break me apart!
-1% The toppings on a pizza are like a string variable, no restrictions#%4%Pineapples belong on pizza because###% ________________________%____________________________%_________________% The president office Iceland wants to ban it %^
+1% The toppings on a pizza are like a string variable, no restrictions#%4%Pineapples do not belong on pizza because###%Theyre worse than eggplants%vegetarians hate them!%you need a serving of meat every day%The president office Iceland wants to ban it%^
 0%1%1%PEPE%/I am fed up with this stupidity#
+0%1%1%You%/This whole argument was useless, even though I won!
 0%1%1%You%/This whole argument was useless, even though I won!
