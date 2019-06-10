@@ -14,10 +14,10 @@ import java.util.Timer;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 /*
- * The VisualNovel class. Creates a simple visual novel system for the driver and level classes to use. Contains methods
+ * The PracticeRoom class. Creates a practice room where the player can check their WPM count.
  * used for the visual novel.
  * @authors Ansh Sharma, Braulio Carrion
- * @date 2019.05.30
+ * @date 2019.06.10
  */
 public class PracticeRoom implements KeyListener{
   /*

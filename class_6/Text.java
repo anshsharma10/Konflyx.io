@@ -12,7 +12,7 @@ import java.util.*;
 /*
  * The Letter class. Creates a letter using JFrame to easily create sentences.
  * @authors Ansh Sharma, Braulio Carrion
- * @date 2019.05.22
+ * @date 2019.06.10
  */
 public class Text{
   /*

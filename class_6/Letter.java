@@ -12,7 +12,7 @@ import java.awt.image.*;
 /*
  * The Letter class. Creates a letter using JFrame to easily create sentences.
  * @authors Ansh Sharma, Braulio Carrion
- * @date 2019.05.22
+ * @date @date 2019.06.10
  */
 public class Letter extends Component implements ActionListener,KeyListener{
   /*
@@ -260,48 +260,6 @@ public class Letter extends Component implements ActionListener,KeyListener{
     }
     //System.out.print(letter + idleAnimation + keyValue);
   }
-  
-  
-  /*public void changeColour(Color clr){
-   * 
-   BufferedImage img = null;
-   File file = null;
-   
-   //read image
-   try
-   {
-   file = new File("textfiles\\"+letter+".png");
-   img = ImageIO.read(file);
-   }
-   catch(IOException e)
-   {
-   System.out.println(e);
-   }
-   
-   int width = img.getWidth();
-   int height = img.getHeight();
-   
-   for (int y = 0; y < height; y++)
-   {
-   for (int x = 0; x < width; x++)
-   {
-   int p = img.getRGB(x,y);
-   if (p < 0)
-   img.setRGB(x, y, clr.getRGB());
-   }
-   }
-   
-   try
-   {
-   file = new File("textfiles\\"+letter + "R.png");
-   ImageIO.write(img, "png", file);
-   }
-   catch(IOException e)
-   {
-   System.out.println(e);
-   }
-   repaint();
-   }*/
   
   /*
    * Sends a value to signify whether the character was pressed or not 

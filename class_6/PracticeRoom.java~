@@ -32,8 +32,17 @@ public class PracticeRoom implements KeyListener{
    * Whether or not the typing section is complete.
    */
   boolean done = false;
+  /*
+   * background
+   */
   Background bg;
+  /*
+   * text box
+   */
   TextBox tb;
+  /*
+   * The texts that will be displayed
+   */
   Text startLine;
   Text wpm;
   Text wpmavg;
@@ -41,6 +50,9 @@ public class PracticeRoom implements KeyListener{
    * The words per minute count.
    */
   int wpmScore;
+  /*
+   * Stores the randomized words
+   */
   String words[] = new String [1000];
   /*
    * The class constructor. Creates the practiceroom, adding all relevant images.
@@ -240,8 +252,7 @@ public class PracticeRoom implements KeyListener{
     timer.scheduleAtFixedRate(repeatedTask, 0, 1);
   }
   /*
-   * Returns the current JPanel.
-   * @return the JPanel.
+   * Displays the users final score
    */
   public void WPM(int charPr){
     wpm = new Text (null,  35,80,  false,  false,  false,  280,  225, "/WPM = " + (charPr*2)/5, panel);
@@ -262,6 +273,9 @@ public class PracticeRoom implements KeyListener{
     return completed;
   }
   
+  /*
+   * The display that should go before the game starts
+   */
   public void displayStart(){
     startLine = new Text (null,  30,80,  false,  false,  false,  290,  430, "/PRESS ENTER TO START", panel);
     startLine.draw();
@@ -270,6 +284,9 @@ public class PracticeRoom implements KeyListener{
     panel.setFocusable(true);
   }
   
+  /*
+   * Gets the Jpanel and fixes ZOrder
+   */
   public JPanel getPanel() {
     panel.setComponentZOrder(bg,panel.getComponents().length - 1);
     panel.setComponentZOrder(tb,panel.getComponents().length - 2);

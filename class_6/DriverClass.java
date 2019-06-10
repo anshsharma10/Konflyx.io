@@ -11,9 +11,9 @@ import javax.swing.*;
 import java.awt.image.*;
 import java.util.*;
 /*
- * The TextDriverClass Class. Creates an example of the use of the Text and Letter classes.
+ * The DriverClass Class. Runs the entire game using stages.
  * @author Ansh Sharma, Braulio Carrion
- * @date 2019.05.22
+ * @date 2019.06.10
  */
 public class DriverClass extends JFrame implements ActionListener, KeyListener{
   /*
@@ -380,7 +380,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
   }
   
   /*
-   * Method that runs if a key is pressed. Changes text selector.
+   * Method that runs if a key is pressed. Proceeds with the game by changing the text selector.
    */
   public void keyPressed(KeyEvent e) {
     int keyValue = e.getKeyCode();
