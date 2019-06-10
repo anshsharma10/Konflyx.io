@@ -87,6 +87,13 @@ public class PracticeRoom implements KeyListener{
       Text line6 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
       Text line7 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
       Text line8 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      Text line9 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      Text line10 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      Text line11 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      Text line12 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      Text line13 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      Text line14 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
+      Text line15 = new Text (null,  25,45,  false,  false,  false,  20,  secondY, "/" + (words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase() + " " +(words[(int)(Math.random()*999)]).toUpperCase(), panel);
       
       public void run() {
         panel = getPanel();
@@ -138,6 +145,61 @@ public class PracticeRoom implements KeyListener{
           line7.turnOnIdleAnim();
         }
         
+        if(line7.finishedLine()){
+          line9.draw();
+          line7.erase();
+          line8.updateLetPos(20,firstY);
+          line8.turnOnIdleAnim();
+        }
+        
+        if(line8.finishedLine()){
+          line10.draw();
+          line8.erase();
+          line9.updateLetPos(20,firstY);
+          line9.turnOnIdleAnim();
+        }
+        
+        if(line9.finishedLine()){
+          line11.draw();
+          line9.erase();
+          line10.updateLetPos(20,firstY);
+          line10.turnOnIdleAnim();
+        }
+        
+        if(line10.finishedLine()){
+          line12.draw();
+          line10.erase();
+          line11.updateLetPos(20,firstY);
+          line11.turnOnIdleAnim();
+        }
+        
+        if(line11.finishedLine()){
+          line13.draw();
+          line11.erase();
+          line12.updateLetPos(20,firstY);
+          line12.turnOnIdleAnim();
+        }
+        
+        if(line12.finishedLine()){
+          line14.draw();
+          line12.erase();
+          line13.updateLetPos(20,firstY);
+          line13.turnOnIdleAnim();
+        }
+        
+        if(line13.finishedLine()){
+          line15.draw();
+          line13.erase();
+          line14.updateLetPos(20,firstY);
+          line14.turnOnIdleAnim();
+        }
+        
+        if(line14.finishedLine()){
+          line14.erase();
+          line15.updateLetPos(20,firstY);
+          line15.turnOnIdleAnim();
+        }
+        
         if (0.50*60*1000<(System.currentTimeMillis() - startTime)){
           line1.erase();
           line2.erase();
@@ -147,6 +209,13 @@ public class PracticeRoom implements KeyListener{
           line6.erase();
           line7.erase();
           line8.erase();
+          line9.erase();
+          line10.erase();
+          line11.erase();
+          line12.erase();
+          line13.erase();
+          line14.erase();
+          line15.erase();
           charPress+=line1.pressCount();
           charPress+=line2.pressCount();
           charPress+=line3.pressCount();
@@ -155,6 +224,13 @@ public class PracticeRoom implements KeyListener{
           charPress+=line6.pressCount();
           charPress+=line7.pressCount();
           charPress+=line8.pressCount();
+          charPress+=line9.pressCount();
+          charPress+=line10.pressCount();
+          charPress+=line11.pressCount();
+          charPress+=line12.pressCount();
+          charPress+=line13.pressCount();
+          charPress+=line14.pressCount();
+          charPress+=line15.pressCount();
           cancel(); 
           WPM(charPress);
         }
