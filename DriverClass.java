@@ -12,7 +12,7 @@ import java.awt.image.*;
 import java.util.*;
 /**
  * The DriverClass Class. Runs the entire game using stages.
- * @author Ansh Sharma, Braulio Carrion
+ * @author Ansh Sharma, Braulio Carrion;
  * @date 2019.06.10
  */
 public class DriverClass extends JFrame implements ActionListener, KeyListener{
