@@ -12,7 +12,7 @@ import java.util.*;
 /*
  * The Character Class. Creates a character on the screen, displaying an emotion.
  * @author Ansh Sharma, Braulio Carrion
- * @date 2019.06.04
+ * @date @date 2019.06.10
  */
 public class Person extends Component {
   /*
