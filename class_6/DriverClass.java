@@ -300,7 +300,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       this.addKeyListener(this);
       this.requestFocus();
     }  else if (stage == 15) {
-      game = new Gameplay(2, gameTree);
+      game = new Gameplay(3, gameTree);
       game.setLayout(null);
       game.setPreferredSize(new Dimension(1080,720));
       add(game);
@@ -330,6 +330,8 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn = null;
       timer.stop();
       stage++;
+      if (stage == 17)
+        stage = 0;
       this.removeKeyListener(this);
       nextStage();
     } else if (game != null && game.isComplete() == true) {
