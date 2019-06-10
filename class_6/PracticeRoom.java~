@@ -252,7 +252,6 @@ public class PracticeRoom implements KeyListener{
     done = true;
     panel = getPanel();
     panel.setFocusable(true);
-    
     panel.requestFocus();
   }
   /*

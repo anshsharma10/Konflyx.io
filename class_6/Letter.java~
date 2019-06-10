@@ -58,7 +58,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
   int keyValue;
   int conX,conY;
   Timer idleTimer = new Timer(100, this);
-  Timer introTimer = new Timer(150, this);
+  Timer introTimer = new Timer(GameTracker.getDifficulty(), this);
   String colorOfLetter = "";
   boolean lastLet = false;
   int stringSize;
@@ -100,7 +100,7 @@ public class Letter extends Component implements ActionListener,KeyListener{
     }
     if (animateIn == true) {
       this.setVisible(false);
-      introTimer.setInitialDelay(500*(index + 1));
+      introTimer.setInitialDelay(GameTracker.getDifficulty()*(index + 1));
       introTimer.start();
     }
     if (!idleAnimation && !animateIn && !animateOut  && !(letter.equals("/"))){

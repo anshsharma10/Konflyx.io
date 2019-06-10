@@ -52,6 +52,9 @@ public class Text{
    * The JPanel to add the text to.
    */
   JPanel panel;
+  /*
+   * The string size
+   */
   int contSize;
   /*
    * The class constructor. Creates a Text object with all variables set. Additionally, creates an ArrayList of Letters, one Letter for each letter in the contents String.
@@ -109,6 +112,9 @@ public class Text{
     return panel;
   }
   
+  /*
+   * sets letter focues for key listener
+   */
   public void focusLetter() {
     for (Letter letter : textList) {
       if (letter.getIdle()) {
@@ -118,12 +124,18 @@ public class Text{
     }
   }
   
+  /*
+   * Turns on idle animation
+   */
   public void turnOnIdleAnim() {
     for (Letter lett: textList){
       lett.turnOnIdle();
     }
   }
   
+  /*
+   * Returns the value of max presses for that text
+   */
   public int pressCount() {
     int sum = 0;
     for (Letter lett: textList){
@@ -132,6 +144,9 @@ public class Text{
     return sum;
   }
   
+  /*
+   * Updates the letters to a new position
+   */
   public void updateLetPos(int x, int y) {
     int count = -1;
     for (Letter lett: textList){
@@ -140,6 +155,9 @@ public class Text{
     }
   }
   
+  /*
+   * Checks to see if the line was done
+   */
   public boolean finishedLine(){
     return textList.get(contSize-1).finishedLine();
   }

@@ -52,16 +52,42 @@ public class Letter extends Component implements ActionListener,KeyListener{
    * The index of this letter within the Text.
    */
   int index;
-  
+  /*
+   * The value for idle animation movement
+   */
   int valX = 2;
+  /*
+   * The value for idle animation movement
+   */
   int valY = 2;
+  /*
+   * The value for input
+   */
   int keyValue;
+  /*
+   * The constant value of original location
+   */
   int conX,conY;
+  /*
+   * The timers for the individual animations
+   */
   Timer idleTimer = new Timer(100, this);
   Timer introTimer = new Timer(GameTracker.getDifficulty(), this);
+  /*
+   * Each letter file has its on sufix that determines the colour
+   */
   String colorOfLetter = "";
+  /*
+   * The status of the last letters input
+   */
   boolean lastLet = false;
+  /*
+   * The size of the string of text
+   */
   int stringSize;
+  /*
+   * The value of whether or not the letter was pressed
+   */
   int press = 0;
   
   /*
@@ -123,6 +149,9 @@ public class Letter extends Component implements ActionListener,KeyListener{
     }
   }
   
+  /*
+   * The action of the letter while a timer is running. (Animation)
+   */
   public void actionPerformed(ActionEvent e){
     if (animateIn && introTimer.isRunning()){
       this.setVisible(true);
@@ -170,10 +199,16 @@ public class Letter extends Component implements ActionListener,KeyListener{
     lastLet = false;
   }
   
+  /*
+   * Sends out whether or not the line of text was completed or not
+   */
   public boolean finishedLine(){
     return lastLet;
   }
   
+  /*
+   * If idle is turned off then it can be manually turned on.
+   */
   public void turnOnIdle(){
     idleAnimation = true;
     if (animateIn == false && idleAnimation && !(letter.equals("/")) ) {
@@ -182,6 +217,9 @@ public class Letter extends Component implements ActionListener,KeyListener{
     }
   }
   
+  /*
+   * Updates the position of a text, by moving it to a new location
+   */
   public void updatePos(int x, int y){
     posX = x;
     conX = x;
@@ -191,10 +229,16 @@ public class Letter extends Component implements ActionListener,KeyListener{
     repaint();
   }
   
+  /*
+   * Gets to see if the idle animation is currently running or not
+   */
   public boolean getIdle () {
     return idleAnimation;
   }
   
+  /*
+   * Checks when a key is pressed and checks what value was press. If the value matches the letter or any of the special cases then the program continues.
+   */
   public void keyPressed(KeyEvent e) {
     if (idleAnimation){
       keyValue = e.getKeyCode();
@@ -259,7 +303,9 @@ public class Letter extends Component implements ActionListener,KeyListener{
    repaint();
    }*/
   
-  
+  /*
+   * Sends a value to signify whether the character was pressed or not 
+   */
   public int isPressed(){
     return press;
   }
