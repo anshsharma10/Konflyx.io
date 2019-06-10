@@ -253,7 +253,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
       xPos = 75;
     }
     person.changeEmote((int)(4*Math.random()));
-    playerTextObj = new Text(null, 25, 50, true, false, false, xPos, 188, playerText, this);
+    playerTextObj = new Text(null, 20, 40, true, false, false, xPos, 188, playerText, this);
     playerTextObj.draw();
     playerTextObj.focusLetter();
     setVisible(true);
