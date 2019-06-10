@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20160913-225446">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="BlackScreen.java" package="" timestamp="10-Jun-2019 10:14:11">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="UploadScore.java" package="" timestamp="10-Jun-2019 10:14:12">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="VisualNovel.java" package="" timestamp="10-Jun-2019 10:14:12">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Background.java" package="" timestamp="10-Jun-2019 10:14:10">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Border.java" package="" timestamp="10-Jun-2019 10:14:11">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="DriverClass.java" package="" timestamp="10-Jun-2019 10:19:30">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="GameOver.java" package="" timestamp="10-Jun-2019 10:14:11">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Gameplay.java" package="" timestamp="10-Jun-2019 10:14:11">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="GameTracker.java" package="" timestamp="10-Jun-2019 10:14:11">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="HealthBar.java" package="" timestamp="10-Jun-2019 10:14:11">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="HighScores.java" package="" timestamp="10-Jun-2019 10:14:11">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Instructions.java" package="" timestamp="10-Jun-2019 10:14:11">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Letter.java" package="" timestamp="10-Jun-2019 10:14:11">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="MainMenu.java" package="" timestamp="10-Jun-2019 10:14:11">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="MenuScreen.java" package="" timestamp="10-Jun-2019 10:14:12">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Person.java" package="" timestamp="10-Jun-2019 10:14:12">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="PracticeRoom.java" package="" timestamp="10-Jun-2019 10:14:12">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="StageSelect.java" package="" timestamp="10-Jun-2019 10:14:12">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Text.java" package="" timestamp="10-Jun-2019 10:14:12">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="TextBox.java" package="" timestamp="10-Jun-2019 10:14:12">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="TextSelector.java" package="" timestamp="10-Jun-2019 10:14:12">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>
