@@ -65,6 +65,10 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
    */
   TextSelector ts;
   /*
+   * The game over screen to work with.
+   */
+  GameOver gameOver;
+  /*
    * The stage of the game.
    */
   int stage = 0;
@@ -197,7 +201,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       add(panel);
       background = new Background(1);
       panel.add(background);
-      ts = new TextSelector(panel, "Pineapple...", new String[]{"belongs on pizza","doesn't belong on pizza"});
+      ts = new TextSelector(panel, "Pineapple###", new String[]{"belongs on pizza","doesn't belong on pizza"});
       gameTree1 = "belongs on pizza";
       Component[] components = panel.getComponents();
       for (int i = 0; i < components.length; i++) {
@@ -232,7 +236,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       vn.requestFocus();
       timer.start();
     } else if (stage == 11) {
-      GameTracker.setDifficulty(250);
+      GameTracker.setDifficulty(10);
       panel = new JPanel();
       panel.setLayout(null);
       panel.setPreferredSize(new Dimension(1080,720));
@@ -241,7 +245,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       add(panel);
       background = new Background(2);
       panel.add(background);
-      ts = new TextSelector(panel, "A hot dog is...", new String[]{"a sandwich","not a sandwich"});
+      ts = new TextSelector(panel, "A hot dog is###", new String[]{"a sandwich","not a sandwich"});
       gameTree1 = "a sandwich";
       Component[] components = panel.getComponents();
       for (int i = 0; i < components.length; i++) {
@@ -279,7 +283,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       panel.setSize(1080,720);
       pack();
       add(panel);
-      background = new Background(1);
+      background = new Background(3);
       panel.add(background);
       ts = new TextSelector(panel, "QUESTION", new String[]{"TREE 1","TREE 2"});
       gameTree1 = "TREE 1";
@@ -334,8 +338,17 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       timer.stop();
       stage++;
       this.removeKeyListener(this);
-         nextStage();
-    } else if (pr != null && pr.isComplete() == true) {
+      nextStage();
+    } else if (game != null && game.isFailed() == true) {
+      remove(game);
+      game = null;
+      this.setFocusable(false);
+      this.removeKeyListener(this);
+      gameOver = new GameOver();
+      this.add(gameOver);
+      gameOver.repaint();
+      gameOver.getPanel();
+    }else if (pr != null && pr.isComplete() == true) {
       System.out.println("Driver - practice is complete");
       remove(panel);
       pr.cleanUp();
@@ -343,6 +356,11 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
       timer.stop();
       this.removeKeyListener(this);
       stage++;
+      nextStage();
+    } else if (gameOver != null && gameOver.contGame() == true) {
+      remove(gameOver);
+      gameOver = null;
+      this.removeKeyListener(this);
       nextStage();
     }
   }
@@ -370,7 +388,7 @@ public class DriverClass extends JFrame implements ActionListener, KeyListener{
     else if ((keyValue == 83 || keyValue == 40) && (stage == 0 ||  stage == 1 || stage == 8 || stage == 11 || stage == 14)) {
       ts.moveDown();
     }
-    else if ((keyValue == 10 || keyValue == 32) && stage == 8) {
+    else if ((keyValue == 10 || keyValue == 32) && stage == 8 || stage == 11 || stage == 14) {
       ts.cleanUp();
       if (ts.getSelection().equals(gameTree1))
         gameTree = 1;

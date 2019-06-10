@@ -108,6 +108,9 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
     generateScript(script, tree);
     index = 0;
     completed = false;
+    this.setLayout(null);
+    this.setPreferredSize(new Dimension(1080,720));
+    this.setSize(1080,720);
     this.addKeyListener(this);
     this.setFocusable(true);
     this.add(healthBar);
@@ -141,7 +144,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
         lastLine = 1;
     }
     catch (Exception e) {
-      System.out.println(e);
+      System.out.println(lines + " " + e);
     }
   }
   /*
@@ -301,6 +304,8 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
         completed = true;
       }
       else {
+        this.setFocusable(true);
+        this.requestFocus();
         next();
       }
     } else if (enemyTextObj.finishedLine()){
@@ -311,6 +316,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
    * Method that runs if a key is pressed. Advances text.
    */
   public void keyPressed(KeyEvent e) {
+    System.out.println("press");
     if (isComplete() == true)
       this.removeKeyListener(this);
     else if (mode == 0) {

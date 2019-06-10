@@ -85,7 +85,7 @@ public class VisualNovel extends JPanel implements KeyListener{
       }
     }
     catch (Exception e) {
-      System.out.println(e);
+      System.out.println(lines +""+ e);
     }
   }
   /*

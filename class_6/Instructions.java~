@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.awt.image.*;
 import java.util.*;
 /*
- * The Instrctions Class. A JPanel that displays the game instructions.
+ * The Instructions Class. A JPanel that displays the game instructions.
  * @author Ansh Sharma, Braulio Carrion
  * @date 2019.06.10
  */
@@ -26,8 +26,9 @@ public class Instructions extends JPanel {
     String title = "Instructions";
     Text t = new Text(null,  45, 90,  false,  true,  false, Text.centerTextXPosition(45,title.length()),  45, title, this);
     String instructions = "Enter instructions here";
-    Text t = new Text(null,  20, 40,  false,  true,  false, 20,  90, instructions, this);
+    Text t2 = new Text(null,  20, 40,  false,  false,  false, 50,  170, instructions, this);
     t.draw();
+    t2.draw();
     getPanel();
   }
   /*

@@ -28,8 +28,6 @@ For Text Selection: 1%enemytext%correctOption%question%option1%option2%option3%o
 1% Sandwiches require to halves that are squished together vertically, not horizontally like hot dogs#%1%A hot dog is a sandwich because###%A hot dog is a piece of meat# You put it in a bun and you get a hot dog sandwich%A hot dog is an open face sandwich%________________%______________________%^
 0%2%1%Gasol%/I will snap you like a stick# Before you saying anything else I'll be the one to approach you, and not to with this argument#
 0%2%1%You%/In that case I’ll approach you so you can hear me better! Hot Dogs are sandwiches! #
-1% Even if the sub sandwich and a hot dog is one slice of bread, the sub has the hinge on its side, NOT AT THE BOTTOM all crooked.#%4%A hot dog is a sandwich because###% ________________________%____________________________%_________________% When used, a baguette is still considered a sandwich# A Hot dog bun shares many similarities to a baguette#%^
+1% Even if the sub sandwich and a hot dog is one slice of bread, the sub has the hinge on its side, NOT AT THE BOTTOM all crooked.#%4%A hot dog is a sandwich because###%________________________%____________________________%_________________% When used, a baguette is still considered a sandwich# A Hot dog bun shares many similarities to a baguette#%^
 0%2%1%Gasol%/Watch your back next time you're around my territory@
 0%2%1%You%/Next time, don't try to resort to violence GASOL!
-
-

@@ -48,15 +48,10 @@ public class HealthBar extends Component {
    * @param health The value to increase or decrease by.
    */
   public void incrementHealth (int modifier) {
-    if (health + modifier > 0) {
-      this.health += modifier;
-      repaint();
-    } else {
-      this.health = 0;
-      repaint();
-    }
+    this.health += modifier;
+    repaint();
   }
-  /*
+    /*
    * Returns the health.
    * @return The current health.
    */
