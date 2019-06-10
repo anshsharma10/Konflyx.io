@@ -10,12 +10,12 @@ FORMAT:
 For Visual Novel: 0%Person%Emotion%Name%Text
 For Text Selection: 1%enemytext%correctOption%question%option1%option2%option3%option4%^ (^ signifies the end, and you can put 1, 2, 3, or 4 options)
 ##################################################################################
-0%1%1%PEPE%/Youre next, You!
-0%1%1%You%/Am I@ PEPE!
-0%1%1%PEPE%/Oh youve come to argue@ Instead of running away youre/coming right to me#
-0%1%1%You%/I cant prove you wrong without coming closer to debate you!
-0%1%1%PEPE%/Oh ho! Then come as close as you like#
-0%1%1%You%/So, you believe a hot dog isnt a sandwich@ Well###
+0%1%1%PEPE%/You### Really think that about pineapple on pizza@
+0%1%1%You%/Yeah### Why@
+0%1%1%PEPE%/I think your opinion is stupid, and you are stupid too#
+0%1%1%You%/Thats not very nice of you to say#
+0%1%1%PEPE%/Well, Ill tell you exactly why your opinion is so stupid#
+0%1%1%You%/So, you think pineapple doesnt belong on pizza###@ Well###
 1%Pineapple agriculture is bad for the environment due to its high transportation#%4% Pineapples belong on pizza because###% both pizza and pineapple start with pi#% those saying it doesnt belong are food Nazis% pineapples are pleasing to the eye% Everyone should have the right to put whatever they please%^
 0%1%1%PEPE%/That isnt even a valid argument!
 0%1%1%You%/Oh please! Im sure theyre better than yours!
