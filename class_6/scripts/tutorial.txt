@@ -1,5 +1,11 @@
-Background:1
+Background:4
 ##################################################################################
 FORMAT: Person Emotion Name%Text
 ##################################################################################
-    You%/My name is You. I know it's a weird name, but it's
+    You%/Welcome to Konflyx#io# This is a typing game where/you'll have to navigate through conflict#
+    You%/To play this game, you will have to type out arguments/faster than your opponent#
+    You%/You may want to know how high your WPM, or Words/per minute are when you're playing this game#
+    You%/Coming up is a typing tester# Simply type the/moving words on the screen as fast as you can, for
+    You%/thirty seconds, and you'll know how fast you are#/By the way, the average words per minute score is 40#
+    You%/Are you ready@ Here comes the tester#
+    You%/Are you ready@ Here comes the tester#

@@ -1,5 +1,9 @@
-Background:1
+Background:4
 ##################################################################################
 FORMAT: Person Emotion Name%Text
 ##################################################################################
-    You%/My name is You. I know it's a weird name, but it's
+    You%/Good job! If you didn't get above the/average, don't worry about it.
+    You%/You don't need to be fast to complete/this game, it might just be a bit harder for you.
+    You%/If you got above average, great job!
+    You%/Keep going to play the game's story.
+    You%/Keep going to play the game's story.

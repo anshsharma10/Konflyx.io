@@ -170,7 +170,6 @@ public class VisualNovel extends JPanel implements KeyListener{
    * Method that runs if a key is pressed. Advances text.
    */
   public void keyPressed(KeyEvent e) {
-    System.out.println("press vn");
     if (isComplete() == true)
       this.removeKeyListener(this);
     else {

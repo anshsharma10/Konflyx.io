@@ -57,6 +57,7 @@ public class VisualNovel extends JPanel implements KeyListener{
     this.setPreferredSize(new Dimension(1080,720));
     this.addKeyListener(this);
     this.setFocusable(true);
+    this.requestFocus();
   }
   /*
    * Searches through the list of scripts for a script with this particular VisualNovel object's name, then loads
@@ -79,7 +80,7 @@ public class VisualNovel extends JPanel implements KeyListener{
           personList.add(null);
         textList.add(new ArrayList<Text>());
         textList.get(lines).add(new Text (null,  13, 26,  false,  false,  false,  38,  539, line.substring(4,line.indexOf("%")), this));
-        textList.get(lines).add(new Text (null,  18, 36,  false,  false,  false,  20,  575, line.substring(line.indexOf("%")), this));
+        textList.get(lines).add(new Text (null,  18, 36,  false,  false,  false,  20,  545, line.substring(line.indexOf("%")), this));
         lines++;
       }
     }
@@ -169,6 +170,7 @@ public class VisualNovel extends JPanel implements KeyListener{
    * Method that runs if a key is pressed. Advances text.
    */
   public void keyPressed(KeyEvent e) {
+    System.out.println("press vn");
     if (isComplete() == true)
       this.removeKeyListener(this);
     else {
