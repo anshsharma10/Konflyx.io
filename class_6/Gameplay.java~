@@ -108,6 +108,9 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener {
     generateScript(script, tree);
     index = 0;
     completed = false;
+    this.setLayout(null);
+    this.setPreferredSize(new Dimension(1080,720));
+    this.setSize(1080,720);
     this.addKeyListener(this);
     this.setFocusable(true);
     this.add(healthBar);
