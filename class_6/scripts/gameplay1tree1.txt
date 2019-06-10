@@ -10,24 +10,24 @@ FORMAT:
 For Visual Novel: 0%Person%Emotion%Name%Text
 For Text Selection: 1%enemytext%correctOption%question%option1%option2%option3%option4%^ (^ signifies the end, and you can put 1, 2, 3, or 4 options)
 ##################################################################################
-0%1%1%Gasol%/You're next, You!
-0%1%1%You%/Am I? Gasol!
-0%1%1%Gasol%/Oh you've come to argue? Instead of running away you're/coming right to me#
+0%1%1%PEPE%/You're next, You!
+0%1%1%You%/Am I? PEPE!
+0%1%1%PEPE%/Oh you've come to argue? Instead of running away you're/coming right to me#
 0%1%1%You%/I can't prove you wrong without coming closer to debate you!
-0%1%1%Gasol%/Oh ho! Then come as close as you like#
+0%1%1%PEPE%/Oh ho! Then come as close as you like#
 0%1%1%You%/So, you believe a hot dog isn't a sandwich? Well###
-1%Sandwiches can be eaten from any angle, unlike hotdogs#%4%A hot dog is a sandwich because###%The insides both have meat%They both have bread inside%They are both BBQ food%A sandwich is a superclass and a hotdog is a subclass%^
-0%1%1%Gasol%/You foolish man, I will beat you up just for saying something so absurd#
-0%1%1%You%/Don't get so amped up just yet because the fun is just about to start#
-1% Sandwiches aren't seen as garbage American street food unlike hot dogs#%2%A hot dog is a sandwich because###% A PBJ sandwich with one slice folded is still a sandwich%If a sub is considered a sandwich, with only one slice of bread, then a Hot Dog must also be a sandwich!% The condiments are the same regardless of the food#% Two slices aren't always required%^
-0%1%1%Gasol%/I had enough with this nonsense# Get ready to meet this fist in your face#
-0%1%1%You%/Well hey, we're not cavemen, if we're going to do this it will be as grown-ups#
-1% We tend to find sandwiches on restaurant menus, not hot dogs because they don't have the class sandwiches have#%3%A hot dog is a sandwich because###% They have a similar volume%You can make a sandwich with different pieces of bread%The definition of a sandwich is “two or more slices of bread or a split roll having a filling in between”, and a hot dog uses a split roll!% Bread is Bread# They all come from wheat%^
-0%1%1%Gasol%/Screw being like grown-ups, we're doing this like REAL men# Anything before you have your end@
-0%1%1%You%/If by men you mean, drunken idiots than let's go ahead, but I rather beat you with facts and logic like a true genius#
-1% Sandwiches require to halves that are squished together vertically, not horizontally like hot dogs#%1%A hot dog is a sandwich because###%A hot dog is a piece of meat# You put it in a bun and you get a hot dog sandwich%A hot dog is an open face sandwich%________________%______________________%^
-0%1%1%Gasol%/I will snap you like a stick# Before you saying anything else I'll be the one to approach you, and not to with this argument#
-0%1%1%You%/In that case I’ll approach you so you can hear me better! Hot Dogs are sandwiches! #
-1% Even if the sub sandwich and a hot dog is one slice of bread, the sub has the hinge on its side, NOT AT THE BOTTOM all crooked.#%4%A hot dog is a sandwich because###%________________________%____________________________%_________________% When used, a baguette is still considered a sandwich# A Hot dog bun shares many similarities to a baguette#%^
-0%1%1%Gasol%/Watch your back next time you're around my territory@
-0%1%1%You%/Next time, don't try to resort to violence GASOL!
+1%Pineapple agriculture is bad for the environment due to its high transportation#%4% Pineapples belong on pizza because###% both pizza and pineapple start with pi#% those saying it doesn’t belong are food Nazis% pineapples are pleasing to the eye% Everyone should have the right to put whatever they please%^
+0%1%1%PEPE%/That isn’t even a valid argument!
+0%1%1%You%/Oh please! I’m sure they’re better than yours!
+1% If you wouldn’t put another fruit on pizza like strawberries why would you put pineapple#%2%Pineapples belong on pizza because###% If peppers and tomatoes go on pizza than pineapple too% After many years pineapple pizza still exist and are in menus meaning someone must like it% if someone doesn’t like pepperoni it doesn’t mean it doesn’t belong% It has its own name, Hawaiian%^
+0%1%1%PEPE%/ I will restrict you with my knowledge!
+0%1%1%You%/I don’t think you’re using that word right!
+1% Pineapple is cold or room temp. Cold things don’t belong on hot pizzas!3%Pineapples belong on pizza because###% Pineapples and pizza have the same colours% There are worst toppings than pineapple %The contrast between the sweet pineapple and the rest of the pizza enhances the tasting experience% Hawaiian pizza is fun and mysterious%^
+0%1%1%PEPE%/PFFT! I can’t believe anything I hear, it’s just a whole lot of lies!
+0%1%1%You%/I’m sorry I can’t hear you! It’s too dark in here!
+1% The dictionary states that the added toppings of the pizza are either meat or vegetables, not fruit!%1%Pineapples belong on pizza because###% Pineapples make pizza healthier# Even thinking about it makes you think it’s HEALTHY!% It taste better when it’s cold%________________%______________________%^
+0%1%1%PEPE%/My gold fish is smarter than you!
+0%1%1%You%/What a way to break me apart!
+1%The president office Iceland wants to ban it#%4%Pineapples belong on pizza because###% ________________________%____________________________%_________________% The toppings on a pizza are like a string variable, no restrictions%^
+0%1%1%PEPE%/I am fed up with this stupidity#
+0%1%1%You%/This whole argument was useless, even though I won!
