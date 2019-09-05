@@ -1,0 +1,18 @@
+Background:2
+##################################################################################
+FORMAT: Person Emotion Name%Text
+##################################################################################
+    You%/What's up@ It's You again# It's been three years since/my legendary argument with Pepe#
+    You%/I became famous schoolwide, and became a little better at/debating, but now I'm in high school#
+    You%/No one really knows me here, so I don't have to argue a/lot# The only problem is that there are a lot of
+    You%/delinquents here# It's a little hard to convince them/of your point, and they scare me a bit#
+    You%/Uh oh, here's one now#
+2 0 Gasol%/Heh heh## What's up You@ I wanna know what you think/about whether or not a hot dog is a sandwich#
+    You%/THIS IS GASOL, A FIFTEEN YEAR OLD BOY WHO ATTENDS/MAC HIGH# EVEYONE KNOWS HIM##
+    You%/HE IS CALLED THE STRIKER, WHEN HE/GETS A TAD BIT ANGRY# HE USES VIOLENCE TO SHOW IT#
+    You%/HE IS AGRESSIVE AND SHORTTEMPERED# TWO THINGS/I'M NOT# HE IS MY OPPOSITE#
+    You%/I didn't really know him until today# GASOL/HELD me BY THE SHIRT AND STARTED A HEATED ARGUMENT##
+    You%/I've never been threatened in an argument/before# Honestly, I'm a bit scared# What if I get punched@
+    You%/But I need to do this# If I don't, I'll/spend the rest of my life as a pushover#
+2 1 You%/You wanna know what I think about a hot/dog being a sandwich@ I think that###
+2 1 You%/You wanna know what I think about a hot/dog being a sandwich@ I think that###

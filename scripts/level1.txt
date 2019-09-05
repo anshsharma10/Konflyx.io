@@ -1,0 +1,19 @@
+Background:1
+##################################################################################
+FORMAT: Person Emotion Name%Text
+##################################################################################
+    You%/My name is You# I know it's a weird name but it's the/one I was born with# I'm 11 years old#
+    You%/Today I start my first day of grade school#/I'm looking forward to making friends#
+1 0 Pepe%/What's up dude@ My name is Pepe# Wanna be friends@
+    You%/Wow, that was easy#
+1 0 You%/Sure! Let's be friends# My name is You#
+1 1 Pepe%/Weird name#
+1 0 You%/It's the one I was born with# What do you wanna do@
+1 0 Pepe%/I dunno# It's pizza time pretty soon, so wanna/have some pizza@
+1 0 You%/Sure! Hey, that slice has pineapple on it#
+1 1 Pepe%/You're treading on thin ice here, buddy#/What do you think about pineapple on pizza@
+    You%/Why's he asking what I think about it@/Is he gonna argue with me if I do or don't like it@
+    You%/I've never been in an argument before#/I don't know how to deal with conflict#
+    You%/I guess I'm gonna have to tell him my opinion#/I just hope he deals with it reasonably#
+1 1 You%/What I think about pineapple on pizza is###
+1 1 You%/What I think about pineapple on pizza is###

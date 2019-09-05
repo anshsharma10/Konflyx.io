@@ -1,0 +1,10 @@
+Background:3
+##################################################################################
+FORMAT: Person Emotion Name%Text
+##################################################################################
+     You%/It's been a wild 18 years# I've lived my life/well, and I finally get to do what I want to#
+     You%/My future is my own#/I won't let anyone take that from me#
+     You%/I've learned to deal with conflict appropriately,/and I won't succumb to pressure in the future#
+     You%/No matter whether it's at home or in the workplace,/I'll be able to live a fulfilling future#
+     Ansh, Braulio%/Thank you for playing our game!/Press space or enter to head back to the main menu#
+     Ansh, Braulio%/Thank you for playing our game!/Press space or enter to head back to the main menu#
